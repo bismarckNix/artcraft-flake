@@ -35,16 +35,7 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [
       wrapped
-    ]
-    ++ cfg.desktopEntry (
-      lib.mkDefault {
-        name = app.displayName;
-        inherit icon;
-        comment = app.description;
-        exec = "${wrapped}/bin/${name} %U";
-        categories = [ "Graphics" ];
-        terminal = false;
-      }
-    );
+    ] ++
+      lib.optional cfg.desktopEntry desktopItem;
   };
 }
