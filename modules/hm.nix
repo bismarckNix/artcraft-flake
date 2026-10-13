@@ -21,8 +21,9 @@ let
   };
 
   settingsFormat = pkgs.formats.json { };
-  base = app.configFile or ".config";
+  base = app.configPath or ".config";
   configDir = "${lib.removeSuffix "/" base}/${name}";
+  configFile = app.configFile or "preferences.json";
 
   declared = (pkgs.formats.json {}).generate "${name}-declared.json" cfg.settings;
 in
@@ -61,7 +62,8 @@ in
       activation = lib.optionalAttrs (!(app.noSettings or false) && cfg.settings != { }) {
         "${name}Preferences" = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
           dir="$HOME/"${lib.escapeShellArg configDir}
-          f="$dir/preferences.json"
+          file=${lib.escapeShellArg name}
+          f="$dir/$file"
           mkdir -p "$dir"
 
           if [ -s "$f" ] && ${pkgs.jq}/bin/jq -e . "$f" >/dev/null 2>&1; then
