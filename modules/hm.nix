@@ -13,11 +13,7 @@
 let
   app = (import ../apps.nix).${name};
   cfg = config.programs.artcraft.${name};
-  appIcon = pkgs.fetchurl {
-    url = app.iconUrl;
-    hash = app.iconHash or lib.fakeHash;
-    name = "${name}-icon.svg";
-  };
+  icon = import ../lib/icon.nix { inherit lib pkgs name app; };
 
   wrapped = import ../lib/wrapper.nix { inherit lib pkgs; } {
     inherit name;
@@ -62,30 +58,32 @@ in
       # Merge the declared config with the default config.
       # Changes made via the GUI aren't overwritten,
       # unless you do so in your Nix configuration.
-      activation."${name}Preferences" = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        dir="$HOME/"${lib.escapeShellArg configDir}
-        f="$dir/preferences.json"
-        mkdir -p "$dir"
+      activation = lib.optionalAttrs (!(app.noSettings or false) && cfg.settings != { }) {
+        "${name}Preferences" = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+          dir="$HOME/"${lib.escapeShellArg configDir}
+          f="$dir/preferences.json"
+          mkdir -p "$dir"
 
-        if [ -s "$f" ] && ${pkgs.jq}/bin/jq -e . "$f" >/dev/null 2>&1; then
-          tmp="$(mktemp "$f.XXXXXX")"
-          if ${pkgs.jq}/bin/jq --slurpfile d ${declared} '. * $d[0]' "$f" > "$tmp"; then
-            mv "$tmp" "$f"
+          if [ -s "$f" ] && ${pkgs.jq}/bin/jq -e . "$f" >/dev/null 2>&1; then
+            tmp="$(mktemp "$f.XXXXXX")"
+            if ${pkgs.jq}/bin/jq --slurpfile d ${declared} '. * $d[0]' "$f" > "$tmp"; then
+              mv "$tmp" "$f"
+            else
+              rm -f "$tmp"
+              echo "artcraft.${name}: merge failed, left $f untouched" >&2
+            fi
           else
-            rm -f "$tmp"
-            echo "artcraft.${name}: merge failed, left $f untouched" >&2
+            # missing, empty, or invalid: start from the declared values
+            install -m 644 ${declared} "$f"
           fi
-        else
-          # missing, empty, or invalid: start from the declared values
-          install -m 644 ${declared} "$f"
-        fi
-      '';
+        '';
+      };
     };
 
     xdg.desktopEntries.${name} = lib.mkIf cfg.desktopEntry (
       lib.mkDefault {
         name = app.displayName;
-        icon = appIcon;
+        inherit icon;
         comment = app.description;
         exec = "${wrapped}/bin/${name} %U";
         categories = [ "Graphics" ];
