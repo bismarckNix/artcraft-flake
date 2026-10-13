@@ -33,7 +33,9 @@
       mods:
       let
         all = {
-          imports = builtins.attrValues mods;
+          imports = builtins.attrValues mods ++ [
+            (import ./modules/suite.nix { inherit names; })
+          ];
         };
       in
       mods
