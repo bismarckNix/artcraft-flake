@@ -27,9 +27,9 @@ in
 
   options.programs.artcraft.${name}.desktopEntry = lib.mkOption {
     type = lib.types.bool;
-    default = true;
+    default = !config.programs.artcraft.launcherOnly || (app.launcher or false);
     defaultText = lib.literalExpression "!launcherOnly || isLauncher";
-    description = "Install a launcher entry.";
+    description = "Create a launcher entry.";
   };
 
   config = lib.mkIf cfg.enable {
