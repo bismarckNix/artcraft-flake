@@ -12,11 +12,7 @@
 let
   app = (import ../apps.nix).${name};
   cfg = config.programs.artcraft.${name};
-  appIcon = pkgs.fetchurl {
-    url = app.iconUrl;
-    hash = app.iconHash or lib.fakeHash;
-    name = "${name}-icon.svg";
-  };
+  icon = import ../lib/icon.nix { inherit lib pkgs name app; };
 
   wrapped = import ../lib/wrapper.nix { inherit lib pkgs; } {
     inherit name;
@@ -24,11 +20,15 @@ let
   };
 in
 {
-  imports = [ (import ./options.nix { inherit self name; }) ];
+  imports = [
+    ./launcher-only.nix
+    (import ./options.nix { inherit self name; })
+  ];
 
   options.programs.artcraft.${name}.desktopEntry = lib.mkOption {
     type = lib.types.bool;
     default = true;
+    defaultText = lib.literalExpression "!launcherOnly || isLauncher";
     description = "Install a launcher entry.";
   };
 
@@ -36,11 +36,11 @@ in
     environment.systemPackages = [
       wrapped
     ]
-    ++ lib.optional cfg.desktopEntry (
-      pkgs.makeDesktopItem {
-        inherit name;
-        icon = appIcon;
-        desktopName = app.displayName;
+    ++ cfg.desktopEntry (
+      lib.mkDefault {
+        name = app.displayName;
+        inherit icon;
+        comment = app.description;
         exec = "${wrapped}/bin/${name} %U";
         categories = [ "Graphics" ];
         terminal = false;
