@@ -28,7 +28,10 @@ let
   declared = (pkgs.formats.json {}).generate "${name}-declared.json" cfg.settings;
 in
 {
-  imports = [ (import ./options.nix { inherit self name; }) ];
+  imports = [
+    ./launcher-only.nix
+    (import ./options.nix { inherit self name; })
+  ];
 
   options.programs.artcraft.${name} = {
     settings = lib.mkOption {
@@ -48,6 +51,7 @@ in
     desktopEntry = lib.mkOption {
       type = lib.types.bool;
       default = true;
+      defaultText = lib.literalExpression "!launcherOnly || isLauncher";
       description = "Create a launcher entry.";
     };
   };
