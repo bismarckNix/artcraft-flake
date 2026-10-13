@@ -50,7 +50,7 @@ in
 
     desktopEntry = lib.mkOption {
       type = lib.types.bool;
-      default = true;
+      default = !config.programs.artcraft.launcherOnly || (app.launcher or false);
       defaultText = lib.literalExpression "!launcherOnly || isLauncher";
       description = "Create a launcher entry.";
     };
