@@ -14,6 +14,8 @@ let
   app = (import ../apps.nix).${name};
   cfg = config.programs.artcraft.${name};
   icon = import ../lib/icon.nix { inherit lib pkgs name app; };
+  categories = app.categories or null;
+  mimeType = app.mimeType or null;
 
   wrapped = import ../lib/wrapper.nix { inherit lib pkgs; } {
     inherit name;
@@ -21,11 +23,38 @@ let
   };
 
   settingsFormat = pkgs.formats.json { };
-  base = app.configPath or ".config";
-  configDir = "${lib.removeSuffix "/" base}/${name}";
-  configFile = app.configFile or "preferences.json";
+  configDir = "${lib.removeSuffix "/" (app.configPath or ".config")}/${name}";
 
-  declared = (pkgs.formats.json {}).generate "${name}-declared.json" cfg.settings;
+  prefsFile = app.prefsFile or "prefs.json";
+  hasPrefs = prefsFile != null;
+  uiFile = app.uiFile or "ui.json";
+  hasUi = uiFile != null;
+
+  mergeScript = file: attrs:
+    let declared = settingsFormat.generate "${name}-${file}" attrs; in ''
+      dir="$HOME/"${lib.escapeShellArg configDir}
+      f="$dir/"${lib.escapeShellArg file}
+      mkdir -p "$dir"
+
+      if [ -s "$f" ] && ${pkgs.jq}/bin/jq -e . "$f" >/dev/null 2>&1; then
+        tmp="$(mktemp "$f.XXXXXX")"
+        if ${pkgs.jq}/bin/jq --slurpfile d ${declared} '. * $d[0]' "$f" > "$tmp"; then
+          mv "$tmp" "$f"
+        else
+          rm -f "$tmp"
+          echo "artcraft.${name}: merge failed, left $f untouched" >&2
+        fi
+      else
+        install -m 644 ${declared} "$f"
+      fi
+    '';
+
+  managed = lib.optionalAttrs (!(app.noSettings or false)) (
+    lib.filterAttrs (_: f: f.file != null && f.attrs != { }) {
+      Preferences = { file = prefsFile; attrs = cfg.settings or { }; };
+      Ui = { file = uiFile; attrs = cfg.uiSettings or { }; };
+    }
+  );
 in
 {
   imports = [
@@ -33,26 +62,27 @@ in
     (import ./options.nix { inherit self name; })
   ];
 
-  options.programs.artcraft.${name} = {
-    settings = lib.mkOption {
-      inherit (settingsFormat) type;
-      default = { };
-      example = lib.literalExpression ''
-        {
-          interface.appearanceMode = "dark";
-        }
-      '';
-      description = ''
-        Written to the app's config file. Free-form: keys are not validated.
-        Empty means no file is managed.
-      '';
-    };
-
+  options.programs.artcraft.${name} =
+  {
     desktopEntry = lib.mkOption {
       type = lib.types.bool;
       default = !config.programs.artcraft.launcherOnly || (app.launcher or false);
       defaultText = lib.literalExpression "!launcherOnly || isLauncher";
       description = "Create a launcher entry.";
+    };
+  }
+  // lib.optionalAttrs hasPrefs {
+    settings = lib.mkOption {
+      inherit (settingsFormat) type;
+      default = { };
+      description = "Merged into ${prefsFile}. Free-form, keys are not validated.";
+    };
+  }
+  // lib.optionalAttrs hasUi {
+    uiSettings = lib.mkOption {
+      inherit (settingsFormat) type;
+      default = { };
+      description = "Merged into ${uiFile}. Free-form, keys are not validated.";
     };
   };
 
@@ -63,27 +93,10 @@ in
       # Merge the declared config with the default config.
       # Changes made via the GUI aren't overwritten,
       # unless you do so in your Nix configuration.
-      activation = lib.optionalAttrs (!(app.noSettings or false) && cfg.settings != { }) {
-        "${name}Preferences" = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-          dir="$HOME/"${lib.escapeShellArg configDir}
-          file=${lib.escapeShellArg name}
-          f="$dir/$file"
-          mkdir -p "$dir"
-
-          if [ -s "$f" ] && ${pkgs.jq}/bin/jq -e . "$f" >/dev/null 2>&1; then
-            tmp="$(mktemp "$f.XXXXXX")"
-            if ${pkgs.jq}/bin/jq --slurpfile d ${declared} '. * $d[0]' "$f" > "$tmp"; then
-              mv "$tmp" "$f"
-            else
-              rm -f "$tmp"
-              echo "artcraft.${name}: merge failed, left $f untouched" >&2
-            fi
-          else
-            # missing, empty, or invalid: start from the declared values
-            install -m 644 ${declared} "$f"
-          fi
-        '';
-      };
+      activation = lib.mapAttrs' (kind: f:
+        lib.nameValuePair "${name}${kind}"
+          (lib.hm.dag.entryAfter [ "writeBoundary" ] (mergeScript f.file f.attrs))
+      ) managed;
     };
 
     xdg.desktopEntries.${name} = lib.mkIf cfg.desktopEntry (
@@ -92,8 +105,10 @@ in
         inherit icon;
         comment = app.description;
         exec = "${wrapped}/bin/${name} %U";
-        categories = [ "Graphics" ];
+        inherit categories;
+        inherit mimeType;
         terminal = false;
+        startupNotify = true;
       }
     );
   };

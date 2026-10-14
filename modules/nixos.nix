@@ -13,6 +13,8 @@ let
   app = (import ../apps.nix).${name};
   cfg = config.programs.artcraft.${name};
   icon = import ../lib/icon.nix { inherit lib pkgs name app; };
+  categories = app.categories or null;
+  mimeType = app.mimeType or null;
 
   wrapped = import ../lib/wrapper.nix { inherit lib pkgs; } {
     inherit name;
@@ -35,16 +37,7 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [
       wrapped
-    ]
-    ++ cfg.desktopEntry (
-      lib.mkDefault {
-        name = app.displayName;
-        inherit icon;
-        comment = app.description;
-        exec = "${wrapped}/bin/${name} %U";
-        categories = [ "Graphics" ];
-        terminal = false;
-      }
-    );
+    ] ++
+      lib.optional cfg.desktopEntry desktopItem;
   };
 }
