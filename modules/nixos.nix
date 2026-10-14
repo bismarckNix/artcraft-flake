@@ -13,6 +13,8 @@ let
   app = (import ../apps.nix).${name};
   cfg = config.programs.artcraft.${name};
   icon = import ../lib/icon.nix { inherit lib pkgs name app; };
+  categories = app.categories or null;
+  mimeType = app.mimeType or null;
 
   wrapped = import ../lib/wrapper.nix { inherit lib pkgs; } {
     inherit name;
