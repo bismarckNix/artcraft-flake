@@ -17,7 +17,7 @@
 #   uiFile         ui file name, defaults to ui.json; null = disabled
 #
 #   categories     optional, the mimeapps categories (e.g. graphics, editor, etc.)
-#   mimeTypes      optional, the mime types (e.g. image/png, video/mp4, etc.)
+#   mimeType       optional, the mimeType (e.g. image/png, video/mp4, etc.)
 #   noSettings     optional, disables settings
 #                  (should only be used for apps that don't have a settings format that doesn't work well with Nix, e. g. .ron)
 {
@@ -26,23 +26,23 @@
     description = "The Craft App Launcher";
     version = "0.4.1";
     asset = "artcraft-launcher-${version}-linux-x86_64.AppImage";
-    hash = "sha256-bbHF6EUw2c36l1Tt5A1udXx5BN4Dhd7SqsvwkAW0cXA=";
+    hash = "sha256-GO5YT2UcarAPWR+YEY54YxY44Oog+Esjm2w5tCpPVCY=";
     iconHash = "sha256-+Hr4G2+kEdqIIO7Sv9zFTA7pzUU7ToaMZPVsadsULQ4=";
     noSettings = true;
     launcher = true;   # This makes the app desktop entry not be disabled by the launcherOnly option
-    categories = [ "Utility" "Graphics" "AudioVideo" "Office" ];
+    categories = [ "Utility" "PackageManager" ];
   };
 
   photocraft = rec {
     displayName = "PhotoCraft";
     description = "An open-source, photo editor written by scratch in pure Rust";
-    version = "0.8.2";
-    hash = "sha256-XrZW3mhq9QTYFg1RmMLI1BTPi3qNPsxja8i6j7VkSKc=";
+    version = "0.9.0";
+    hash = "sha256-SDqaeSAODAhku1TPP6pqVeK3nBQz2s/LFT04YuePMrw=";
     iconHash = "sha256-vhncj2zRUF9u3XWe5+mRzWfrHVVaXLqzcZnmwSv8Hkg=";
     prefsFile = "preferences.json";
     uiFile = null;
     categories = [ "Graphics" "2DGraphics" "RasterGraphics" "Photography" ];
-    mimeTypes = [
+    mimeType = [
       "application/x-photocraft" "image/vnd.adobe.photoshop" "image/x-psd" "image/x-psb"
       "image/png" "image/jpeg" "image/tiff" "image/webp" "image/gif" "image/bmp"
       "image/x-tga" "image/x-icon" "image/vnd.microsoft.icon"
@@ -54,67 +54,84 @@
   vectorcraft = rec {
     displayName = "VectorCraft";
     description = "An open-source, vector art tool written by scratch in pure Rust";
-    version = "0.10.0";
-    hash = "sha256-LS2JWHAURlwwlqbkVtc6c7tq7BBOwO0hOkBqFIAmwCk=";
-    iconHash = "sha256-fBaE9J6W/zSXDx0RqOYb7RQuHvKv69NPo8mSOAG2VI=";
+    version = "0.11.0";
+    hash = "sha256-CrUSb5svlZG8J6EOIOobLyOThLGhb+yIKI7T3m2/gxw=";
+    iconHash = "sha256-fBaE9J6W/zSXDx0RqOYb7RQuHvKv69NPo8mSOcAG2VI=";
     categories = [ "Graphics" "2DGraphics" "VectorGraphics" ];
+    mimeType = [ "image/svg+xml" "application/pdf" ];
   };
 
   filmcraft = rec {
     displayName = "FilmCraft";
     description = "An open-source, nonlinear video editor written by scratch in pure Rust";
-    version = "0.7.2";
-    hash = "sha256-q/kg2Y0BWGDh9brcbPBQfY+BFvXDKPf38kJfBoqzrug=";
+    version = "0.8.0";
+    hash = "sha256-QZVel8iTJDXytruCRXg8ZoeGsz0rfflivQl2QdpoIR4=";
     iconHash = "sha256-265KioOCW8Xtc/UmfdMpqj7bq2BSGt+jl0rQw7/3VHQ=";
     configPath = ".local/share";
     prefsFile = "preferences.json";
     uiFile = null;
+    categories = [ "AudioVideo" "Video" "AudioVideoEditing" ];
+    mimeType = [ "application/x-filmcraft" "video/mp4" "video/x-m4v"
+      "video/quicktime" "video/x-matroska" "video/webm" "video/vnd.avi"
+      "video/x-msvideo" "application/mxf" "video/mp2t" "video/mpeg" "video/3gpp"
+    ];
   };
 
   lightcraft = {
     displayName = "LightCraft";
     description = "An open-source non-destructive photo editor written by scratch in pure Rust";
-    version = "0.7.1";
-    hash = "sha256-eAeHlKa9jxAmA28lA6HPcWrSw7V+HKiyvcRkcgmcHkg=";
+    version = "0.8.0";
+    hash = "sha256-gdVLCeYLRIwFUX8d6jQivqWZhpKooahAYEZjhbnf2cM=";
     iconHash = "sha256-EnhY5ZQgcEbHvppl0cQgu80VIujAaP7NwxAI+SPcnG0=";
     prefsFile = null;
+    categories = [ "Graphics" "2DGraphics" "RasterGraphics" "Photography" ];
+    mimeType = [
+      "image/jpeg" "image/png" "image/tiff" "image/webp" "image/x-adobe-dng"
+      "image/x-sony-arw" "image/x-canon-cr2" "image/x-canon-cr3"
+      "image/x-nikon-nef" "image/x-fuji-raf" "image/x-olympus-orf"
+      "image/x-panasonic-rw2" "image/x-panasonic-rw" "image/x-pentax-pef"
+    ];
   };
 
   pdfcraft = {
     displayName = "PdfCraft";
     description = "An open-source PDF reader and editor written by scratch in pure Rust";
-    version = "0.7.1";
-    hash = "sha256-rlyHm7Mm0OkaJB6fnGwXYI73ZsAFxmwtcoAnAQe/Y1o=";
+    version = "0.8.0";
+    hash = "sha256-a4k5fsEK1QXnMvGJgratFxqrCF2TjKDDA0oA1BmeOPc=";
     iconHash = "sha256-UrOEoQoqf90xRdmCKXLP1WjvDLcxJUm9Q5mt3YnUWm0=";
-    noSettings = true;     # Unfortunatly, this currently uses .ron format,
-    };                     # which isn't compatable with Nix
+    noSettings = true;     # Unfortunatly, this currently uses .ron format,  which isn't compatable with Nix
+    categories = [ "Office" "Viewer" ];
+    mimeType = [ "application/pdf" ];
+    };
 
   effectcraft = {
     displayName = "EffectCraft";
     description = "An open-source motion graphics and compositing tool written by scratch in pure Rust";
-    version = "0.9.2";
-    hash = "sha256-9e8cKtMgUepsE7E8FwpzvW8tCoOaT/cYlbFqkNOjrjc=";
+    version = "0.10.0";
+    hash = "sha256-0OQBb25ZFb+EdGX8+kBToWB+CvoWs1/tFWp4x16ItlA=";
     iconHash = "sha256-zHI82IlPI0bs4oGqsZLeM8uSpELdZGa5V/wNvFOd8/A=";
     uiFile = null;
+    categories = [ "AudioVideo" "Video" "Graphics" "2DGraphics" ];
   };
 
   designcraft = {
     displayName = "DesignCraft";
     description = "An open-source page and layout design editor written by scratch in pure Rust";
-    version = "0.7.1";
-    hash = "sha256-T7tdLSwvHWf7fhMeVKhUUxDEiSWMpaLVUJp6LF0/pZs=";
+    version = "0.8.0";
+    hash = "sha256-iNV3EPVsn7fY4z4EYGHv+DkReXG0AqQQPEszK1yjtd8=";
     iconHash = "sha256-wlS3YBxzDMCwoC+0S7rWgeSdyJ8vhKztDH6pxNTmHLw=";
+    categories = [ "Graphics" "Publishing" ];
   };
 
   wordcraft = {
     displayName = "WordCraft";
     description = "An open-source, clean-room reimplementation of Microsoft Word in pure Rust";
-    version = "0.6.1";
-    hash = "sha256-Nu04RMTlg5HPE0HRM79rVptSIfjnB+Xicds8ON9tw8M=";
+    version = "0.7.0";
+    hash = "sha256-fchv8wJfGFvjm/GYIq8k8sUE3erT9S7ZnD1pYLzljU0";
     iconHash = "sha256-mmjLf30R335QARJdO9f60vXMTc2x32YAbLz66IfmG0Y=";
     prefsFile = null;
     categories = [ "Office" "WordProcessor" ];
-    mimeTypes = [
+    mimeType = [
       "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
       "application/vnd.ms-word.document.macroEnabled.12"
       "application/vnd.openxmlformats-officedocument.wordprocessingml.template"
@@ -127,37 +144,80 @@
   deckcraft = {
     displayName = "DeckCraft";
     description = "An open-source, clean-room reimplementation of Microsoft PowerPoint in pure Rust";
-    version = "0.6.1";
-    iconUrl = "https://raw.githubusercontent.com/storytold/deckcraft/main/assets/app-icon/deckcraft-1024.png";
-    hash = "sha256-ghZQ0/h6chIwbzO4t7Bc8Z0TOQoxNZ7zt0o8M88Y7SE=";
+    version = "0.7.0";
+    iconUrl = "https://raw.githubusercontent.com/storytold/deckcraft/refs/heads/main/assets/app-icon/hicolor/scalable/apps/ai.storyteller.deckcraft.svg";
+    hash = "sha256-U1r9Hn9tOJ7P549KcCtaNnGSF8TOxVauXX8P13WuVYQ=";
     iconHash = "sha256-RXywRqGk8uE/Bs9+LgcctI9gEWM+1im5n/NIvkypHOA=";
+    categories = [ "Office" "Presentation" ];
+    mimeType = [
+      "application/x-deckcraft"
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+      "application/vnd.openxmlformats-officedocument.presentationml.template"
+      "application/vnd.openxmlformats-officedocument.presentationml.slideshow"
+    ];
   };
 
   gridcraft = {
     displayName = "GridCraft";
     description = "An open-source, clean-room spreadsheet (Microsoft Excel-style) in pure Rust";
-    version = "0.6.1";
-    hash = "sha256-nbcvSahW9DmlyJs+tP0+1RxKepluvmaS5Y0ej12jyVQ=";
+    version = "0.7.0";
+    hash = "sha256-LarOi+Nxmv7nJ9LjU6pL0KwieYwxLJLCxtXkLyf3CBI=";
     iconHash = "sha256-kw3d/yQQFy7pZIb2q2J6vtRK1fTXYOHKuCR6TXTZTLo=";
+    categories = [ "Office" "Spreadsheet" ];
+    mimeType = [
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      "application/vnd.ms-excel.sheet.macroEnabled.12"
+      "application/vnd.ms-excel.sheet.binary.macroEnabled.12"
+      "application/vnd.oasis.opendocument.spreadsheet" "text/csv"
+      "text/tab-separated-values"
+    ];
   };
 
   cadcraft = {
     displayName = "CADCraft";
     description = "An open-source, clean-room AutoCAD-style app in pure Rust";
-    version = "0.6.2";
+    version = "0.7.0";
     iconUrl = "https://raw.githubusercontent.com/storytold/cadcraft/main/assets/app-icon/cadcraft-256.png";
-    hash = "sha256-MtqtoRubblEucqoHHOvzyvF/dBuF8JR0m/85rTYDatE=";
+    hash = "sha256-sqooB8iG4brnsAZPR2iKYu1v4foF8Fs1LjYs3GmPC3c=";
     iconHash = "sha256-99cPBgscUQDnZvQbthaOPqyOtwwhkUxYQM1NiRAFI0E=";
     noSettings = true;   # Same story as PdfCraft - the config is in .ron format
+    categories = [ "Graphics" "Engineering" "VectorGraphics" ];
+    mimeType = [
+      "image/vnd.dxf" "image/vnd.dwg"
+      "application/x-dxf" "application/acad"
+    ];
   };
 
   soundcraft = {
     displayName = "SoundCraft";
     description = "An open-source, clean-room reimplementation of Avid Pro Tools in pure Rust";
-    version = "0.6.1";
+    version = "0.7.0";
     iconUrl = "https://raw.githubusercontent.com/storytold/soundcraft/refs/heads/main/assets/app-icon/icon.svg";
-    hash = "sha256-aMZY8uctdKMnf0jfPOE+TbnG6v1/FCX2Pi3IXYZ5EgA=";
+    hash = "sha256-gPL+zRMrmpw6wjkWZLCgIUFpyMwOJ76RejcEVTqRTYE=";
     iconHash = "sha256-NNwZQivzPcVyOezsAYBL9uoIUTiTF75v6bINEhduPBI=";
     prefsFile = null;
+    categories = [
+      "AudioVideo" "Audio" "Midi"
+      "Mixer" "Sequencer" "Recorder"
+    ];
+    mimeType = [
+      "application/x-soundcraft-session" "audio/x-wav" "audio/wav"
+      "audio/vnd.wave" "audio/x-aiff" "audio/aiff" "audio/flac"
+      "audio/x-flac" "audio/mpeg" "audio/midi" "audio/x-midi"
+    ];
+  };
+  figcraft = {
+    displayName = "FigCraft";
+    description = "An open-source, clean-room reimplementation of collaborative design workflows in pure Rust";
+    version = "0.6.0";
+    hash = "sha256-YA8RXdxtnnXwcgwNnFRJwVsz/eJ24IDwE7tEntHaRVM=";
+    iconHash = "sha256-YQw68ZTWoI/dqj8VaTfftQqwbJ/rZYYst+uxFEZaMkM=";
+    prefsFile = "state.json";
+    uiFile = null;
+    categories = [ "Graphics" "2DGraphics" "VectorGraphics" "X-Design" ];
+    mimeType = [
+      "application/x-figcraft" "image/svg+xml" "image/png"
+      "image/jpeg" "x-scheme-handler/figcraft"
+    ];
   };
 }
