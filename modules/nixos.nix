@@ -13,13 +13,22 @@ let
   app = (import ../apps.nix).${name};
   cfg = config.programs.artcraft.${name};
   icon = import ../lib/icon.nix { inherit lib pkgs name app; };
-  categories = app.categories or null;
-  mimeType = app.mimeType or null;
 
   wrapped = import ../lib/wrapper.nix { inherit lib pkgs; } {
     inherit name;
     inherit (cfg) package extraArgs environment xwayland;
   };
+
+  desktopItem = pkgs.makeDesktopItem ({
+    inherit name;
+    desktopName = app.displayName;
+    comment = app.description;
+    exec = "${wrapped}/bin/${name} %U";
+    categories = app.categories or [ ];
+    mimeTypes = app.mimeType or [ ];
+    terminal = false;
+    startupNotify = true;
+  } // lib.optionalAttrs (icon != null) { inherit icon; });
 in
 {
   imports = [
@@ -35,9 +44,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [
-      wrapped
-    ] ++
-      lib.optional cfg.desktopEntry desktopItem;
+    environment.systemPackages =
+      [ wrapped ]
+      ++ lib.optional cfg.desktopEntry desktopItem;
   };
 }
