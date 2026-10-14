@@ -26,6 +26,7 @@
     description = "The Craft App Launcher";
     version = "0.4.1";
     asset = "artcraft-launcher-${version}-linux-x86_64.AppImage";
+    iconUrl = "https://raw.githubusercontent.com/storytold/craft-launcher/refs/heads/main/assets/app-icon/artcraft-launcher.svg";
     hash = "sha256-GO5YT2UcarAPWR+YEY54YxY44Oog+Esjm2w5tCpPVCY=";
     iconHash = "sha256-+Hr4G2+kEdqIIO7Sv9zFTA7pzUU7ToaMZPVsadsULQ4=";
     noSettings = true;
@@ -38,7 +39,7 @@
     description = "An open-source, photo editor written by scratch in pure Rust";
     version = "0.9.0";
     hash = "sha256-SDqaeSAODAhku1TPP6pqVeK3nBQz2s/LFT04YuePMrw=";
-    iconHash = "sha256-vhncj2zRUF9u3XWe5+mRzWfrHVVaXLqzcZnmwSv8Hkg=";
+    iconHash = "sha256-pIMzt7eUtwFY2pOiYthPuC9fu/dELbYPI1oKaRNqHOI=";
     prefsFile = "preferences.json";
     uiFile = null;
     categories = [ "Graphics" "2DGraphics" "RasterGraphics" "Photography" ];
@@ -66,7 +67,7 @@
     description = "An open-source, nonlinear video editor written by scratch in pure Rust";
     version = "0.8.0";
     hash = "sha256-QZVel8iTJDXytruCRXg8ZoeGsz0rfflivQl2QdpoIR4=";
-    iconHash = "sha256-265KioOCW8Xtc/UmfdMpqj7bq2BSGt+jl0rQw7/3VHQ=";
+    iconHash = "sha256-TvQVY5ZG4XNH+Z+0YiCmA9AkepjFVFu8gtLyUyX+a54=";
     configPath = ".local/share";
     prefsFile = "preferences.json";
     uiFile = null;
@@ -147,7 +148,7 @@
     version = "0.7.0";
     iconUrl = "https://raw.githubusercontent.com/storytold/deckcraft/refs/heads/main/assets/app-icon/hicolor/scalable/apps/ai.storyteller.deckcraft.svg";
     hash = "sha256-U1r9Hn9tOJ7P549KcCtaNnGSF8TOxVauXX8P13WuVYQ=";
-    iconHash = "sha256-RXywRqGk8uE/Bs9+LgcctI9gEWM+1im5n/NIvkypHOA=";
+    iconHash = "sha256-I+7cR+FM6m9MxnJLE67D5mjk4Bd/bO4fBy9Cg4Xg5t0=";
     categories = [ "Office" "Presentation" ];
     mimeType = [
       "application/x-deckcraft"
