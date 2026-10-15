@@ -63,55 +63,55 @@ You can view all the available apps [here](#applist)
 > [!TIP]
 > You can enable every app using ``programs.artcraft.fullSuite.enable = true;``
 
-    <details>
-    <summary><strong>Home Manager Module</strong></summary>
-      Add this to your home manager:
+<details>
+<summary><strong>Home Manager Module</strong></summary>
+Add this to your home manager:
 
-      ```nix
-      # home.nix
-      { inputs, ... }: {
-        imports = [ inputs.artcraft.homeModules.default ];
+  ```nix
+  # home.nix
+  { inputs, ... }: {
+    imports = [ inputs.artcraft.homeModules.default ];
 
-        programs.artcraft = {
-          fullSuite.enable = true;   # Enable all of the apps
+    programs.artcraft = {
+      fullSuite.enable = true;   # Enable all of the apps
 
-          photocraft = {
-            xwayland = true;         # Enable XWayland for drag and drop support
-            settings = {
-              interface.appearanceMode = "dark";
-              # ...
-              # Your other settings
-            };
-          };
-
+      photocraft = {
+        xwayland = true;         # Enable XWayland for drag and drop support
+        settings = {
+          interface.appearanceMode = "dark";
           # ...
-          # Other apps that you wish to configure
+          # Your other settings
         };
-      }
-      ```
+      };
 
-    </details>
+      # ...
+      # Other apps that you wish to configure
+    };
+  }
+  ```
 
-    <details>
-    <summary><strong>NixOS Module</strong></summary>
-      Add this to your configuration.nix:
+</details>
 
-      ```nix
-      # configuration.nix
-      { inputs, ... }: {
-        imports = [ inputs.artcraft.nixosModules.default ];
+<details>
+<summary><strong>NixOS Module</strong></summary>
+  Add this to your configuration.nix:
 
-        programs.artcraft = {
-          fullSuite.enable = true;   # Enable all of the apps
+  ```nix
+  # configuration.nix
+  { inputs, ... }: {
+    imports = [ inputs.artcraft.nixosModules.default ];
 
-          photocraft = {
-            xwayland = true;         # Enable XWayland for drag and drop support
-          };
-        };
-      }
-      ```
+    programs.artcraft = {
+      fullSuite.enable = true;   # Enable all of the apps
 
-    </details>
+      photocraft = {
+        xwayland = true;         # Enable XWayland for drag and drop support
+      };
+    };
+  }
+  ```
+
+</details>
 
 <a name="configuration"></a>
 
@@ -139,6 +139,10 @@ requires an XWayland server to be available, e.g. xwayland-satellite.
 * `desktopEntry = true/false` - Enable/disable desktop entry for app.
 
 * `launcherOnly = true/false` - Disable all desktop entries except for Craft Launcher.
+
+> [!CAUTION]
+> launcherOnly is a global setting, not per-app.
+> It is enabled with `programs.artcraft.launcherOnly = true;`
 
 ### Home Manager
 
