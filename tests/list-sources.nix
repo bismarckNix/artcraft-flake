@@ -20,7 +20,8 @@ let
           s = sources.${system};
           isDarwin = match ".*-darwin" system != null;
           arch = if match "aarch64-.*" system != null then "aarch64" else "x86_64";
-          default = "${name}-${app.version}-linux-${arch}.AppImage";
+          prefix = app.assetPrefix or name;
+          default = "${prefix}-${app.version}-linux-${arch}.AppImage";
           asset = s.asset or (if system == "x86_64-linux" then app.asset or default else default);
         in
         {

@@ -9,7 +9,7 @@
 #   version        release version (no leading "v")
 #   hash/iconHash  fixed-output hash of the AppImage/icon; null = fake hash
 #   tag            optional, release tag (default "v${version}")
-#   asset          optional, AppImage file name
+#   assetPrefix    optional, AppImage file name
 #                  (default "${name}-${version}-linux-x86_64.AppImage")
 #   extraPkgs      optional, p: [ p.somelib ]  extra libs inside the FHS wrapper
 #   configPath     config path relative to $XDG_CONFIG_HOME, default to ~/.config/${name}
@@ -25,7 +25,7 @@
     displayName = "Craft Launcher";
     description = "The Craft App Launcher";
     version = "0.4.1";
-    asset = "artcraft-launcher-${version}-linux-x86_64.AppImage";
+    assetPrefix = "artcraft-launcher";
     iconUrl = "https://raw.githubusercontent.com/storytold/craft-launcher/refs/heads/main/assets/app-icon/artcraft-launcher.svg";
     sources = {
       x86_64-linux.hash = "sha256-GO5YT2UcarAPWR+YEY54YxY44Oog+Esjm2w5tCpPVCY=";

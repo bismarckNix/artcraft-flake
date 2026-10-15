@@ -12,7 +12,8 @@ let
   source = sources.${system};
 
   arch = if isAarch64 then "aarch64" else "x86_64";
-  defaultAsset = "${name}-${app.version}-linux-${arch}.AppImage";
+  prefix = app.assetPrefix or name;
+  defaultAsset = "${prefix}-${app.version}-linux-${arch}.AppImage";
   asset = source.asset or (if system == "x86_64-linux" then app.asset or defaultAsset else defaultAsset);
   tag = app.tag or "v${app.version}";
 in
