@@ -128,7 +128,7 @@
     displayName = "WordCraft";
     description = "An open-source, clean-room reimplementation of Microsoft Word in pure Rust";
     version = "0.7.0";
-    hash = "sha256-fchv8wJfGFvjm/GYIq8k8sUE3erT9S7ZnD1pYLzljU0";
+    hash = "sha256-fchv8wJfGFvjm/GYIq8k8sUE3erT9S7ZnD1pYLzljU0=";
     iconHash = "sha256-mmjLf30R335QARJdO9f60vXMTc2x32YAbLz66IfmG0Y=";
     prefsFile = null;
     categories = [ "Office" "WordProcessor" ];
