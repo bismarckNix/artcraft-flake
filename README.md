@@ -1,9 +1,24 @@
 # **ArtCraft Creative Suite**
 
-This flake provides the ArtCraft creative suite for NixOS,
-it is reproducible and can be configured [declaratively](#configuration),
+This flake provides the ArtCraft creative suite for NixOS.
+It is reproducible and can be configured [declaratively](#configuration),
 without overwriting the options you configured with your GUI,
 unless you declare it.
+
+The packages are shipped as wrapped AppImages and support
+*x86-64-linux* and *aarch64-linux*.
+
+## Try it
+
+> [!TIP]
+> You can try out the apps with
+> `nix run github:bismarckNix/artcraft-flake#<app>`, e.g.:
+
+```shell
+  nix run github:bismarckNix/artcraft-flake#photocraft
+```
+
+You can view all the available apps [here](#applist).
 
 ## **Installation**
 
@@ -22,32 +37,31 @@ unless you declare it.
 
     ```nix
     # configuration.nix
-    imports = [ inputs.artcraft.nixosModules.default ]
+    imports = [ inputs.artcraft.nixosModules.default ];
     ```
 
     * For home manager (user-only, declarative and GUI configuration, **recommended**):
 
     ```nix
     # home.nix
-    imports = [ inputs.artcraft.homeModules.default ]
+    imports = [ inputs.artcraft.homeModules.default ];
     ```
 
-    > [!NOTE]
-    >
-    > `inputs.artcraft.<module>.default` imports all of the modules at once.
-    > You can import only a single module with `inputs.artcraft.<module>.<app>`
-    >
-    > e.g `inputs.artcraft.homeModules.photocraft` will only import
-    > PhotoCraft to your home manager.
+> [!NOTE]
+> `inputs.artcraft.<module>.default` imports all of the modules at once.
+> You can import only a single module with `inputs.artcraft.<module>.<app>`
+>
+> e.g `inputs.artcraft.homeModules.photocraft` will only import
+> PhotoCraft to your home manager.
 
-3. Enable it:
+1. Enable it:
 
     ```nix
-    programs.artcraft.<app>.enable = true
+    programs.artcraft.<app>.enable = true;
     ```
 
-    > [!TIP]
-    > You can enable every app using ``programs.artcraft.fullSuite.enable = true``
+> [!TIP]
+> You can enable every app using ``programs.artcraft.fullSuite.enable = true;``
 
     <details>
     <summary><strong>Home Manager Module</strong></summary>
@@ -111,14 +125,16 @@ unless you declare it.
 
 ### Shared (NixOS and home-manager)
 
-* `package = ...` - The package to install.
+* `package = ...` - The package to install. Defaults to this flake's package for
+  the current system. Must provide `bin/<app>`, e.g. a different revision of
+  this flake (see the example below).
 
 * `extraArgs = [ ... ]` - Extra command-line arguments passed on every launch.
 
 * `environment = [ ... ]` - Environment variables set for the app.
 
 * `xwayland = true/false` - Run under XWayland. Needed for drag and drop on Wayland,
-requires an XWayland server to be available.
+requires an XWayland server to be available, e.g. xwayland-satellite.
 
 * `desktopEntry = true/false` - Enable/disable desktop entry for app.
 
@@ -133,27 +149,36 @@ requires an XWayland server to be available.
 #### Example
 
 ```nix
-# home.nix
-{
+# flake.nix
+inputs = {
+  artcraft.url = "github:bismarckNix/artcraft-flake";
+  # Same flake, pinned to an older revision
+  artcraft-old.url = "github:bismarckNix/artcraft-flake/<commit-or-tag>";
+};
+```
+
+```nix
+# home.nix (or configuration.nix)
+{ inputs, pkgs, ... }: {
   programs.artcraft = {
     fullSuite.enable = true;
     launcherOnly = true;
 
     photocraft = {
+      package = inputs.artcraft-old.packages.${pkgs.stdenv.hostPlatform.system}.photocraft;
       xwayland = true;
-      environment = [ --some-flag ];
-      extraArgs = {
+      extraArgs = [ --some-flag ];
+      environment = {
         WGPU_BACKEND = "vulkan";
       };
-      settings = {
-        interface.appearanceMode = "dark";
-      };
     };
-  }
+  };
 }
 ```
 
-## **Available Apps and Configuration File Locations**
+<a name="applist"></a>
+
+## **Available Apps, their names and Configuration File Locations**
 
 > [!NOTE]
 > To configure the files declaratively, configure them using the GUI first,
@@ -161,7 +186,7 @@ requires an XWayland server to be available.
 > and search for the option you configured.
 
 | **App** | **Name** | **Configurable Files** | **Configuration Option** |
-| ---------------------- | --------- | ---------------------------------------- | --------------------- |
+| - | - | - | - |
 | **Craft Launcher** | craft-launcher | *None* (.ron file format, unconfigurable via Nix) | *None* |
 | **PhotoCraft** | photocraft | `~/.config/photocraft/preferences.json` | settings   = { ... } |
 | **VectorCraft** | vectorcraft | `~/.config/vectorcraft/ui.json` | uiSettings = { ... } |

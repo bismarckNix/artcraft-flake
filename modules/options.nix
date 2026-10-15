@@ -20,6 +20,7 @@ in
       type = lib.types.package;
       default = self.packages.${pkgs.stdenv.hostPlatform.system}.${name};
       defaultText = lib.literalExpression "inputs.artcraft.packages.\${system}.${name}";
+      example = lib.literalExpression "inputs.artcraft-old.packages.\${system}.${name}";
       description = "The ${app.displayName} package to install.";
     };
 
