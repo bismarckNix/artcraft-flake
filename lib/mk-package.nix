@@ -22,7 +22,7 @@ pkgs.appimageTools.wrapType2 {
 
   src = pkgs.fetchurl {
     url = "https://github.com/storytold/${name}/releases/download/${tag}/${asset}";
-    hash = if app.hash == null then lib.fakeHash else app.hash;
+    hash = if app.sources."${arch}-linux".hash == null then lib.fakeHash else app.sources."${arch}-linux".hash;
   };
 
   extraPkgs =
