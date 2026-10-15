@@ -18,7 +18,7 @@ The packages are shipped as wrapped AppImages and support
   nix run github:bismarckNix/artcraft-flake#photocraft
 ```
 
-You can view all the available apps [here](#applist).
+You can view all the available apps [here](#applist)
 
 ## **Installation**
 
