@@ -20,8 +20,8 @@
   let
     inherit (nixpkgs) lib;
 
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    systems = [ "x86_64-linux" "aarch64-linux" ];
+    forAllSystems = f: lib.genAttrs systems (system: f nixpkgs.legacyPackages.${system});
 
     apps = import ./apps.nix;
     names = builtins.attrNames apps;
@@ -43,23 +43,26 @@
         default = all;
         artcraft = all;
       };
-
-    appPackages = perApp (
-      name:
-      import ./lib/mk-package.nix {
-        inherit pkgs name;
-        app = apps.${name};
-      }
-    );
   in
   {
-    packages.${system} = appPackages // rec {
-      artcraft = pkgs.symlinkJoin {
-        name = "artcraft";
-        paths = builtins.attrValues appPackages;
-      };
-      default = artcraft;
-    };
+    packages = forAllSystems (
+      pkgs:
+      let
+        system = pkgs.stdenv.hostPlatform.system;
+        available = lib.filterAttrs (_: app: (app.sources or { x86_64-linux = { }; }) ? ${system}) apps;
+        appPackages = lib.mapAttrs (
+          name: app: import ./lib/mk-package.nix { inherit pkgs name app; }
+        ) available;
+      in
+      appPackages
+      // rec {
+        artcraft = pkgs.symlinkJoin {
+          name = "artcraft";
+          paths = builtins.attrValues appPackages;
+        };
+        default = artcraft;
+      }
+    );
 
     homeModules = withAll (
       perApp (

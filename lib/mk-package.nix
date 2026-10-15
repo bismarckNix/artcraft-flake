@@ -5,9 +5,17 @@
   app,
 }:
 let
-  inherit (pkgs) lib;
+  inherit (pkgs) lib stdenv;
+  inherit (stdenv.hostPlatform) system isAarch64;
+
+  sources = app.sources or { x86_64-linux = { inherit (app) hash; }; };
+  source = sources.${system};
+
+  arch = if isAarch64 then "aarch64" else "x86_64";
+  prefix = app.assetPrefix or name;
+  defaultAsset = "${prefix}-${app.version}-linux-${arch}.AppImage";
+  asset = source.asset or (if system == "x86_64-linux" then app.asset or defaultAsset else defaultAsset);
   tag = app.tag or "v${app.version}";
-  asset = app.asset or "${name}-${app.version}-linux-x86_64.AppImage";
 in
 pkgs.appimageTools.wrapType2 {
   pname = name;
@@ -15,7 +23,7 @@ pkgs.appimageTools.wrapType2 {
 
   src = pkgs.fetchurl {
     url = "https://github.com/storytold/${name}/releases/download/${tag}/${asset}";
-    hash = if app.hash == null then lib.fakeHash else app.hash;
+    hash = if app.sources."${arch}-linux".hash == null then lib.fakeHash else app.sources."${arch}-linux".hash;
   };
 
   extraPkgs =
@@ -45,12 +53,9 @@ pkgs.appimageTools.wrapType2 {
   meta = {
     inherit (app) description;
     homepage = "https://github.com/storytold/${name}";
-    license = with lib.licenses; [
-      mit
-      asl20
-    ];
+    license = with lib.licenses; [ mit asl20 ];
     mainProgram = name;
     sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
-    platforms = [ "x86_64-linux" ];
+    platforms = builtins.attrNames sources;
   };
 }
