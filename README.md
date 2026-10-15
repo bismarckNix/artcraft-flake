@@ -140,6 +140,10 @@ requires an XWayland server to be available, e.g. xwayland-satellite.
 
 * `launcherOnly = true/false` - Disable all desktop entries except for Craft Launcher.
 
+> [!CAUTION]
+> launcherOnly is a global setting, not per-app.
+> It is enabled with `programs.artcraft.launcherOnly = true;`
+
 ### Home Manager
 
 * `settings = { ... }` - controls prefs.json
