@@ -1,38 +1,53 @@
 # **ArtCraft Creative Suite**
 
-This flake provides the ArtCraft creative suite for NixOS,
-it is reproducible and can be configured [declaratively](#configuration),
-without overwriting the options you configured with your GUI.
+This flake provides the ArtCraft creative suite for NixOS.
+It is reproducible and can be configured [declaratively](#configuration),
+without overwriting the options you configured with your GUI,
+unless you declare it.
+
+The packages are shipped as wrapped AppImages and support
+*x86-64-linux* and *aarch64-linux*.
+
+## Try it
+
+> [!TIP]
+> You can try out the apps with
+> `nix run github:bismarckNix/artcraft-flake#<app>`, e.g.:
+
+```shell
+  nix run github:bismarckNix/artcraft-flake#photocraft
+```
+
+You can view all the available apps [here](#applist).
 
 ## **Installation**
 
 1. Add this to your `flake.nix` inputs:
 
-```nix
-artcraft = {
-  url = "github:bismarckNix/artcraft-flake";
-  inputs.nixpkgs.follows = "nixpkgs";
-};
-```
+    ```nix
+    artcraft = {
+      url = "github:bismarckNix/artcraft-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ```
 
-1. Import the module:
+2. Import the module:
 
-* For NixOS (global, only GUI configuration):
+    * For NixOS (global, only GUI configuration):
 
-```nix
-# configuration.nix
-imports = [ inputs.artcraft.nixosModules.default ]
-```
+    ```nix
+    # configuration.nix
+    imports = [ inputs.artcraft.nixosModules.default ];
+    ```
 
-* For home manager (user-only, declarative and GUI configuration, **recommended**):
+    * For home manager (user-only, declarative and GUI configuration, **recommended**):
 
-```nix
-# home.nix
-imports = [ inputs.artcraft.homeModules.default ]
-```
+    ```nix
+    # home.nix
+    imports = [ inputs.artcraft.homeModules.default ];
+    ```
 
 > [!NOTE]
->
 > `inputs.artcraft.<module>.default` imports all of the modules at once.
 > You can import only a single module with `inputs.artcraft.<module>.<app>`
 >
@@ -41,62 +56,62 @@ imports = [ inputs.artcraft.homeModules.default ]
 
 1. Enable it:
 
-```nix
-programs.artcraft.<app>.enable = true
-```
+    ```nix
+    programs.artcraft.<app>.enable = true;
+    ```
 
 > [!TIP]
-> You can enable every app using ``programs.artcraft.fullSuite.enable = true``
+> You can enable every app using ``programs.artcraft.fullSuite.enable = true;``
 
-<details>
-<summary><strong>Home Manager Module</strong></summary>
-  Add this to your home manager:
+    <details>
+    <summary><strong>Home Manager Module</strong></summary>
+      Add this to your home manager:
 
-  ```nix
-  # home.nix
-  { inputs, ... }: {
-    imports = [ inputs.artcraft.homeModules.default ];
+      ```nix
+      # home.nix
+      { inputs, ... }: {
+        imports = [ inputs.artcraft.homeModules.default ];
 
-    programs.artcraft = {
-      fullSuite.enable = true;   # Enable all of the apps
+        programs.artcraft = {
+          fullSuite.enable = true;   # Enable all of the apps
 
-      photocraft = {
-        xwayland = true;         # Enable XWayland for drag and drop support
-        settings = {
-          interface.appearanceMode = "dark";
+          photocraft = {
+            xwayland = true;         # Enable XWayland for drag and drop support
+            settings = {
+              interface.appearanceMode = "dark";
+              # ...
+              # Your other settings
+            };
+          };
+
           # ...
-          # Your other settings
+          # Other apps that you wish to configure
         };
-      };
+      }
+      ```
 
-      # ...
-      # Other apps that you wish to configure
-    };
-  }
-  ```
+    </details>
 
-</details>
+    <details>
+    <summary><strong>NixOS Module</strong></summary>
+      Add this to your configuration.nix:
 
-<details>
-<summary><strong>NixOS Module</strong></summary>
-  Add this to your configuration.nix:
+      ```nix
+      # configuration.nix
+      { inputs, ... }: {
+        imports = [ inputs.artcraft.nixosModules.default ];
 
-  ```nix
-  # configuration.nix
-  { inputs, ... }: {
-    imports = [ inputs.artcraft.nixosModules.default ];
+        programs.artcraft = {
+          fullSuite.enable = true;   # Enable all of the apps
 
-    programs.artcraft = {
-      fullSuite.enable = true;   # Enable all of the apps
+          photocraft = {
+            xwayland = true;         # Enable XWayland for drag and drop support
+          };
+        };
+      }
+      ```
 
-      photocraft = {
-        xwayland = true;         # Enable XWayland for drag and drop support
-      };
-    };
-  }
-  ```
-
-</details>
+    </details>
 
 <a name="configuration"></a>
 
@@ -110,14 +125,16 @@ programs.artcraft.<app>.enable = true
 
 ### Shared (NixOS and home-manager)
 
-* `package = ...` - The package to install.
+* `package = ...` - The package to install. Defaults to this flake's package for
+  the current system. Must provide `bin/<app>`, e.g. a different revision of
+  this flake (see the example below).
 
 * `extraArgs = [ ... ]` - Extra command-line arguments passed on every launch.
 
 * `environment = [ ... ]` - Environment variables set for the app.
 
 * `xwayland = true/false` - Run under XWayland. Needed for drag and drop on Wayland,
-requires an XWayland server to be available.
+requires an XWayland server to be available, e.g. xwayland-satellite.
 
 * `desktopEntry = true/false` - Enable/disable desktop entry for app.
 
@@ -132,58 +149,67 @@ requires an XWayland server to be available.
 #### Example
 
 ```nix
-# home.nix
-{
+# flake.nix
+inputs = {
+  artcraft.url = "github:bismarckNix/artcraft-flake";
+  # Same flake, pinned to an older revision
+  artcraft-old.url = "github:bismarckNix/artcraft-flake/<commit-or-tag>";
+};
+```
+
+```nix
+# home.nix (or configuration.nix)
+{ inputs, pkgs, ... }: {
   programs.artcraft = {
     fullSuite.enable = true;
     launcherOnly = true;
 
     photocraft = {
+      package = inputs.artcraft-old.packages.${pkgs.stdenv.hostPlatform.system}.photocraft;
       xwayland = true;
-      environment = [ --some-flag ];
-      extraArgs = {
+      extraArgs = [ --some-flag ];
+      environment = {
         WGPU_BACKEND = "vulkan";
       };
-      settings = {
-        interface.appearanceMode = "dark";
-      };
     };
-  }
+  };
 }
 ```
 
-## **Available Apps and Configuration File Locations**
+<a name="applist"></a>
+
+## **Available Apps, their names and Configuration File Locations**
 
 > [!NOTE]
 > To configure the files declaratively, configure them using the GUI first,
 > then, look at the configuration file location listed below
 > and search for the option you configured.
 
-| **App** | **Configurable Files** | **Configuration Option** |
-| ---------------------- | ------------------------------------------------- | ---------------------- |
-| **Craft Launcher** | *None* (.ron file format, unconfigurable via Nix) | *None* |
-| **PhotoCraft** | `~/.config/photocraft/preferences.json` | settings   = { ... } |
-| **VectorCraft** | `~/.config/vectorcraft/ui.json` | uiSettings = { ... } |
-| **FilmCraft** | `~/.local/share/filmcraft/preferences.json` | settings   = { ... } |
-| **LightCraft** | `~/.config/vectorcraft/ui.json` | uiSettings = { ... } |
-| **PdfCraft** | *None* (.ron format) | *None* |
-| **EffectCraft** | `~/.config/effectcraft/prefs.json` | settings   = { ... } |
-| **DesignCraft** | `~/.config/designcraft/prefs.json` | settings   = { ... } |
-| | `~/.config/designcraft/ui.json` | uiSettings = { ... } |
-| **WordCraft** | `~/.config/wordcraft/ui.json` | uiSettings = { ... } |
-| **DeckCraft** | `~/.config/deckcraft/prefs.json` | settings   = { ... } |
-| | `~/.config/deckcraft/ui.json` | uiSettings = { ... } |
-| **GridCraft** | `~/.config/gridcraft/prefs.json` | settings   = { ... } |
-| | `~/.config/gridcraft/ui.json` | uiSettings = { ... } |
-| **CADCraft** | *None* (.ron format) | *None* |
-| **SoundCraft** | `~/.config/soundcraft/ui.json` | uiSettings = { ... } |
-| **FigCraft** | `~/.config/FigCraft/state.json` | settings   = { ... } |
+| **App** | **Name** | **Configurable Files** | **Configuration Option** |
+| - | - | - | - |
+| **Craft Launcher** | craft-launcher | *None* (.ron file format, unconfigurable via Nix) | *None* |
+| **PhotoCraft** | photocraft | `~/.config/photocraft/preferences.json` | settings   = { ... } |
+| **VectorCraft** | vectorcraft | `~/.config/vectorcraft/ui.json` | uiSettings = { ... } |
+| **FilmCraft** | filmcraft | `~/.local/share/filmcraft/preferences.json` | settings   = { ... } |
+| **LightCraft** | lightcraft | `~/.config/lightcraft/ui.json` | uiSettings = { ... } |
+| **PdfCraft** | pdfcraft | *None* (.ron format) | *None* |
+| **EffectCraft** | effectcraft | `~/.config/effectcraft/prefs.json` | settings   = { ... } |
+| **DesignCraft** | designcraft | `~/.config/designcraft/prefs.json` | settings   = { ... } |
+| | | `~/.config/designcraft/ui.json` | uiSettings = { ... } |
+| **WordCraft** | wordcraft | `~/.config/wordcraft/ui.json` | uiSettings = { ... } |
+| **DeckCraft** | deckcraft | `~/.config/deckcraft/prefs.json` | settings   = { ... } |
+| | | `~/.config/deckcraft/ui.json` | uiSettings = { ... } |
+| **GridCraft** | gridcraft | `~/.config/gridcraft/prefs.json` | settings   = { ... } |
+| | | `~/.config/gridcraft/ui.json` | uiSettings = { ... } |
+| **CADCraft** | cadraft | *None* (.ron format) | *None* |
+| **SoundCraft** | soundcraft | `~/.config/soundcraft/ui.json` | uiSettings = { ... } |
+| **FigCraft** | figcraft | `~/.config/FigCraft/state.json` | settings   = { ... } |
 
 <details>
 <summary><strong>Configuration Option Example</strong></summary>
   Converting PhotoCraft dark mode into Nix:
 
-  ```json
+  ```jsonc
   // ~/.config/photocraft/preferences.json
   {
     // ...

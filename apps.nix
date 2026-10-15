@@ -67,6 +67,7 @@
       aarch64-linux.hash = "sha256-nUV35h1sxnKMGHT/oPeXtzEalpQTS60jKCzf2d+8iJs=";
     };
     iconHash = "sha256-fBaE9J6W/zSXDx0RqOYb7RQuHvKv69NPo8mSOcAG2VI=";
+    prefsFile = null;
     categories = [ "Graphics" "2DGraphics" "VectorGraphics" ];
     mimeType = [ "image/svg+xml" "application/pdf" ];
   };
@@ -118,7 +119,7 @@
       aarch64-linux.hash = "sha256-l9+yYmXBDQ3S3WaCf3eo681CHa8REGstZysW77husMg=";
     };
     iconHash = "sha256-UrOEoQoqf90xRdmCKXLP1WjvDLcxJUm9Q5mt3YnUWm0=";
-    noSettings = true;     # Unfortunatly, this currently uses .ron format,  which isn't compatable with Nix
+    noSettings = true;     # Unfortunetly, this currently uses .ron format,  which isn't compatible with Nix
     categories = [ "Office" "Viewer" ];
     mimeType = [ "application/pdf" ];
     };
@@ -255,6 +256,7 @@
       aarch64-linux.hash = "sha256-jU9sL8yxKM7n2Fw+6FsM+tPWzxLGgeRMvXP/2M1Qvig=";
     };
     iconHash = "sha256-YQw68ZTWoI/dqj8VaTfftQqwbJ/rZYYst+uxFEZaMkM=";
+    configPath = ".config/FigCraft";
     prefsFile = "state.json";
     uiFile = null;
     categories = [ "Graphics" "2DGraphics" "VectorGraphics" "X-Design" ];
