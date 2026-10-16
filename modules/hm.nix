@@ -48,6 +48,13 @@ let
       fi
     '';
 
+  ronOptions = app.ronOptions or { };
+
+  ronScript = lib.concatStringsSep "\n" (lib.mapAttrsToList (opt: key:
+    lib.optionalString (cfg.${opt} != null) ''
+      ${pkgs.gnused}/bin/sed -i -E 's/([(,{[:space:]])${key}([[:space:]]*:[[:space:]]*)(true|false)/\1${key}\2${lib.boolToString cfg.${opt}}/' "$f"
+    '') ronOptions);
+
   managed = lib.optionalAttrs (!(app.noSettings or false)) (
     lib.filterAttrs (_: f: f.file != null && f.attrs != { }) {
       Preferences = { file = prefsFile; attrs = cfg.settings or { }; };
@@ -83,7 +90,12 @@ in
       default = { };
       description = "Merged into ${uiFile}. Free-form, keys are not validated.";
     };
-  };
+  }
+  // lib.mapAttrs (_: key: lib.mkOption {
+    type = lib.types.nullOr lib.types.bool;
+    default = null;
+    description = "Sets `${key}` in ${app.ronFile}. Null leaves it alone.";
+  }) ronOptions;
 
   config = lib.mkIf cfg.enable {
     home = {
@@ -100,7 +112,15 @@ in
       activation = lib.mapAttrs' (kind: f:
         lib.nameValuePair "${name}${kind}"
           (lib.hm.dag.entryAfter [ "writeBoundary" ] (mergeScript f.file f.attrs))
-      ) managed;
+      ) managed
+      // lib.optionalAttrs (ronOptions != { }) {
+        "${name}Ron" = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+          f="$HOME/"${lib.escapeShellArg configDir}"/"${lib.escapeShellArg app.ronFile}
+          if [ -f "$f" ]; then
+            ${ronScript}
+          fi
+        '';
+      };
     };
 
     xdg.desktopEntries.${name} = lib.mkIf cfg.desktopEntry (

@@ -32,7 +32,13 @@
       aarch64-linux.hash = "sha256-O2xDIC1ziKdUNcY6OTKoqsbCT1sV+xsYZcgYGIR6/Q8=";
     };
     iconHash = "sha256-+Hr4G2+kEdqIIO7Sv9zFTA7pzUU7ToaMZPVsadsULQ4=";
+    configPath = ".local/share/ai.storyteller.artcraft-launcher";
     noSettings = true;
+    ronFile = "app.ron";   # Ron configuration is techically possible, but it's not as flexible
+    ronOptions = {         # and reliable as json, therefore it is not supported, except for specific options
+      notifyUpdates = "notify";
+      trayIcon = "close_to_tray";
+    };
     launcher = true;   # This makes the app desktop entry not be disabled by the launcherOnly option
     categories = [ "Utility" "PackageManager" ];
   };
