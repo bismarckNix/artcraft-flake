@@ -22,7 +22,7 @@ let
   };
 
   settingsFormat = pkgs.formats.json { };
-  configDir = "${lib.removeSuffix "/" (app.configPath or ".config")}/${name}";
+  configDir = "${lib.removeSuffix "/" (app.configPath or ".config")}/${app.configName or name}";
 
   prefsFile = app.prefsFile or "prefs.json";
   hasPrefs = prefsFile != null;
