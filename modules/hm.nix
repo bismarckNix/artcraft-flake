@@ -14,6 +14,7 @@ let
   app = (import ../apps.nix).${name};
   cfg = config.programs.artcraft.${name};
   icon = import ../lib/icon.nix { inherit lib pkgs name app; };
+  prefix = app.assetPrefix or app.displayName;
 
   wrapped = import ../lib/wrapper.nix { inherit lib pkgs; } {
     inherit name;
@@ -86,7 +87,12 @@ in
 
   config = lib.mkIf cfg.enable {
     home = {
-      packages = [ wrapped ];
+      # Add an icon for the launchers notifications
+      packages = [ wrapped ] ++ lib.optional (icon != null) (
+        pkgs.runCommand "${name}-icon" { } ''
+          install -Dm644 ${icon} $out/share/icons/hicolor/scalable/apps/${prefix}.svg
+        ''
+      );
 
       # Merge the declared config with the default config.
       # Changes made via the GUI aren't overwritten,

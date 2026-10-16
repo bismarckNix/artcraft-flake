@@ -13,6 +13,7 @@ let
   app = (import ../apps.nix).${name};
   cfg = config.programs.artcraft.${name};
   icon = import ../lib/icon.nix { inherit lib pkgs name app; };
+  prefix = app.assetPrefix or app.displayName;
 
   wrapped = import ../lib/wrapper.nix { inherit lib pkgs; } {
     inherit name;
@@ -46,6 +47,13 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages =
       [ wrapped ]
-      ++ lib.optional cfg.desktopEntry desktopItem;
+      ++ lib.optional cfg.desktopEntry desktopItem
+
+      # Add an icon for the launchers notifications
+      ++ lib.optional (icon != null) (
+        pkgs.runCommand "${name}-icon" { } ''
+          install -Dm644 ${icon} $out/share/icons/hicolor/scalable/apps/ai.storyteller.${prefix}.svg
+        ''
+      );
   };
 }
