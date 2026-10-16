@@ -61,10 +61,10 @@
   vectorcraft = rec {
     displayName = "VectorCraft";
     description = "An open-source, vector art tool written by scratch in pure Rust";
-    version = "0.11.0";
+    version = "0.12.0";
     sources = {
-      x86_64-linux.hash = "sha256-CrUSb5svlZG8J6EOIOobLyOThLGhb+yIKI7T3m2/gxw=";
-      aarch64-linux.hash = "sha256-nUV35h1sxnKMGHT/oPeXtzEalpQTS60jKCzf2d+8iJs=";
+      x86_64-linux.hash = "sha256-0LnEHzdUKX98aJL3Ep24j0Hn5xjkUteV08HE6ePrRIs=";
+      aarch64-linux.hash = "sha256-4Si+zd5/Lon4CuP/Grr/K3We5Rm9ta22lS2OWjYSz1w=";
     };
     iconHash = "sha256-fBaE9J6W/zSXDx0RqOYb7RQuHvKv69NPo8mSOcAG2VI=";
     prefsFile = null;
