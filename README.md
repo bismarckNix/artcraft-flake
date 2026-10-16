@@ -1,6 +1,6 @@
 # **ArtCraft Creative Suite**
 
-This flake provides the ArtCraft creative suite for NixOS.
+This flake provides the [ArtCraft creative suite](https://github.com/storytold) for NixOS.
 It is reproducible and can be configured [declaratively](#configuration),
 without overwriting the options you configured with your GUI,
 unless you declare it.
@@ -15,7 +15,7 @@ The packages are shipped as wrapped AppImages and support
 > `nix run github:bismarckNix/artcraft-flake#<app>`, e.g.:
 
 ```shell
-  nix run github:bismarckNix/artcraft-flake#photocraft
+nix run github:bismarckNix/artcraft-flake#photocraft
 ```
 
 You can view all the available apps [here](#applist)
@@ -24,28 +24,28 @@ You can view all the available apps [here](#applist)
 
 1. Add this to your `flake.nix` inputs:
 
-    ```nix
-    artcraft = {
-      url = "github:bismarckNix/artcraft-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    ```
+    > ```nix
+    > artcraft = {
+    >   url = "github:bismarckNix/artcraft-flake";
+    >   inputs.nixpkgs.follows = "nixpkgs";
+    >   };
+    > ```
 
 2. Import the module:
 
     * For NixOS (global, only GUI configuration):
 
-    ```nix
-    # configuration.nix
-    imports = [ inputs.artcraft.nixosModules.default ];
-    ```
+    > ```nix
+    > # configuration.nix
+    > imports = [ inputs.artcraft.nixosModules.default ];
+    > ```
 
     * For home manager (user-only, declarative and GUI configuration, **recommended**):
 
-    ```nix
-    # home.nix
-    imports = [ inputs.artcraft.homeModules.default ];
-    ```
+    > ```nix
+    > # home.nix
+    > imports = [ inputs.artcraft.homeModules.default ];
+    > ```
 
 > [!NOTE]
 > `inputs.artcraft.<module>.default` imports all of the modules at once.
@@ -56,9 +56,9 @@ You can view all the available apps [here](#applist)
 
 1. Enable it:
 
-    ```nix
-    programs.artcraft.<app>.enable = true;
-    ```
+    > ```nix
+    > programs.artcraft.<app>.enable = true;
+    > ```
 
 > [!TIP]
 > You can enable every app using ``programs.artcraft.fullSuite.enable = true;``
@@ -114,6 +114,12 @@ Add this to your home manager:
 </details>
 
 <a name="configuration"></a>
+
+> [!NOTE]
+> If you don't want to declare the programs, you can only enable the launcher -
+> it is able to install all of the apps and update them without the flake,
+> so you will have faster updates (the packages won't depend on this repository
+> anymore, except for the launcher), but no declarative features.
 
 ## **Configuration**
 
@@ -184,33 +190,33 @@ inputs = {
 
 ## **Available Apps, their names and Configuration File Locations**
 
-> [!NOTE]
+> [!IMPORTANT]
 > To configure the files declaratively, configure them using the GUI first,
 > then, look at the configuration file location listed below
 > and search for the option you configured.
 
 | **App** | **Name** | **Configurable Files** | **Configuration Option** |
 | - | - | - | - |
-| **Craft Launcher** | craft-launcher | *None* (.ron file format, unconfigurable via Nix) | *None* |
-| **PhotoCraft** | photocraft | `~/.config/photocraft/preferences.json` | settings   = { ... } |
-| **VectorCraft** | vectorcraft | `~/.config/vectorcraft/ui.json` | uiSettings = { ... } |
-| **FilmCraft** | filmcraft | `~/.local/share/filmcraft/preferences.json` | settings   = { ... } |
-| **LightCraft** | lightcraft | `~/.config/lightcraft/ui.json` | uiSettings = { ... } |
-| **PdfCraft** | pdfcraft | *None* (.ron format) | *None* |
-| **EffectCraft** | effectcraft | `~/.config/effectcraft/prefs.json` | settings   = { ... } |
-| **DesignCraft** | designcraft | `~/.config/designcraft/prefs.json` | settings   = { ... } |
+| [**Craft Launcher**](https://github.com/storytold/craft-launcher) | craft-launcher | *None* (.ron file format, unconfigurable via Nix) | *None* |
+| [**PhotoCraft**](https://github.com/storytold/photocraft) | photocraft | `~/.config/photocraft/preferences.json` | settings   = { ... } |
+| [**VectorCraft**](https://github.com/storytold/vectorcraft) | vectorcraft | `~/.config/vectorcraft/ui.json` | uiSettings = { ... } |
+| [**FilmCraft**](https://github.com/storytold/filmcraft) | filmcraft | `~/.local/share/filmcraft/preferences.json` | settings   = { ... } |
+| [**LightCraft**](https://github.com/storytold/lightcraft) | lightcraft | `~/.config/lightcraft/ui.json` | uiSettings = { ... } |
+| [**PdfCraft**](https://github.com/storytold/pdfcraft) | pdfcraft | *None* (.ron format) | *None* |
+| [**EffectCraft**](https://github.com/storytold/effectcraft) | effectcraft | `~/.config/effectcraft/prefs.json` | settings   = { ... } |
+| [**DesignCraft**](https://github.com/storytold/designcraft) | designcraft | `~/.config/designcraft/prefs.json` | settings   = { ... } |
 | | | `~/.config/designcraft/ui.json` | uiSettings = { ... } |
-| **WordCraft** | wordcraft | `~/.config/wordcraft/ui.json` | uiSettings = { ... } |
-| **DeckCraft** | deckcraft | `~/.config/deckcraft/prefs.json` | settings   = { ... } |
+| [**WordCraft**](https://github.com/storytold/wordcraft) | wordcraft | `~/.config/wordcraft/ui.json` | uiSettings = { ... } |
+| [**DeckCraft**](https://github.com/storytold/deckcraft) | deckcraft | `~/.config/deckcraft/prefs.json` | settings   = { ... } |
 | | | `~/.config/deckcraft/ui.json` | uiSettings = { ... } |
-| **GridCraft** | gridcraft | `~/.config/gridcraft/prefs.json` | settings   = { ... } |
+| [**GridCraft**](https://github.com/storytold/gridcraft) | gridcraft | `~/.config/gridcraft/prefs.json` | settings   = { ... } |
 | | | `~/.config/gridcraft/ui.json` | uiSettings = { ... } |
-| **CADCraft** | cadraft | *None* (.ron format) | *None* |
-| **SoundCraft** | soundcraft | `~/.config/soundcraft/ui.json` | uiSettings = { ... } |
-| **FigCraft** | figcraft | `~/.config/FigCraft/state.json` | settings   = { ... } |
+| [**CADCraft**](https://github.com/storytold/cadcraft) | cadraft | *None* (.ron format) | *None* |
+| [**SoundCraft**](https://github.com/storytold/soundcraft) | soundcraft | `~/.config/soundcraft/ui.json` | uiSettings = { ... } |
+| [**FigCraft**](https://github.com/storytold/figcraft) | figcraft | `~/.config/FigCraft/state.json` | settings   = { ... } |
 
 <details>
-<summary><strong>Configuration Option Example</strong></summary>
+<summary><strong>Configuration Example</strong></summary>
   Converting PhotoCraft dark mode into Nix:
 
   ```jsonc
