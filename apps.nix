@@ -12,12 +12,14 @@
 #   assetPrefix    optional, AppImage file name
 #                  (default "${name}-${version}-linux-x86_64.AppImage")
 #   extraPkgs      optional, p: [ p.somelib ]  extra libs inside the FHS wrapper
-#   configPath     config path relative to $XDG_CONFIG_HOME, default to ~/.config/${name}
-#   prefsFile      config file name, defaults to prefs.json
+#   configName     optional, config directory name, defaults to the ${name}
+#   configPath     optional, config path relative to $XDG_CONFIG_HOME, default to ~/.config/${name}
+#   prefsFile      config file name, defaults to prefs.json; null - disabled
 #   uiFile         ui file name, defaults to ui.json; null = disabled
 #
 #   categories     optional, the mimeapps categories (e.g. graphics, editor, etc.)
 #   mimeType       optional, the mimeType (e.g. image/png, video/mp4, etc.)
+#   startupWMClass optional, the app ID
 #   noSettings     optional, disables settings
 #                  (should only be used for apps that don't have a settings format that doesn't work well with Nix, e. g. .ron)
 {
@@ -32,7 +34,14 @@
       aarch64-linux.hash = "sha256-O2xDIC1ziKdUNcY6OTKoqsbCT1sV+xsYZcgYGIR6/Q8=";
     };
     iconHash = "sha256-+Hr4G2+kEdqIIO7Sv9zFTA7pzUU7ToaMZPVsadsULQ4=";
+    configPath = ".local/share";
+    configName = "ai.storyteller.artcraft-launcher";
     noSettings = true;
+    ronFile = "app.ron";   # Ron configuration is techically possible, but it's not as flexible
+    ronOptions = {         # and reliable as json, therefore it is not supported, except for specific options
+      notifyUpdates = "notify";
+      trayIcon = "close_to_tray";
+    };
     launcher = true;   # This makes the app desktop entry not be disabled by the launcherOnly option
     categories = [ "Utility" "PackageManager" ];
   };
@@ -256,7 +265,7 @@
       aarch64-linux.hash = "sha256-jU9sL8yxKM7n2Fw+6FsM+tPWzxLGgeRMvXP/2M1Qvig=";
     };
     iconHash = "sha256-YQw68ZTWoI/dqj8VaTfftQqwbJ/rZYYst+uxFEZaMkM=";
-    configPath = ".config/FigCraft";
+    configName = "FigCraft";
     prefsFile = "state.json";
     uiFile = null;
     categories = [ "Graphics" "2DGraphics" "VectorGraphics" "X-Design" ];

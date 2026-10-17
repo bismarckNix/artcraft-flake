@@ -14,6 +14,11 @@ let
   app = (import ../apps.nix).${name};
   cfg = config.programs.artcraft.${name};
   icon = import ../lib/icon.nix { inherit lib pkgs name app; };
+  iconName = "ai.storyteller.${app.assetPrefix or name}";
+  prefix = app.assetPrefix or app.displayName;
+
+  appId = app.startupWMClass or "ai.storyteller.${app.assetPrefix or name}";
+  entryId = if app.launcher or false then appId else name;
 
   wrapped = import ../lib/wrapper.nix { inherit lib pkgs; } {
     inherit name;
@@ -21,7 +26,7 @@ let
   };
 
   settingsFormat = pkgs.formats.json { };
-  configDir = "${lib.removeSuffix "/" (app.configPath or ".config")}/${name}";
+  configDir = "${lib.removeSuffix "/" (app.configPath or ".config")}/${app.configName or name}";
 
   prefsFile = app.prefsFile or "prefs.json";
   hasPrefs = prefsFile != null;
@@ -46,6 +51,13 @@ let
         install -m 644 ${declared} "$f"
       fi
     '';
+
+  ronOptions = app.ronOptions or { };
+
+  ronScript = lib.concatStringsSep "\n" (lib.mapAttrsToList (opt: key:
+    lib.optionalString (cfg.${opt} != null) ''
+      ${pkgs.gnused}/bin/sed -i -E 's/([(,{[:space:]])${key}([[:space:]]*:[[:space:]]*)(true|false)/\1${key}\2${lib.boolToString cfg.${opt}}/' "$f"
+    '') ronOptions);
 
   managed = lib.optionalAttrs (!(app.noSettings or false)) (
     lib.filterAttrs (_: f: f.file != null && f.attrs != { }) {
@@ -82,11 +94,21 @@ in
       default = { };
       description = "Merged into ${uiFile}. Free-form, keys are not validated.";
     };
-  };
+  }
+  // lib.mapAttrs (_: key: lib.mkOption {
+    type = lib.types.nullOr lib.types.bool;
+    default = null;
+    description = "Sets `${key}` in ${app.ronFile}. Null leaves it alone.";
+  }) ronOptions;
 
   config = lib.mkIf cfg.enable {
     home = {
-      packages = [ wrapped ];
+      # Add an icon for the launchers notifications
+      packages = [ wrapped ] ++ lib.optional (icon != null) (
+        pkgs.runCommand "${name}-icon" { } ''
+          install -Dm644 ${icon} $out/share/icons/hicolor/scalable/apps/${prefix}.svg
+        ''
+      );
 
       # Merge the declared config with the default config.
       # Changes made via the GUI aren't overwritten,
@@ -94,19 +116,32 @@ in
       activation = lib.mapAttrs' (kind: f:
         lib.nameValuePair "${name}${kind}"
           (lib.hm.dag.entryAfter [ "writeBoundary" ] (mergeScript f.file f.attrs))
-      ) managed;
+      ) managed
+      // lib.optionalAttrs (ronOptions != { }) {
+        "${name}Ron" = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+          f="$HOME/"${lib.escapeShellArg configDir}"/"${lib.escapeShellArg app.ronFile}
+          if [ -f "$f" ]; then
+            ${ronScript}
+          fi
+        '';
+      };
     };
 
-    xdg.desktopEntries.${name} = lib.mkIf cfg.desktopEntry (
+    xdg.dataFile = lib.mkIf (cfg.desktopEntry && icon != null) {
+      "icons/hicolor/scalable/apps/${iconName}.svg".source = icon;
+    };
+
+    xdg.desktopEntries.${entryId} = lib.mkIf cfg.desktopEntry (
       lib.mkDefault {
         name = app.displayName;
-        inherit icon;
+        icon = if icon != null then iconName else null;
         comment = app.description;
         exec = "${wrapped}/bin/${name} %U";
         categories = app.categories or [];
         mimeType = app.mimeType or [];
         terminal = false;
         startupNotify = true;
+        settings.StartupWMClass = app.startupWMClass or "ai.storyteller.${app.assetPrefix or name}";
       }
     );
   };

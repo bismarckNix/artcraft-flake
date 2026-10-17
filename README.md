@@ -124,7 +124,7 @@ Add this to your home manager:
 ## **Configuration**
 
 > [!WARNING]
-> Not all apps can be configured via Nix,
+> Not all apps can be configured flexibly via Nix,
 > some of them have their configuration files in `*.ron` format,
 > which can't be merged with the configuration using `jq`,
 > and does not have an official Nix converter, unlike `json`.
@@ -144,7 +144,7 @@ requires an XWayland server to be available, e.g. xwayland-satellite.
 
 * `desktopEntry = true/false` - Enable/disable desktop entry for app.
 
-* `launcherOnly = true/false` - Disable all desktop entries except for Craft Launcher.
+* `launcherOnly = true/false` - Enable/disable all desktop entries except for Craft Launcher.
 
 > [!CAUTION]
 > launcherOnly is a global setting, not per-app.
@@ -152,11 +152,24 @@ requires an XWayland server to be available, e.g. xwayland-satellite.
 
 ### Home Manager
 
-* `settings = { ... }` - controls prefs.json
+#### Global
 
-* `uiSettings = { ... }` - controls ui.json
+* `settings = { ... }` - controls [prefs.json](#applist).
 
-#### Example
+* `uiSettings = { ... }` - controls [ui.json](#applist).
+
+#### App-specific
+
+> [!NOTE]
+> This section includes basic configuration options for files with `*.ron` config format.
+
+> ##### Craft Launcher
+
+* `notifyUpdates = true/false` - Enable/disable update notifications.
+
+* `trayIcon = true/false` - Enable/disable minimizing to tray.
+
+### Example
 
 ```nix
 # flake.nix
@@ -191,9 +204,10 @@ inputs = {
 ## **Available Apps, their names and Configuration File Locations**
 
 > [!IMPORTANT]
-> To configure the files declaratively, configure them using the GUI first,
+> To configure the apps declaratively, configure them using the GUI first,
 > then, look at the configuration file location listed below
-> and search for the option you configured.
+> and search for the option you configured. Then, input the option
+> into your Nix config. See [example below](#configExample).
 
 | **App** | **Name** | **Configurable Files** | **Configuration Option** |
 | - | - | - | - |
@@ -215,6 +229,7 @@ inputs = {
 | [**SoundCraft**](https://github.com/storytold/soundcraft) | soundcraft | `~/.config/soundcraft/ui.json` | uiSettings = { ... } |
 | [**FigCraft**](https://github.com/storytold/figcraft) | figcraft | `~/.config/FigCraft/state.json` | settings   = { ... } |
 
+<a name="configExample"></a>
 <details>
 <summary><strong>Configuration Example</strong></summary>
   Converting PhotoCraft dark mode into Nix:
