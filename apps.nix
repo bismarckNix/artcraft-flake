@@ -19,6 +19,7 @@
 #
 #   categories     optional, the mimeapps categories (e.g. graphics, editor, etc.)
 #   mimeType       optional, the mimeType (e.g. image/png, video/mp4, etc.)
+#   startupWMClass optional, the app ID
 #   noSettings     optional, disables settings
 #                  (should only be used for apps that don't have a settings format that doesn't work well with Nix, e. g. .ron)
 {

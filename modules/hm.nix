@@ -14,7 +14,11 @@ let
   app = (import ../apps.nix).${name};
   cfg = config.programs.artcraft.${name};
   icon = import ../lib/icon.nix { inherit lib pkgs name app; };
+  iconName = "ai.storyteller.${app.assetPrefix or name}";
   prefix = app.assetPrefix or app.displayName;
+
+  appId = app.startupWMClass or "ai.storyteller.${app.assetPrefix or name}";
+  entryId = if app.launcher or false then appId else name;
 
   wrapped = import ../lib/wrapper.nix { inherit lib pkgs; } {
     inherit name;
@@ -123,16 +127,21 @@ in
       };
     };
 
-    xdg.desktopEntries.${name} = lib.mkIf cfg.desktopEntry (
+    xdg.dataFile = lib.mkIf (cfg.desktopEntry && icon != null) {
+      "icons/hicolor/scalable/apps/${iconName}.svg".source = icon;
+    };
+
+    xdg.desktopEntries.${entryId} = lib.mkIf cfg.desktopEntry (
       lib.mkDefault {
         name = app.displayName;
-        inherit icon;
+        icon = if icon != null then iconName else null;
         comment = app.description;
         exec = "${wrapped}/bin/${name} %U";
         categories = app.categories or [];
         mimeType = app.mimeType or [];
         terminal = false;
         startupNotify = true;
+        settings.StartupWMClass = app.startupWMClass or "ai.storyteller.${app.assetPrefix or name}";
       }
     );
   };
