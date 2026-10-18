@@ -53,11 +53,12 @@ let
     '';
 
   ronOptions = app.ronOptions or { };
+  ronActive = lib.filterAttrs (opt: _: cfg.${opt} != null) ronOptions;
 
   ronScript = lib.concatStringsSep "\n" (lib.mapAttrsToList (opt: key:
     lib.optionalString (cfg.${opt} != null) ''
       ${pkgs.gnused}/bin/sed -i -E 's/([(,{[:space:]])${key}([[:space:]]*:[[:space:]]*)(true|false)/\1${key}\2${lib.boolToString cfg.${opt}}/' "$f"
-    '') ronOptions);
+    '') ronActive);
 
   managed = lib.optionalAttrs (!(app.noSettings or false)) (
     lib.filterAttrs (_: f: f.file != null && f.attrs != { }) {
@@ -117,7 +118,7 @@ in
         lib.nameValuePair "${name}${kind}"
           (lib.hm.dag.entryAfter [ "writeBoundary" ] (mergeScript f.file f.attrs))
       ) managed
-      // lib.optionalAttrs (ronOptions != { }) {
+      // lib.optionalAttrs (ronActive != { }) {
         "${name}Ron" = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
           f="$HOME/"${lib.escapeShellArg configDir}"/"${lib.escapeShellArg app.ronFile}
           if [ -f "$f" ]; then
