@@ -158,6 +158,25 @@
     categories = [ "Graphics" "Publishing" ];
   };
 
+  figcraft = {
+    displayName = "FigCraft";
+    description = "An open-source, clean-room reimplementation of collaborative design workflows in pure Rust";
+    version = "0.7.0";
+    sources = {
+      x86_64-linux.hash = "sha256-M+JvmVLm9m6QclbFZhmo9168KmH8PHj8M5ba4hC9PIU=";
+      aarch64-linux.hash = "sha256-pKlIG8N5gLVCJn+HvQZkDStBmQSYK15l68CDDjgsy6Q=";
+    };
+    iconHash = "sha256-YQw68ZTWoI/dqj8VaTfftQqwbJ/rZYYst+uxFEZaMkM=";
+    configName = "FigCraft";
+    prefsFile = "state.json";
+    uiFile = null;
+    categories = [ "Graphics" "2DGraphics" "VectorGraphics" "X-Design" ];
+    mimeType = [
+      "application/x-figcraft" "image/svg+xml" "image/png"
+      "image/jpeg" "x-scheme-handler/figcraft"
+    ];
+  };
+
   wordcraft = {
     displayName = "WordCraft";
     description = "An open-source, clean-room reimplementation of Microsoft Word in pure Rust";
@@ -176,62 +195,6 @@
       "application/vnd.ms-word.template.macroEnabled.12" "application/msword"
       "application/msword-template" "application/vnd.oasis.opendocument.text"
       "application/rtf" "text/rtf" "text/markdown" "text/x-tex" "text/html" "text/plain"
-    ];
-  };
-
-  deckcraft = {
-    displayName = "DeckCraft";
-    description = "An open-source, clean-room reimplementation of Microsoft PowerPoint in pure Rust";
-    version = "0.8.0";
-    iconUrl = "https://raw.githubusercontent.com/storytold/deckcraft/refs/heads/main/assets/app-icon/hicolor/scalable/apps/ai.storyteller.deckcraft.svg";
-    sources = {
-      x86_64-linux.hash = "sha256-XCTgw9UscQIZ+2uJfL8uhW4PbdTcebeizvwdLVUTTtA=";
-      aarch64-linux.hash = "sha256-o/9JjKrDu+inIpfe1j2UzY94MVoP+vMLavdxfOLfn9I=";
-    };
-    iconHash = "sha256-I+7cR+FM6m9MxnJLE67D5mjk4Bd/bO4fBy9Cg4Xg5t0=";
-    categories = [ "Office" "Presentation" ];
-    mimeType = [
-      "application/x-deckcraft"
-      "application/vnd.openxmlformats-officedocument.presentationml.presentation"
-      "application/vnd.openxmlformats-officedocument.presentationml.template"
-      "application/vnd.openxmlformats-officedocument.presentationml.slideshow"
-    ];
-  };
-
-  gridcraft = {
-    displayName = "GridCraft";
-    description = "An open-source, clean-room spreadsheet (Microsoft Excel-style) in pure Rust";
-    version = "0.8.0";
-    sources = {
-      x86_64-linux.hash = "sha256-lCCWoppTSqJQPp56oYFulS9yUOc9VfjzKv0HdUdhf3c=";
-      aarch64-linux.hash = "sha256-+0WCb1KaFgf7hASl970wIuSPx3jZNr0oT/QqhZ+bB5U=";
-    };
-    iconHash = "sha256-kw3d/yQQFy7pZIb2q2J6vtRK1fTXYOHKuCR6TXTZTLo=";
-    categories = [ "Office" "Spreadsheet" ];
-    mimeType = [
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-      "application/vnd.ms-excel.sheet.macroEnabled.12"
-      "application/vnd.ms-excel.sheet.binary.macroEnabled.12"
-      "application/vnd.oasis.opendocument.spreadsheet" "text/csv"
-      "text/tab-separated-values"
-    ];
-  };
-
-  cadcraft = {
-    displayName = "CADCraft";
-    description = "An open-source, clean-room AutoCAD-style app in pure Rust";
-    version = "0.8.0";
-    iconUrl = "https://raw.githubusercontent.com/storytold/cadcraft/main/assets/app-icon/cadcraft-256.png";
-    sources = {
-      x86_64-linux.hash = "sha256-JPd+NyvwcjP3JnJFi8aRNdVLyfa7Y3ntc3hwp8EVK9I=";
-      aarch64-linux.hash = "sha256-oZgrRhGwu7gLjpxTYCORiQ1jglmuo8IDlKGXyssM9lQ=";
-    };
-    iconHash = "sha256-99cPBgscUQDnZvQbthaOPqyOtwwhkUxYQM1NiRAFI0E=";
-    noSettings = true;   # Same story as PdfCraft - the config is in .ron format
-    categories = [ "Graphics" "Engineering" "VectorGraphics" ];
-    mimeType = [
-      "image/vnd.dxf" "image/vnd.dwg"
-      "application/x-dxf" "application/acad"
     ];
   };
 
@@ -256,22 +219,60 @@
       "audio/x-flac" "audio/mpeg" "audio/midi" "audio/x-midi"
     ];
   };
-  figcraft = {
-    displayName = "FigCraft";
-    description = "An open-source, clean-room reimplementation of collaborative design workflows in pure Rust";
-    version = "0.7.0";
+
+  deckcraft = {
+    displayName = "DeckCraft";
+    description = "An open-source, clean-room reimplementation of Microsoft PowerPoint in pure Rust";
+    version = "0.8.0";
+    iconUrl = "https://raw.githubusercontent.com/storytold/deckcraft/refs/heads/main/assets/app-icon/hicolor/scalable/apps/ai.storyteller.deckcraft.svg";
     sources = {
-      x86_64-linux.hash = "sha256-M+JvmVLm9m6QclbFZhmo9168KmH8PHj8M5ba4hC9PIU=";
-      aarch64-linux.hash = "sha256-pKlIG8N5gLVCJn+HvQZkDStBmQSYK15l68CDDjgsy6Q=";
+      x86_64-linux.hash = "sha256-XCTgw9UscQIZ+2uJfL8uhW4PbdTcebeizvwdLVUTTtA=";
+      aarch64-linux.hash = "sha256-o/9JjKrDu+inIpfe1j2UzY94MVoP+vMLavdxfOLfn9I=";
     };
-    iconHash = "sha256-YQw68ZTWoI/dqj8VaTfftQqwbJ/rZYYst+uxFEZaMkM=";
-    configName = "FigCraft";
-    prefsFile = "state.json";
-    uiFile = null;
-    categories = [ "Graphics" "2DGraphics" "VectorGraphics" "X-Design" ];
+    iconHash = "sha256-I+7cR+FM6m9MxnJLE67D5mjk4Bd/bO4fBy9Cg4Xg5t0=";
+    categories = [ "Office" "Presentation" ];
     mimeType = [
-      "application/x-figcraft" "image/svg+xml" "image/png"
-      "image/jpeg" "x-scheme-handler/figcraft"
+      "application/x-deckcraft"
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+      "application/vnd.openxmlformats-officedocument.presentationml.template"
+      "application/vnd.openxmlformats-officedocument.presentationml.slideshow"
+    ];
+  };
+
+  cadcraft = {
+    displayName = "CADCraft";
+    description = "An open-source, clean-room AutoCAD-style app in pure Rust";
+    version = "0.8.0";
+    iconUrl = "https://raw.githubusercontent.com/storytold/cadcraft/main/assets/app-icon/cadcraft-256.png";
+    sources = {
+      x86_64-linux.hash = "sha256-JPd+NyvwcjP3JnJFi8aRNdVLyfa7Y3ntc3hwp8EVK9I=";
+      aarch64-linux.hash = "sha256-oZgrRhGwu7gLjpxTYCORiQ1jglmuo8IDlKGXyssM9lQ=";
+    };
+    iconHash = "sha256-99cPBgscUQDnZvQbthaOPqyOtwwhkUxYQM1NiRAFI0E=";
+    noSettings = true;   # Same story as PdfCraft - the config is in .ron format
+    categories = [ "Graphics" "Engineering" "VectorGraphics" ];
+    mimeType = [
+      "image/vnd.dxf" "image/vnd.dwg"
+      "application/x-dxf" "application/acad"
+    ];
+  };
+
+  gridcraft = {
+    displayName = "GridCraft";
+    description = "An open-source, clean-room spreadsheet (Microsoft Excel-style) in pure Rust";
+    version = "0.8.0";
+    sources = {
+      x86_64-linux.hash = "sha256-lCCWoppTSqJQPp56oYFulS9yUOc9VfjzKv0HdUdhf3c=";
+      aarch64-linux.hash = "sha256-+0WCb1KaFgf7hASl970wIuSPx3jZNr0oT/QqhZ+bB5U=";
+    };
+    iconHash = "sha256-kw3d/yQQFy7pZIb2q2J6vtRK1fTXYOHKuCR6TXTZTLo=";
+    categories = [ "Office" "Spreadsheet" ];
+    mimeType = [
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      "application/vnd.ms-excel.sheet.macroEnabled.12"
+      "application/vnd.ms-excel.sheet.binary.macroEnabled.12"
+      "application/vnd.oasis.opendocument.spreadsheet" "text/csv"
+      "text/tab-separated-values"
     ];
   };
 }

@@ -219,15 +219,15 @@ inputs = {
 | [**PdfCraft**](https://github.com/storytold/pdfcraft) | pdfcraft | *None* (.ron format) | *None* |
 | [**EffectCraft**](https://github.com/storytold/effectcraft) | effectcraft | `~/.config/effectcraft/prefs.json` | settings   = { ... } |
 | [**DesignCraft**](https://github.com/storytold/designcraft) | designcraft | `~/.config/designcraft/prefs.json` | settings   = { ... } |
+| [**FigCraft**](https://github.com/storytold/figcraft) | figcraft | `~/.config/FigCraft/state.json` | settings   = { ... } |
 | | | `~/.config/designcraft/ui.json` | uiSettings = { ... } |
 | [**WordCraft**](https://github.com/storytold/wordcraft) | wordcraft | `~/.config/wordcraft/ui.json` | uiSettings = { ... } |
+| [**SoundCraft**](https://github.com/storytold/soundcraft) | soundcraft | `~/.config/soundcraft/ui.json` | uiSettings = { ... } |
 | [**DeckCraft**](https://github.com/storytold/deckcraft) | deckcraft | `~/.config/deckcraft/prefs.json` | settings   = { ... } |
 | | | `~/.config/deckcraft/ui.json` | uiSettings = { ... } |
+| [**CADCraft**](https://github.com/storytold/cadcraft) | cadraft | *None* (.ron format) | *None* |
 | [**GridCraft**](https://github.com/storytold/gridcraft) | gridcraft | `~/.config/gridcraft/prefs.json` | settings   = { ... } |
 | | | `~/.config/gridcraft/ui.json` | uiSettings = { ... } |
-| [**CADCraft**](https://github.com/storytold/cadcraft) | cadraft | *None* (.ron format) | *None* |
-| [**SoundCraft**](https://github.com/storytold/soundcraft) | soundcraft | `~/.config/soundcraft/ui.json` | uiSettings = { ... } |
-| [**FigCraft**](https://github.com/storytold/figcraft) | figcraft | `~/.config/FigCraft/state.json` | settings   = { ... } |
 
 <a name="configExample"></a>
 <details>
