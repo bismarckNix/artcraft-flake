@@ -26,12 +26,12 @@
   craft-launcher = rec {
     displayName = "Craft Launcher";
     description = "The Craft App Launcher";
-    version = "0.5.1";
+    version = "0.6.0";
     assetPrefix = "artcraft-launcher";
     iconUrl = "https://raw.githubusercontent.com/storytold/craft-launcher/refs/heads/main/assets/app-icon/artcraft-launcher.svg";
     sources = {
-      x86_64-linux.hash = "sha256-1CmJcpVdHtbF/XdZ/dLk3EvFIbPQQM97SJG3hweDH3M=";
-      aarch64-linux.hash = "sha256-RdlfvRTrNGLRogzJuZ4Nof+zOVH+pWhEWEu3nFiCeNI=";
+      x86_64-linux.hash = "sha256-TVQ+qiDlxqg49kNwdpmruZc3rU9rA4TtIscx3S31wVU=";
+      aarch64-linux.hash = "sha256-Y4bQBOA2b6wYjrkr7VfeM+RiApmSAThFst9Z9W4k1OI=";
     };
     iconHash = "sha256-+Hr4G2+kEdqIIO7Sv9zFTA7pzUU7ToaMZPVsadsULQ4=";
     configPath = ".local/share";
@@ -49,10 +49,10 @@
   photocraft = rec {
     displayName = "PhotoCraft";
     description = "An open-source, photo editor written by scratch in pure Rust";
-    version = "0.10.0";
+    version = "0.11.1";
     sources = {
-      x86_64-linux.hash = "sha256-zRozyXnopdqU3tgddkjnecuAabd+Ssp0PI0XfKUnDXc=";
-      aarch64-linux.hash = "sha256-gC3pl76z+pvDh2KbSZ6CcEtIr4OayF8lU+qcKyAihF8=";
+      x86_64-linux.hash = "sha256-imnwV4sVURj0AEjNV9qDv5Z7L80Y7PocL5jQX9thp+8=";
+      aarch64-linux.hash = "sha256-6ErppEwku6EPbI46dEeM6E1LUpbY+Yzgvh/fEfX755I=";
     };
     iconHash = "sha256-pIMzt7eUtwFY2pOiYthPuC9fu/dELbYPI1oKaRNqHOI=";
     prefsFile = "preferences.json";
@@ -149,10 +149,10 @@
   designcraft = {
     displayName = "DesignCraft";
     description = "An open-source page and layout design editor written by scratch in pure Rust";
-    version = "0.9.0";
+    version = "0.10.0";
     sources = {
-      x86_64-linux.hash = "sha256-5atgOZuSMnEjWUARiRjW8MRgowgqCQsPb+TZ0EkNqbU=";
-      aarch64-linux.hash = "sha256-VN13euVOK22TDckChGXwvs6aWKkEuenOUbi5VAfuUq0=";
+      x86_64-linux.hash = "sha256-Diw97ipavpr8Tcvh7AQ4zGBUTOHRi/H1w+FpDhKc2Vc=";
+      aarch64-linux.hash = "sha256-p2QKWFeVdWcsG8x795+1eh+yjfN9R5WOpTdWzrxxnSI=";
     };
     iconHash = "sha256-wlS3YBxzDMCwoC+0S7rWgeSdyJ8vhKztDH6pxNTmHLw=";
     categories = [ "Graphics" "Publishing" ];
@@ -161,10 +161,10 @@
   figcraft = {
     displayName = "FigCraft";
     description = "An open-source, clean-room reimplementation of collaborative design workflows in pure Rust";
-    version = "0.7.0";
+    version = "0.8.0";
     sources = {
-      x86_64-linux.hash = "sha256-M+JvmVLm9m6QclbFZhmo9168KmH8PHj8M5ba4hC9PIU=";
-      aarch64-linux.hash = "sha256-pKlIG8N5gLVCJn+HvQZkDStBmQSYK15l68CDDjgsy6Q=";
+      x86_64-linux.hash = "sha256-7PHPjuYKFQ2kplUlLKF/785yXi1EAn2zamCZQxmSe/I=";
+      aarch64-linux.hash = "sha256-zyOp2nZC3WSs15cKQo/M1Q4QFWZOoeGbXck2i8l8zpQ=";
     };
     iconHash = "sha256-YQw68ZTWoI/dqj8VaTfftQqwbJ/rZYYst+uxFEZaMkM=";
     configName = "FigCraft";
@@ -201,11 +201,11 @@
   soundcraft = {
     displayName = "SoundCraft";
     description = "An open-source, clean-room reimplementation of Avid Pro Tools in pure Rust";
-    version = "0.8.0";
+    version = "0.10.0";
     iconUrl = "https://raw.githubusercontent.com/storytold/soundcraft/refs/heads/main/assets/app-icon/icon.svg";
     sources = {
-      x86_64-linux.hash = "sha256-nDj40aXIGPZzoX9oqVLqiXLOpKtHIFkL2345NQSGZ2g=";
-      aarch64-linux.hash = "sha256-Rz+i+9nOKkfB0b3EKyCPTO0k6NtqjPU0YH3X2EUbNE8=";
+      x86_64-linux.hash = "sha256-J/ePuKYBY1qpXCTlPG2y8DIBQ+lH2BpY8yCw2cVgq7k=";
+      aarch64-linux.hash = "sha256-w9XdhlY28Jx81WY/5W5WjKKRO8B5s0OFIVWXwA2d3Tc=";
     };
     iconHash = "sha256-NNwZQivzPcVyOezsAYBL9uoIUTiTF75v6bINEhduPBI=";
     prefsFile = null;
@@ -260,10 +260,10 @@
   gridcraft = {
     displayName = "GridCraft";
     description = "An open-source, clean-room spreadsheet (Microsoft Excel-style) in pure Rust";
-    version = "0.8.0";
+    version = "0.9.0";
     sources = {
-      x86_64-linux.hash = "sha256-lCCWoppTSqJQPp56oYFulS9yUOc9VfjzKv0HdUdhf3c=";
-      aarch64-linux.hash = "sha256-+0WCb1KaFgf7hASl970wIuSPx3jZNr0oT/QqhZ+bB5U=";
+      x86_64-linux.hash = "sha256-MwIO74xCJx3RQVR6pnK99zw+B84Ot5FMlFbvhIfo9f0=";
+      aarch64-linux.hash = "sha256-OX25OqmqQc5svqfP+Cj1SwERPeC1Mvcq3kdeLQvKNAU=";
     };
     iconHash = "sha256-kw3d/yQQFy7pZIb2q2J6vtRK1fTXYOHKuCR6TXTZTLo=";
     categories = [ "Office" "Spreadsheet" ];
