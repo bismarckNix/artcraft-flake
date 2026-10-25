@@ -26,12 +26,12 @@
   craft-launcher = rec {
     displayName = "Craft Launcher";
     description = "The Craft App Launcher";
-    version = "0.7.0";
+    version = "0.8.1";
     assetPrefix = "artcraft-launcher";
     iconUrl = "https://raw.githubusercontent.com/storytold/craft-launcher/refs/heads/main/assets/app-icon/artcraft-launcher.svg";
     sources = {
-      x86_64-linux.hash = "sha256-+Aub3P65K8iKVNB+fy4D8YgPP88lwVEYZLPUEY7O4dg=";
-      aarch64-linux.hash = "sha256-gvuGpMB4yN7j4WfeLspwTheKi48NgnOqtXz37eD6abQ=";
+      x86_64-linux.hash = "sha256-g826EuT5vi11Vu1TrsuSfg2bijD7zrNqLIt2jWW0/YM=";
+      aarch64-linux.hash = "sha256-cWP69MU5SEOox37J5ojIy6Neq0oKpFNfN7At0UgZ2uY=";
     };
     iconHash = "sha256-+Hr4G2+kEdqIIO7Sv9zFTA7pzUU7ToaMZPVsadsULQ4=";
     configPath = ".local/share";
@@ -49,10 +49,10 @@
   photocraft = rec {
     displayName = "PhotoCraft";
     description = "An open-source, photo editor written by scratch in pure Rust";
-    version = "0.15.1";
+    version = "0.16.0";
     sources = {
-      x86_64-linux.hash = "sha256-fZbz0NoZIdY0YgsNTNo3y/M1OnZ/kguQbOHGZnOA/+0=";
-      aarch64-linux.hash = "sha256-GlanyK/nif3n4GKoHqxq2NORrLKX10TTVAG3mibWuTE=";
+      x86_64-linux.hash = "sha256-/GcBOQkeZh6Uim3h/yIZpt0EIy5qyGFjSe4jinpJ1U4=";
+      aarch64-linux.hash = "sha256-3eEP4TEeZrsPgq6K0jfhEnFuvQ2u1IMkOh4S8rwz+FM=";
     };
     iconHash = "sha256-pIMzt7eUtwFY2pOiYthPuC9fu/dELbYPI1oKaRNqHOI=";
     prefsFile = "preferences.json";
@@ -70,10 +70,10 @@
   vectorcraft = rec {
     displayName = "VectorCraft";
     description = "An open-source, vector art tool written by scratch in pure Rust";
-    version = "0.16.0";
+    version = "0.17.0";
     sources = {
-      x86_64-linux.hash = "sha256-ih8iRY0rAJQO/RpWneziWEj60Yx1pad9XoxLcZKpIxk=";
-      aarch64-linux.hash = "sha256-vVqN1wlO7pXKZxE8vC/a+5T02gCB4a+ymgx7XqeI4BQ=";
+      x86_64-linux.hash = "sha256-5JhIh725gBlt6iQehoMeVGE8z9Q05Ot0t0mK2iu1SeM=";
+      aarch64-linux.hash = "sha256-KX9723c5yQfUCgD+OlwIPhgzhxTl6IMzTZ/7n0XXcFI=";
     };
     iconHash = "sha256-fBaE9J6W/zSXDx0RqOYb7RQuHvKv69NPo8mSOcAG2VI=";
     prefsFile = null;
@@ -84,10 +84,10 @@
   filmcraft = rec {
     displayName = "FilmCraft";
     description = "An open-source, nonlinear video editor written by scratch in pure Rust";
-    version = "0.12.0";
+    version = "0.13.0";
     sources = {
-      x86_64-linux.hash = "sha256-EJM/kXaDWAVFm7YNy4ECOSsGVGfsoRDbfuFbVaEcnpY=";
-      aarch64-linux.hash = "sha256-pewsB7Kkm5YWvr5U5O6RzvN7SiSWOiy3I/kVgqws6rs=";
+      x86_64-linux.hash = "sha256-0uYE+qBUaGRIV0FwOih5xrosVcx/XMS6fX2sFEOhpu4=";
+      aarch64-linux.hash = "sha256-eHwhdZ4FsztuLEKbA84LU9BloR84J4gSlvNmH3tX+4s=";
     };
     iconHash = "sha256-TvQVY5ZG4XNH+Z+0YiCmA9AkepjFVFu8gtLyUyX+a54=";
     configPath = ".local/share";
@@ -103,10 +103,10 @@
   lightcraft = {
     displayName = "LightCraft";
     description = "An open-source non-destructive photo editor written by scratch in pure Rust";
-    version = "0.13.0";
+    version = "0.14.0";
     sources = {
-      x86_64-linux.hash = "sha256-B+8MY5vSEcHLolLmgDlTwdmUYvVbVh0wv5vXrEpOfXs=";
-      aarch64-linux.hash = "sha256-RvEpkzcRGPQVjEsZ/28B4f/cLPgEm+ot2eNvgYUzM4I=";
+      x86_64-linux.hash = "sha256-1uAswtp6+xFgL27AjwrIpg1zBwpUlgaA6XuSoKF9PXc=";
+      aarch64-linux.hash = "sha256-Lx2tirsi1HKZbQh6Cg/F7uO3D/m406NqNav3JFyx/jw=";
     };
     iconHash = "sha256-EnhY5ZQgcEbHvppl0cQgu80VIujAaP7NwxAI+SPcnG0=";
     prefsFile = null;
@@ -122,10 +122,10 @@
   pdfcraft = {
     displayName = "PdfCraft";
     description = "An open-source PDF reader and editor written by scratch in pure Rust";
-    version = "0.13.0";
+    version = "0.14.0";
     sources = {
-      x86_64-linux.hash = "sha256-P8ZO1lHbJiuZT82cw9XXuy5NR5mktKGzh5Ldtf4QbGA=";
-      aarch64-linux.hash = "sha256-1g4Q8bnVPs+8enzcXFjKvAaMtcba2KjomcOjHBPwkw4=";
+      x86_64-linux.hash = "sha256-oRUTLrmqXu1RCk6FqleFyB5mkHaSA0FVBqGkst0BEZA=";
+      aarch64-linux.hash = "sha256-NqVy9p2lXQQF0vcjud0CHzvehJxXObmO3MNQB48m4qA=";
     };
     iconHash = "sha256-UrOEoQoqf90xRdmCKXLP1WjvDLcxJUm9Q5mt3YnUWm0=";
     noSettings = true;     # Unfortunetly, this currently uses .ron format,  which isn't compatible with Nix
@@ -136,10 +136,10 @@
   effectcraft = {
     displayName = "EffectCraft";
     description = "An open-source motion graphics and compositing tool written by scratch in pure Rust";
-    version = "0.16.0";
+    version = "0.17.0";
     sources = {
-      x86_64-linux.hash = "sha256-k6bJjkp1VSxOXxHgxoNNO2+KZxjBZwqDSfY35u7OoLw=";
-      aarch64-linux.hash = "sha256-0QvAYl91b+NbwAUJB59qlqWOL9sY26NEVk+C0+ezpmU=";
+      x86_64-linux.hash = "sha256-/hBRW8aX7bifSRhDAYyRmapQ5Jz4TnpimiNIF84sQPw=";
+      aarch64-linux.hash = "sha256-Xk0AHwsMdTF6Gr9tY6yHV1mH+cJjlxEhOPvZkPIuDL8=";
     };
     iconHash = "sha256-zHI82IlPI0bs4oGqsZLeM8uSpELdZGa5V/wNvFOd8/A=";
     uiFile = null;
@@ -149,10 +149,10 @@
   designcraft = {
     displayName = "DesignCraft";
     description = "An open-source page and layout design editor written by scratch in pure Rust";
-    version = "0.12.0";
+    version = "0.13.0";
     sources = {
-      x86_64-linux.hash = "sha256-fXbEP5ABfh6DmCFVvQV4ZEh/TGisfMZXMTNNkO9R7Zo=";
-      aarch64-linux.hash = "sha256-fWOKmPlqKtpifAw+jUdc5Hq91EH0jsj8mDQgL8Nyovs=";
+      x86_64-linux.hash = "sha256-jXZhuY9kNNXGXlzSx2mdSvaojRBFmMSNywm/rgX2xi8=";
+      aarch64-linux.hash = "sha256-ituGcf08XwJVHWpUuDwvqFsjM6Rc0tAX1o1a14LQwpk=";
     };
     iconHash = "sha256-wlS3YBxzDMCwoC+0S7rWgeSdyJ8vhKztDH6pxNTmHLw=";
     categories = [ "Graphics" "Publishing" ];
@@ -161,10 +161,10 @@
   figcraft = {
     displayName = "FigCraft";
     description = "An open-source, clean-room reimplementation of collaborative design workflows in pure Rust";
-    version = "0.10.0";
+    version = "0.11.2";
     sources = {
-      x86_64-linux.hash = "sha256-KPjv4Yd5SY4obOk+lEIFjw2xe0Vw4suSv1JsPnI0hOk=";
-      aarch64-linux.hash = "sha256-0rRBc8iJLgCTW/4hVpe9CEa3DM4gHghBj4stuEz8Jns=";
+      x86_64-linux.hash = "sha256-3ZLajZs+wln4HOozCLGzlhoFebQ37X9V6KClhGaoqYY=";
+      aarch64-linux.hash = "sha256-2XQ9YdHPsmLpMmeYThEfZDlk4DyCiXIKn+3IcvI93ak=";
     };
     iconHash = "sha256-YQw68ZTWoI/dqj8VaTfftQqwbJ/rZYYst+uxFEZaMkM=";
     configName = "FigCraft";
@@ -180,10 +180,10 @@
   wordcraft = {
     displayName = "WordCraft";
     description = "An open-source, clean-room reimplementation of Microsoft Word in pure Rust";
-    version = "0.10.0";
+    version = "0.11.0";
     sources = {
-      x86_64-linux.hash = "sha256-Lrjqr2vpiaRvWhJShqmfXC9u+lyLsjulCkQju+oQeiA=";
-      aarch64-linux.hash = "sha256-L23YeAGbVpQl8ykhpNZCEQFyYQuPBlw0XCvwuBCTvls=";
+      x86_64-linux.hash = "sha256-2S1dN3UrlfCJBMyDKPOnPCl5NhM3/yYNI1GPQCTNXGQ=";
+      aarch64-linux.hash = "sha256-1a8un2lzCJYoO6bGi+t2A2k2RUcQHlz2WeLJx0+7qcY=";
     };
     iconHash = "sha256-mmjLf30R335QARJdO9f60vXMTc2x32YAbLz66IfmG0Y=";
     prefsFile = null;
@@ -201,11 +201,11 @@
   soundcraft = {
     displayName = "SoundCraft";
     description = "An open-source, clean-room reimplementation of Avid Pro Tools in pure Rust";
-    version = "0.12.1";
+    version = "0.13.1";
     iconUrl = "https://raw.githubusercontent.com/storytold/soundcraft/refs/heads/main/assets/app-icon/icon.svg";
     sources = {
-      x86_64-linux.hash = "sha256-phpWaR+tXCKUS0QyKlt9ttcX5b9Hrfjcu8iD9UmFk+s=";
-      aarch64-linux.hash = "sha256-H43XCJDajh6nMOgXJBBcGzfPbOwhox1cu17iPddkoJA=";
+      x86_64-linux.hash = "sha256-YH9KE/kptfI33mHpBAvkv8hqBmRL8qEDxz97nITTvxk=";
+      aarch64-linux.hash = "sha256-5bfurx+4G2CxxGUMxN4+Dbq8RksFYaso3ITUXS/8TFg=";
     };
     iconHash = "sha256-NNwZQivzPcVyOezsAYBL9uoIUTiTF75v6bINEhduPBI=";
     prefsFile = null;
@@ -223,11 +223,11 @@
   deckcraft = {
     displayName = "DeckCraft";
     description = "An open-source, clean-room reimplementation of Microsoft PowerPoint in pure Rust";
-    version = "0.10.0";
+    version = "0.11.1";
     iconUrl = "https://raw.githubusercontent.com/storytold/deckcraft/refs/heads/main/assets/app-icon/hicolor/scalable/apps/ai.storyteller.deckcraft.svg";
     sources = {
-      x86_64-linux.hash = "sha256-Ds31nBP3ZSDnvH9jgb6lyKytfXWvfzkLh0imb9XObGk=";
-      aarch64-linux.hash = "sha256-3xTHQMFAnBy3z19lNAAnZ1fpt+16xif+BQ8YkHUJ3AQ=";
+      x86_64-linux.hash = "sha256-FWy57wkkvsUIUk86UrpjBVqKdPhgv0WIQprv2sbV+wE=";
+      aarch64-linux.hash = "sha256-fGNEIeAQhYZR4li7T+1ZmHg5M26Fn2EgNXuXexKum+g=";
     };
     iconHash = "sha256-I+7cR+FM6m9MxnJLE67D5mjk4Bd/bO4fBy9Cg4Xg5t0=";
     categories = [ "Office" "Presentation" ];
@@ -242,11 +242,11 @@
   cadcraft = {
     displayName = "CADCraft";
     description = "An open-source, clean-room AutoCAD-style app in pure Rust";
-    version = "0.12.0";
+    version = "0.13.0";
     iconUrl = "https://raw.githubusercontent.com/storytold/cadcraft/main/assets/app-icon/cadcraft-256.png";
     sources = {
-      x86_64-linux.hash = "sha256-6FFLtojQPPpg32VK3FcGpEJbBGA26HPGheDdL6R+m3M=";
-      aarch64-linux.hash = "sha256-hCH6kORgLjR2GwHM6ZOooAnRAu1DKKtzMmhZ//covvc=";
+      x86_64-linux.hash = "sha256-Q17VUYSbsNvSSg3oa1u4LppOlOBtWJC1ejE6el/o0HM=";
+      aarch64-linux.hash = "sha256-4ZVeKB0ko2uf7SPgMSCmYOxs2OmWfESQgfSNke+rOHI=";
     };
     iconHash = "sha256-99cPBgscUQDnZvQbthaOPqyOtwwhkUxYQM1NiRAFI0E=";
     noSettings = true;   # Same story as PdfCraft - the config is in .ron format
@@ -260,10 +260,10 @@
   gridcraft = {
     displayName = "GridCraft";
     description = "An open-source, clean-room spreadsheet (Microsoft Excel-style) in pure Rust";
-    version = "0.11.1";
+    version = "0.12.1";
     sources = {
-      x86_64-linux.hash = "sha256-XrNEOP3fJCcdYwnR9LhtB7uNSSYUM9kLiP0k5CMwxiU=";
-      aarch64-linux.hash = "sha256-sDLgPlx5lrAdBF49k+MSF6mRv2sxLTRApU57A/Y1tD0=";
+      x86_64-linux.hash = "sha256-6y3gQB4Qidb3bAe4hLgtccROdFXvriAUzDR6igyfEnc=";
+      aarch64-linux.hash = "sha256-b4lDjMGzQBl8+dzDUGlhwtq8Hgp5chPJl/pRsBVvS0Y=";
     };
     iconHash = "sha256-kw3d/yQQFy7pZIb2q2J6vtRK1fTXYOHKuCR6TXTZTLo=";
     categories = [ "Office" "Spreadsheet" ];
