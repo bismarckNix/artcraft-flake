@@ -26,12 +26,12 @@
   craft-launcher = rec {
     displayName = "Craft Launcher";
     description = "The Craft App Launcher";
-    version = "0.9.0";
+    version = "0.10.0";
     assetPrefix = "artcraft-launcher";
     iconUrl = "https://raw.githubusercontent.com/storytold/craft-launcher/refs/heads/main/assets/app-icon/artcraft-launcher.svg";
     sources = {
-      x86_64-linux.hash = "sha256-eTYBnzLfRJlf+cKBJ+JV8PVWI8udgpXekdwzmL30Ma0=";
-      aarch64-linux.hash = "sha256-JQeG+UWcE+HRaYEuOItTbZQLOeeM38uH8nAk8BtHR2c=";
+      x86_64-linux.hash = "sha256-LH8/nHPdlEUx3wc+pugAz/W6nVM9AP8fABVHDvF0Eq0=";
+      aarch64-linux.hash = "sha256-A/QSZbaPIs76f7t94uPGNf0qFVkshGxGavmazONmbLE=";
     };
     iconHash = "sha256-+Hr4G2+kEdqIIO7Sv9zFTA7pzUU7ToaMZPVsadsULQ4=";
     configPath = ".local/share";
