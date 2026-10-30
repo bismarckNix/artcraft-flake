@@ -228,6 +228,7 @@ inputs = {
 | [**CADCraft**](https://github.com/storytold/cadcraft) | cadraft | *None* (.ron format) | *None* |
 | [**GridCraft**](https://github.com/storytold/gridcraft) | gridcraft | `~/.config/gridcraft/prefs.json` | settings   = { ... } |
 | | | `~/.config/gridcraft/ui.json` | uiSettings = { ... } |
+| [**SolidCraft**](https://github.com/tangency-labs/solidcraft) | solidcraft | *None* (.ron format) | *None* |
 
 <a name="configExample"></a>
 <details>
