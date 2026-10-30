@@ -8,20 +8,21 @@
 #                  removes the app icon if set to null
 #   version        release version (no leading "v")
 #   hash/iconHash  fixed-output hash of the AppImage/icon; null = fake hash
-#   tag            optional, release tag (default "v${version}")
-#   assetPrefix    optional, AppImage file name
+#   tag            release tag (default "v${version}")
+#   owner          the owner of the repository, defaults to storytold
+#   assetPrefix    AppImage file name
 #                  (default "${name}-${version}-linux-x86_64.AppImage")
-#   extraPkgs      optional, p: [ p.somelib ]  extra libs inside the FHS wrapper
-#   configName     optional, config directory name, defaults to the ${name}
-#   configPath     optional, config path relative to $XDG_CONFIG_HOME, default to ~/.config/${name}
+#   extraPkgs      p: [ p.somelib ]  extra libs inside the FHS wrapper
+#   configName     config directory name, defaults to the ${name}
+#   configPath     config path relative to $XDG_CONFIG_HOME, default to ~/.config/${name}
 #   prefsFile      config file name, defaults to prefs.json; null - disabled
 #   uiFile         ui file name, defaults to ui.json; null = disabled
-#
-#   categories     optional, the mimeapps categories (e.g. graphics, editor, etc.)
-#   mimeType       optional, the mimeType (e.g. image/png, video/mp4, etc.)
-#   startupWMClass optional, the app ID
-#   noSettings     optional, disables settings
+#   noSettings     disables settings
 #                  (should only be used for apps that don't have a settings format that doesn't work well with Nix, e. g. .ron)
+#
+#   categories     the mimeapps categories (e.g. graphics, editor, etc.)
+#   mimeType       the mimeType (e.g. image/png, video/mp4, etc.)
+
 {
   craft-launcher = rec {
     displayName = "Craft Launcher";
@@ -273,6 +274,25 @@
       "application/vnd.ms-excel.sheet.binary.macroEnabled.12"
       "application/vnd.oasis.opendocument.spreadsheet" "text/csv"
       "text/tab-separated-values"
+    ];
+  };
+
+  solidcraft = {
+    displayName = "SolidCraft";
+    description = "Parametric 3D CAD: sketch, constrain, extrude, and change a parameter to rebuild";
+    version = "0.27.1";
+    owner = "tangency-labs";
+    sources = {
+      x86_64-linux.hash = "sha256-PHoRi7pdoDPfq22mOaSUdGrPYsdOc3DrqqffVnNGuQ8=";
+      aarch64-linux.hash = "sha256-X6MgBiSGtrDfNH4/IEUaoxbZetFqOdECalRa2NEpfYs=";
+    };
+    iconUrl = "https://raw.githubusercontent.com/tangency-labs/solidcraft/refs/heads/main/assets/icons/app/linux/exports/hicolor/256x256/apps/io.tangencylabs.solidcraft.png";
+    iconHash = "sha256-caPkknIFcc9XL6pR2Gp/916dfeoJFhQrUd6DW/hXxa8=";
+    noSettings = true;
+    categories = [ "Graphics" "3DGraphics" "Engineering" ];
+    mimeType = [
+      "application/x-solidcraft" "model/step"
+      "model/iges" "model/stl" "model/3mf"
     ];
   };
 }
