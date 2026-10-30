@@ -4,11 +4,12 @@
 let
   apps = import ../apps.nix;
   inherit (builtins) attrNames concatLists match;
-  base = "https://github.com/storytold";
 
   entries =
     name: app:
     let
+      owner = app.owner or "storytold";
+      base = "https://github.com/${owner}";
       tag = app.tag or "v${app.version}";
 
       # Apps without `sources` only support x86_64-linux.
@@ -18,7 +19,6 @@ let
         system:
         let
           s = sources.${system};
-          isDarwin = match ".*-darwin" system != null;
           arch = if match "aarch64-.*" system != null then "aarch64" else "x86_64";
           prefix = app.assetPrefix or name;
           default = "${prefix}-${app.version}-linux-${arch}.AppImage";

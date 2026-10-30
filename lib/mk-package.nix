@@ -8,6 +8,7 @@ let
   inherit (pkgs) lib stdenv;
   inherit (stdenv.hostPlatform) system isAarch64;
 
+  owner = app.owner or "storytold";
   sources = app.sources or { x86_64-linux = { inherit (app) hash; }; };
   source = sources.${system};
 
@@ -22,7 +23,7 @@ pkgs.appimageTools.wrapType2 {
   inherit (app) version;
 
   src = pkgs.fetchurl {
-    url = "https://github.com/storytold/${name}/releases/download/${tag}/${asset}";
+    url = "https://github.com/${owner}/${name}/releases/download/${tag}/${asset}";
     hash = if app.sources."${arch}-linux".hash == null then lib.fakeHash else app.sources."${arch}-linux".hash;
   };
 
@@ -52,7 +53,7 @@ pkgs.appimageTools.wrapType2 {
 
   meta = {
     inherit (app) description;
-    homepage = "https://github.com/storytold/${name}";
+    homepage = "https://github.com/${owner}/${name}";
     license = with lib.licenses; [ mit asl20 ];
     mainProgram = name;
     sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];

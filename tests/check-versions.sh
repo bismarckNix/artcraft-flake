@@ -21,10 +21,11 @@ for cmd in jq perl curl; do
 done
 
 apps=$("${NIX[@]}" eval --json --file apps.nix \
-  --apply 'a: builtins.mapAttrs (_: v: { version = v.version; tag = v.tag or null; }) a') || {
-  echo "failed to evaluate apps.nix" >&2
-  exit 2
-}
+  --apply 'a: builtins.mapAttrs (_: v: {
+    version = v.version;
+    tag = v.tag or null;
+    owner = v.owner or "storytold";
+  }) a') || {
 
 want() {
   [ ${#FILTER[@]} -eq 0 ] && return 0
@@ -33,14 +34,14 @@ want() {
   return 1
 }
 
-# Latest release tag of storytold/<name>, via the /releases/latest redirect.
+# Latest release tag of <owner>/<name>, via the /releases/latest redirect.
 latest_tag() {
-  local loc
+  local owner=$1 name=$2 loc
   loc=$(curl -sS -o /dev/null --max-time 20 -w '%{redirect_url}' \
-    "https://github.com/storytold/$1/releases/latest") || return 1
+    "https://github.com/$owner/$name/releases/latest") || return 1
   case $loc in
     */releases/tag/*) printf '%s\n' "${loc##*/releases/tag/}" ;;
-    *) return 1 ;; # no release, or the repo does not exist
+    *) return 1 ;;
   esac
 }
 
@@ -64,11 +65,12 @@ declare -a updated=() problems=()
 for name in $(jq -r 'keys[]' <<<"$apps"); do
   want "$name" || continue
 
+  owner=$(jq -r ".\"$name\".owner" <<<"$apps")
   current=$(jq -r ".\"$name\".version" <<<"$apps")
   customtag=$(jq -r ".\"$name\".tag // empty" <<<"$apps")
   label=$(printf '%-15s' "$name")
 
-  if ! tag=$(latest_tag "$name") || [ -z "$tag" ]; then
+  if ! tag=$(latest_tag "$owner" "$name") || [ -z "$tag" ]; then
     echo "FAIL     $label no release found (or request failed)"
     bad=$((bad + 1))
     problems+=("$name: no release found")

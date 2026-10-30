@@ -9,8 +9,9 @@
   app
 }:
 let
+  owner = app.owner or "storytold";
   iconUrl =
-    app.iconUrl or "https://raw.githubusercontent.com/storytold/${name}/main/assets/app-icon/${name}.svg";
+    app.iconUrl or "https://raw.githubusercontent.com/${owner}/${name}/main/assets/app-icon/${name}.svg";
 in
 if iconUrl == null then
   null
