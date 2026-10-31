@@ -26,6 +26,9 @@ apps=$("${NIX[@]}" eval --json --file apps.nix \
     tag = v.tag or null;
     owner = v.owner or "storytold";
   }) a') || {
+  echo "Failed to evaluate apps.nix" >&2
+  exit 1
+}
 
 want() {
   [ ${#FILTER[@]} -eq 0 ] && return 0
