@@ -136,7 +136,8 @@ in
       lib.mkDefault {
         name = app.displayName;
         icon = if icon != null then iconName else null;
-        comment = app.description;
+        inherit (app) genericName;
+        inherit (app) comment;
         exec = "${wrapped}/bin/${name} %U";
         categories = app.categories or [];
         mimeType = app.mimeType or [];

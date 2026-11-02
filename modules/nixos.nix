@@ -31,7 +31,8 @@ let
     name = entryId;
     desktopName = app.displayName;
     icon = iconName;
-    comment = app.description;
+    inherit (app) genericName;
+    inherit (app) comment;
     exec = "${wrapped}/bin/${name} %U";
     categories = app.categories or [ ];
     mimeTypes = app.mimeType or [ ];

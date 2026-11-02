@@ -52,7 +52,7 @@ pkgs.appimageTools.wrapType2 {
     ++ (app.extraPkgs or (_: [ ])) p;
 
   meta = {
-    inherit (app) description;
+    description = app.comment;
     homepage = "https://github.com/${owner}/${name}";
     license = with lib.licenses; [ mit asl20 ];
     mainProgram = name;
