@@ -1,11 +1,13 @@
 # ArtCraft app entries. If you want to add an app, add an entry here.
 #
 # Fields:
-#   displayName    shown in launchers
-#   description    package description
-#   iconUrl        launcher icon url, deafults to
+#   displayName    XDG desktop entry name
+#   genericName    XDG desktop entry generic name (short description)
+#   comment        XDG desktop entry comment
+#   iconUrl        XDG desktop entry icon url, deafults to
 #                  https://raw.githubusercontent.com/storytold/${name}/main/assets/app-icon/${name}.svg,
 #                  removes the app icon if set to null
+#
 #   version        release version (no leading "v")
 #   hash/iconHash  fixed-output hash of the AppImage/icon; null = fake hash
 #   tag            release tag (default "v${version}")
@@ -20,13 +22,47 @@
 #   noSettings     disables settings
 #                  (should only be used for apps that don't have a settings format that doesn't work well with Nix, e. g. .ron)
 #
-#   categories     the mimeapps categories (e.g. graphics, editor, etc.)
-#   mimeType       the mimeType (e.g. image/png, video/mp4, etc.)
+#   categories     the XDG desktop entry mimeapps categories (e.g. graphics, editor, etc.)
+#   mimeType       the XDG desktop entry mimeType (e.g. image/png, video/mp4, etc.)
 
 {
+  cadcraft = {
+    displayName = "CADCraft";
+    genericName = "Computer-Aided Design";
+    comment = "Draft, dimension and plot 2D drawings; open DXF and DWG files";
+    version = "0.16.0";
+    iconUrl = "https://raw.githubusercontent.com/storytold/cadcraft/main/assets/app-icon/cadcraft-256.png";
+    sources = {
+      x86_64-linux.hash = "sha256-B0b85ZL45u38zkEVkK6OEPL2hGs192XmO7EHHujI7qg=";
+      aarch64-linux.hash = "sha256-DRaNweejjdOEPnfLd/sG/uL/MIg44tf5EXKvuUfF5/w=";
+    };
+    iconHash = "sha256-99cPBgscUQDnZvQbthaOPqyOtwwhkUxYQM1NiRAFI0E=";
+    noSettings = true;   # Config is in .ron format
+    categories = [ "Graphics" "Engineering" "VectorGraphics" ];
+    mimeType = [
+      "image/vnd.dxf" "image/vnd.dwg"
+      "application/x-dxf" "application/acad"
+    ];
+  };
+
+  craft-anything = {
+    displayName = "Craft Anything";
+    genericName = "Software Explorer";
+    comment = "Find out how any software works, then craft your own";
+    version = "0.2.0";
+    sources = {
+      x86_64-linux.hash = "sha256-uoQj5sxOZyXYZ66KXhe5RNEAgBaSJR4wkgPqDnzvaYg=";
+      aarch64-linux.hash = "sha256-j3+W9Z9BAdbHsLYls55/mDUxcWovHbsgiOWxSqm0LEs=";
+    };
+    noSettings = true;
+    iconHash = "sha256-jETFj6K7n0av3+oE/hXgmCDbMldIqPh8jD+Y3mZ+dGs=";
+    categories = [ "Development" "Debugger" ];
+  };
+
   craft-launcher = rec {
     displayName = "Craft Launcher";
-    description = "The Craft App Launcher";
+    genericName = "App Launcher";
+    comment = "Install, update and launch the Craft App Suite";
     version = "0.13.0";
     assetPrefix = "artcraft-launcher";
     iconUrl = "https://raw.githubusercontent.com/storytold/craft-launcher/refs/heads/main/assets/app-icon/artcraft-launcher.svg";
@@ -47,44 +83,77 @@
     categories = [ "Utility" "PackageManager" ];
   };
 
-  photocraft = rec {
-    displayName = "PhotoCraft";
-    description = "An open-source, photo editor written by scratch in pure Rust";
-    version = "0.19.0";
+  deckcraft = {
+    displayName = "DeckCraft";
+    genericName = "Presentation";
+    comment = "Create and present slide decks";
+    version = "0.14.1";
+    iconUrl = "https://raw.githubusercontent.com/storytold/deckcraft/refs/heads/main/assets/app-icon/hicolor/scalable/apps/ai.storyteller.deckcraft.svg";
     sources = {
-      x86_64-linux.hash = "sha256-DNMLNm1ACQq6AbCh/gIb3PwCsR/5FRx6rO1bZj25uFY=";
-      aarch64-linux.hash = "sha256-dV16oHyWaZXK8VT+3KXe4MHLyPXHwmecZ6i+bWRnMi0=";
+      x86_64-linux.hash = "sha256-yeBa8lHYqwsH9gSN+B1BgWFAeVafiu1jgORMYbXrpjU=";
+      aarch64-linux.hash = "sha256-6n8WZ81pcIUxmZ5LgMWfMCsXZYPES/NW0FEKHgMklYk=";
     };
-    iconHash = "sha256-pIMzt7eUtwFY2pOiYthPuC9fu/dELbYPI1oKaRNqHOI=";
-    prefsFile = "preferences.json";
-    uiFile = null;
-    categories = [ "Graphics" "2DGraphics" "RasterGraphics" "Photography" ];
+    iconHash = "sha256-I+7cR+FM6m9MxnJLE67D5mjk4Bd/bO4fBy9Cg4Xg5t0=";
+    categories = [ "Office" "Presentation" ];
     mimeType = [
-      "application/x-photocraft" "image/vnd.adobe.photoshop" "image/x-psd" "image/x-psb"
-      "image/png" "image/jpeg" "image/tiff" "image/webp" "image/gif" "image/bmp"
-      "image/x-tga" "image/x-icon" "image/vnd.microsoft.icon"
-      "image/x-portable-anymap" "image/x-portable-bitmap" "image/x-portable-graymap"
-      "image/x-portable-pixmap" "image/x-exr" "image/vnd.radiance" "image/avif" "image/qoi"
+      "application/x-deckcraft"
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+      "application/vnd.openxmlformats-officedocument.presentationml.template"
+      "application/vnd.openxmlformats-officedocument.presentationml.slideshow"
     ];
   };
 
-  vectorcraft = rec {
-    displayName = "VectorCraft";
-    description = "An open-source, vector art tool written by scratch in pure Rust";
+  designcraft = {
+    displayName = "DesignCraft";
+    genericName = "Page Layout";
+    comment = "Lay out magazines, books and print documents";
+    version = "0.16.0";
+    sources = {
+      x86_64-linux.hash = "sha256-7MzaXcOMbKXeGS5FDxv6U5O0O9aDhosOUwauLcl1yCc=";
+      aarch64-linux.hash = "sha256-RAHrwhCu6oEFXAKv5SngMq8pbPxT/S49fkSZNlzBVvc=";
+    };
+    iconHash = "sha256-wlS3YBxzDMCwoC+0S7rWgeSdyJ8vhKztDH6pxNTmHLw=";
+    categories = [ "Graphics" "Publishing" ];
+  };
+
+  effectcraft = {
+    displayName = "EffectCraft";
+    genericName = "Motion Graphics Editor";
+    comment = "Motion graphics and visual effects compositor";
     version = "0.20.0";
     sources = {
-      x86_64-linux.hash = "sha256-tiW66AVY+V2Uuc0M50Ik0qgxgBBtqyYZVZVRyrIW6tQ=";
-      aarch64-linux.hash = "sha256-onoHMnBSk/UJKtvk2uoZqWjFLYI/FN/gmQn1ISqtkJE=";
+      x86_64-linux.hash = "sha256-bMranKi1QRS3n3uZwzpRWj5LVKm6ukPrQ06IXk21pfc=";
+      aarch64-linux.hash = "sha256-AhlGYxSGp5cNuCS1FaJ17pW+PttYT5ru+YbjYXHCnNs=";
     };
-    iconHash = "sha256-fBaE9J6W/zSXDx0RqOYb7RQuHvKv69NPo8mSOcAG2VI=";
-    prefsFile = null;
-    categories = [ "Graphics" "2DGraphics" "VectorGraphics" ];
-    mimeType = [ "image/svg+xml" "application/pdf" ];
+    iconHash = "sha256-zHI82IlPI0bs4oGqsZLeM8uSpELdZGa5V/wNvFOd8/A=";
+    uiFile = null;
+    categories = [ "AudioVideo" "Video" "Graphics" "2DGraphics" ];
+  };
+
+  figcraft = {
+    displayName = "FigCraft";
+    genericName = "Interface Design Tool";
+    comment = "Design and prototype user interfaces";
+    version = "0.14.0";
+    sources = {
+      x86_64-linux.hash = "sha256-j1MY8QALT346d4lejF2wNh1WMGrCvBPmCy0jaaLQ20c=";
+      aarch64-linux.hash = "sha256-7dlQNqtxaOPwexlGO61c9LQz7ieb1OKKFUFLXy1nffY=";
+    };
+    iconHash = "sha256-YQw68ZTWoI/dqj8VaTfftQqwbJ/rZYYst+uxFEZaMkM=";
+    configName = "FigCraft";
+    prefsFile = "state.json";
+    uiFile = null;
+    categories = [ "Graphics" "2DGraphics" "VectorGraphics" "X-Design" ];
+    mimeType = [
+      "application/x-figcraft" "image/svg+xml" "image/png"
+      "image/jpeg" "x-scheme-handler/figcraft"
+    ];
   };
 
   filmcraft = rec {
     displayName = "FilmCraft";
-    description = "An open-source, nonlinear video editor written by scratch in pure Rust";
+    genericName = "Video Editor";
+    comment = "Edit video, color and sound";
     version = "0.16.0";
     sources = {
       x86_64-linux.hash = "sha256-wr4bZUpt+YCHAhOQF4VlYHUkfk6OUwVFqXiG3sSi8FA=";
@@ -101,9 +170,30 @@
     ];
   };
 
+  gridcraft = {
+    displayName = "GridCraft";
+    genericName = "Spreadsheet";
+    comment = "Calculate, analyse and chart data in workbooks";
+    version = "0.15.0";
+    sources = {
+      x86_64-linux.hash = "sha256-3Hibq+/11XyARNSnenUC6PguKTxAmfblGTnH1Qskv9w=";
+      aarch64-linux.hash = "sha256-mfvuKZ8nFHrw2+/rwh1tsjphZtPslGNcTQPVXixq7lM=";
+    };
+    iconHash = "sha256-pMVfL1KJOzGYYrYQwAavg9qfCXpBErWpgri6lfQ9KFA=";
+    categories = [ "Office" "Spreadsheet" ];
+    mimeType = [
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      "application/vnd.ms-excel.sheet.macroEnabled.12"
+      "application/vnd.ms-excel.sheet.binary.macroEnabled.12"
+      "application/vnd.oasis.opendocument.spreadsheet" "text/csv"
+      "text/tab-separated-values"
+    ];
+  };
+
   lightcraft = {
     displayName = "LightCraft";
-    description = "An open-source non-destructive photo editor written by scratch in pure Rust";
+    genericName = "Photo Library and Raw Developer";
+    comment = "Organise photos and develop raw files, non-destructively";
     version = "0.17.0";
     sources = {
       x86_64-linux.hash = "sha256-5ZKiepStIKCguu54k+ktkHnsQSSV+YepwIVLmewAshs=";
@@ -122,86 +212,65 @@
 
   pdfcraft = {
     displayName = "PdfCraft";
-    description = "An open-source PDF reader and editor written by scratch in pure Rust";
+    genericName = "PDF Editor";
+    comment = "Read, organize, combine, split and secure PDFs";
     version = "0.17.0";
     sources = {
       x86_64-linux.hash = "sha256-kzflcC7mRZ2LzamHbDrjyXJa84x0QJbbwHDXz64kRYY=";
       aarch64-linux.hash = "sha256-JQxCfV9QMhuEU985e8dtTs1TzcA4E/Ami2zo97QxoF8=";
     };
     iconHash = "sha256-J3RcAhgw+CwDOw8V8tjZ+OCZE4dDKXiH/34snn7Qado=";
-    noSettings = true;     # Unfortunetly, this currently uses .ron format,  which isn't compatible with Nix
+    noSettings = true;     # .ron configuration
     categories = [ "Office" "Viewer" ];
     mimeType = [ "application/pdf" ];
     };
 
-  effectcraft = {
-    displayName = "EffectCraft";
-    description = "An open-source motion graphics and compositing tool written by scratch in pure Rust";
-    version = "0.20.0";
+  photocraft = rec {
+    displayName = "PhotoCraft";
+    genericName = "Image Editor";
+    comment = "Edit photos and layered PSD documents";
+    version = "0.19.0";
     sources = {
-      x86_64-linux.hash = "sha256-bMranKi1QRS3n3uZwzpRWj5LVKm6ukPrQ06IXk21pfc=";
-      aarch64-linux.hash = "sha256-AhlGYxSGp5cNuCS1FaJ17pW+PttYT5ru+YbjYXHCnNs=";
+      x86_64-linux.hash = "sha256-DNMLNm1ACQq6AbCh/gIb3PwCsR/5FRx6rO1bZj25uFY=";
+      aarch64-linux.hash = "sha256-dV16oHyWaZXK8VT+3KXe4MHLyPXHwmecZ6i+bWRnMi0=";
     };
-    iconHash = "sha256-zHI82IlPI0bs4oGqsZLeM8uSpELdZGa5V/wNvFOd8/A=";
+    iconHash = "sha256-pIMzt7eUtwFY2pOiYthPuC9fu/dELbYPI1oKaRNqHOI=";
+    prefsFile = "preferences.json";
     uiFile = null;
-    categories = [ "AudioVideo" "Video" "Graphics" "2DGraphics" ];
-  };
-
-  designcraft = {
-    displayName = "DesignCraft";
-    description = "An open-source page and layout design editor written by scratch in pure Rust";
-    version = "0.16.0";
-    sources = {
-      x86_64-linux.hash = "sha256-7MzaXcOMbKXeGS5FDxv6U5O0O9aDhosOUwauLcl1yCc=";
-      aarch64-linux.hash = "sha256-RAHrwhCu6oEFXAKv5SngMq8pbPxT/S49fkSZNlzBVvc=";
-    };
-    iconHash = "sha256-wlS3YBxzDMCwoC+0S7rWgeSdyJ8vhKztDH6pxNTmHLw=";
-    categories = [ "Graphics" "Publishing" ];
-  };
-
-  figcraft = {
-    displayName = "FigCraft";
-    description = "An open-source, clean-room reimplementation of collaborative design workflows in pure Rust";
-    version = "0.14.0";
-    sources = {
-      x86_64-linux.hash = "sha256-j1MY8QALT346d4lejF2wNh1WMGrCvBPmCy0jaaLQ20c=";
-      aarch64-linux.hash = "sha256-7dlQNqtxaOPwexlGO61c9LQz7ieb1OKKFUFLXy1nffY=";
-    };
-    iconHash = "sha256-YQw68ZTWoI/dqj8VaTfftQqwbJ/rZYYst+uxFEZaMkM=";
-    configName = "FigCraft";
-    prefsFile = "state.json";
-    uiFile = null;
-    categories = [ "Graphics" "2DGraphics" "VectorGraphics" "X-Design" ];
+    categories = [ "Graphics" "2DGraphics" "RasterGraphics" "Photography" ];
     mimeType = [
-      "application/x-figcraft" "image/svg+xml" "image/png"
-      "image/jpeg" "x-scheme-handler/figcraft"
+      "application/x-photocraft" "image/vnd.adobe.photoshop" "image/x-psd" "image/x-psb"
+      "image/png" "image/jpeg" "image/tiff" "image/webp" "image/gif" "image/bmp"
+      "image/x-tga" "image/x-icon" "image/vnd.microsoft.icon"
+      "image/x-portable-anymap" "image/x-portable-bitmap" "image/x-portable-graymap"
+      "image/x-portable-pixmap" "image/x-exr" "image/vnd.radiance" "image/avif" "image/qoi"
     ];
   };
 
-  wordcraft = {
-    displayName = "WordCraft";
-    description = "An open-source, clean-room reimplementation of Microsoft Word in pure Rust";
-    version = "0.14.0";
+  solidcraft = {
+    displayName = "SolidCraft";
+    genericName = "3D CAD";
+    comment = "Parametric 3D CAD: sketch, constrain, extrude, and change a parameter to rebuild";
+    version = "0.30.0";
+    owner = "tangency-labs";
     sources = {
-      x86_64-linux.hash = "sha256-56L+4FzoYv6RR7brCrbNqeJsq6cpcWhGKAAiHmZjsls=";
-      aarch64-linux.hash = "sha256-7qQekfKiMBRpxotPWNHQkxhGNky6teC5skrYlqeu0l8=";
+      x86_64-linux.hash = "sha256-qxJbpRD+Av4zb7JFl8LKFX5AwNsPrAhfcqMs+1MM9Vk=";
+      aarch64-linux.hash = "sha256-eoZWvP+GCzUYt3/gjMrBCg5XMKRjq67LaQx6KM4CJeU=";
     };
-    iconHash = "sha256-mmjLf30R335QARJdO9f60vXMTc2x32YAbLz66IfmG0Y=";
-    prefsFile = null;
-    categories = [ "Office" "WordProcessor" ];
+    iconUrl = "https://raw.githubusercontent.com/tangency-labs/solidcraft/refs/heads/main/assets/icons/app/linux/exports/hicolor/256x256/apps/io.tangencylabs.solidcraft.png";
+    iconHash = "sha256-caPkknIFcc9XL6pR2Gp/916dfeoJFhQrUd6DW/hXxa8=";
+    noSettings = true;
+    categories = [ "Graphics" "3DGraphics" "Engineering" ];
     mimeType = [
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-      "application/vnd.ms-word.document.macroEnabled.12"
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.template"
-      "application/vnd.ms-word.template.macroEnabled.12" "application/msword"
-      "application/msword-template" "application/vnd.oasis.opendocument.text"
-      "application/rtf" "text/rtf" "text/markdown" "text/x-tex" "text/html" "text/plain"
+      "application/x-solidcraft" "model/step"
+      "model/iges" "model/stl" "model/3mf"
     ];
   };
 
   soundcraft = {
     displayName = "SoundCraft";
-    description = "An open-source, clean-room reimplementation of Avid Pro Tools in pure Rust";
+    genericName = "Digital Audio Workstation";
+    comment = "Record, edit and mix audio and MIDI";
     version = "0.16.0";
     iconUrl = "https://raw.githubusercontent.com/storytold/soundcraft/refs/heads/main/assets/app-icon/icon.svg";
     sources = {
@@ -221,78 +290,59 @@
     ];
   };
 
-  deckcraft = {
-    displayName = "DeckCraft";
-    description = "An open-source, clean-room reimplementation of Microsoft PowerPoint in pure Rust";
-    version = "0.14.1";
-    iconUrl = "https://raw.githubusercontent.com/storytold/deckcraft/refs/heads/main/assets/app-icon/hicolor/scalable/apps/ai.storyteller.deckcraft.svg";
+  texturecraft = {
+    displayName = "TextureCraft";
+    genericName = "3D texture painter";
+    comment = "Paint PBR textures directly on 3D meshes";
+    version = "0.2.0";
     sources = {
-      x86_64-linux.hash = "sha256-yeBa8lHYqwsH9gSN+B1BgWFAeVafiu1jgORMYbXrpjU=";
-      aarch64-linux.hash = "sha256-6n8WZ81pcIUxmZ5LgMWfMCsXZYPES/NW0FEKHgMklYk=";
+      x86_64-linux.hash = "sha256-J/vs2Fjhr8TnOKehGYyS0C+4vYIwBYU+CO3lYJHdaaY=";
+      aarch64-linux.hash = "sha256-+BonyrUoa12/RgG4FKpYa2up3FO+di+54R1DuWDVsko=";
     };
-    iconHash = "sha256-I+7cR+FM6m9MxnJLE67D5mjk4Bd/bO4fBy9Cg4Xg5t0=";
-    categories = [ "Office" "Presentation" ];
-    mimeType = [
-      "application/x-deckcraft"
-      "application/vnd.openxmlformats-officedocument.presentationml.presentation"
-      "application/vnd.openxmlformats-officedocument.presentationml.template"
-      "application/vnd.openxmlformats-officedocument.presentationml.slideshow"
-    ];
-  };
-
-  cadcraft = {
-    displayName = "CADCraft";
-    description = "An open-source, clean-room AutoCAD-style app in pure Rust";
-    version = "0.16.0";
-    iconUrl = "https://raw.githubusercontent.com/storytold/cadcraft/main/assets/app-icon/cadcraft-256.png";
-    sources = {
-      x86_64-linux.hash = "sha256-B0b85ZL45u38zkEVkK6OEPL2hGs192XmO7EHHujI7qg=";
-      aarch64-linux.hash = "sha256-DRaNweejjdOEPnfLd/sG/uL/MIg44tf5EXKvuUfF5/w=";
-    };
-    iconHash = "sha256-99cPBgscUQDnZvQbthaOPqyOtwwhkUxYQM1NiRAFI0E=";
-    noSettings = true;   # Same story as PdfCraft - the config is in .ron format
-    categories = [ "Graphics" "Engineering" "VectorGraphics" ];
-    mimeType = [
-      "image/vnd.dxf" "image/vnd.dwg"
-      "application/x-dxf" "application/acad"
-    ];
-  };
-
-  gridcraft = {
-    displayName = "GridCraft";
-    description = "An open-source, clean-room spreadsheet (Microsoft Excel-style) in pure Rust";
-    version = "0.15.0";
-    sources = {
-      x86_64-linux.hash = "sha256-3Hibq+/11XyARNSnenUC6PguKTxAmfblGTnH1Qskv9w=";
-      aarch64-linux.hash = "sha256-mfvuKZ8nFHrw2+/rwh1tsjphZtPslGNcTQPVXixq7lM=";
-    };
-    iconHash = "sha256-pMVfL1KJOzGYYrYQwAavg9qfCXpBErWpgri6lfQ9KFA=";
-    categories = [ "Office" "Spreadsheet" ];
-    mimeType = [
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-      "application/vnd.ms-excel.sheet.macroEnabled.12"
-      "application/vnd.ms-excel.sheet.binary.macroEnabled.12"
-      "application/vnd.oasis.opendocument.spreadsheet" "text/csv"
-      "text/tab-separated-values"
-    ];
-  };
-
-  solidcraft = {
-    displayName = "SolidCraft";
-    description = "Parametric 3D CAD: sketch, constrain, extrude, and change a parameter to rebuild";
-    version = "0.30.0";
-    owner = "tangency-labs";
-    sources = {
-      x86_64-linux.hash = "sha256-qxJbpRD+Av4zb7JFl8LKFX5AwNsPrAhfcqMs+1MM9Vk=";
-      aarch64-linux.hash = "sha256-eoZWvP+GCzUYt3/gjMrBCg5XMKRjq67LaQx6KM4CJeU=";
-    };
-    iconUrl = "https://raw.githubusercontent.com/tangency-labs/solidcraft/refs/heads/main/assets/icons/app/linux/exports/hicolor/256x256/apps/io.tangencylabs.solidcraft.png";
-    iconHash = "sha256-caPkknIFcc9XL6pR2Gp/916dfeoJFhQrUd6DW/hXxa8=";
+    iconHash = "sha256-GbloLuQs+vsG5oH+sgiDfrC50/oHcIzjppUSuUXBawA=";
     noSettings = true;
-    categories = [ "Graphics" "3DGraphics" "Engineering" ];
+    categories = [ "Graphics" "3DGraphics" ];
     mimeType = [
-      "application/x-solidcraft" "model/step"
-      "model/iges" "model/stl" "model/3mf"
+      "application/x-texturecraft" "model/gltf-binary" "model/gltf+json"
+      "model/x-fbx" "model/vnd.collada+xml" "model/x-usd" "model/vnd.usda"
+      "model/vnd.usdz+zip" "model/x-alembic" "model/obj" "model/x-ply" "model/stl"
+    ];
+  };
+
+  vectorcraft = rec {
+    displayName = "VectorCraft";
+    genericName = "Vector Graphics Editor";
+    comment = "Draw and edit vector illustrations, SVG and PDF";
+    version = "0.20.0";
+    sources = {
+      x86_64-linux.hash = "sha256-tiW66AVY+V2Uuc0M50Ik0qgxgBBtqyYZVZVRyrIW6tQ=";
+      aarch64-linux.hash = "sha256-onoHMnBSk/UJKtvk2uoZqWjFLYI/FN/gmQn1ISqtkJE=";
+    };
+    iconHash = "sha256-fBaE9J6W/zSXDx0RqOYb7RQuHvKv69NPo8mSOcAG2VI=";
+    prefsFile = null;
+    categories = [ "Graphics" "2DGraphics" "VectorGraphics" ];
+    mimeType = [ "image/svg+xml" "application/pdf" ];
+  };
+
+  wordcraft = {
+    displayName = "WordCraft";
+    genericName = "Word Processor";
+    comment = "Write and design documents; open and save Word files";
+    version = "0.14.0";
+    sources = {
+      x86_64-linux.hash = "sha256-56L+4FzoYv6RR7brCrbNqeJsq6cpcWhGKAAiHmZjsls=";
+      aarch64-linux.hash = "sha256-7qQekfKiMBRpxotPWNHQkxhGNky6teC5skrYlqeu0l8=";
+    };
+    iconHash = "sha256-mmjLf30R335QARJdO9f60vXMTc2x32YAbLz66IfmG0Y=";
+    prefsFile = null;
+    categories = [ "Office" "WordProcessor" ];
+    mimeType = [
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      "application/vnd.ms-word.document.macroEnabled.12"
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.template"
+      "application/vnd.ms-word.template.macroEnabled.12" "application/msword"
+      "application/msword-template" "application/vnd.oasis.opendocument.text"
+      "application/rtf" "text/rtf" "text/markdown" "text/x-tex" "text/html" "text/plain"
     ];
   };
 }
