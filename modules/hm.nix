@@ -107,7 +107,7 @@ in
       # Add an icon for the launchers notifications
       packages = [ wrapped ] ++ lib.optional (icon != null) (
         pkgs.runCommand "${name}-icon" { } ''
-          install -Dm644 ${icon} $out/share/icons/hicolor/scalable/apps/${prefix}.svg
+          install -Dm644 ${icon} "$out/share/icons/hicolor/scalable/apps/${prefix}.svg"
         ''
       );
 
