@@ -115,11 +115,10 @@ Add this to your home manager:
 
 <a name="configuration"></a>
 
-> [!NOTE]
-> If you don't want to declare the programs, you can only enable the launcher -
-> it is able to install all of the apps and update them without the flake,
-> so you will have faster updates (the packages won't depend on this repository
-> anymore, except for the launcher), but no declarative features.
+If you don't want to declare the programs, you can only enable the launcher -
+it is able to install all of the apps and update them without the flake,
+so you will have faster updates (the packages won't depend on this repository
+anymore, except for the launcher), but no declarative features.
 
 ## **Configuration**
 
@@ -212,23 +211,25 @@ inputs = {
 | **App** | **Name** | **Configurable Files** | **Configuration Option** |
 | - | - | - | - |
 | [**Craft Launcher**](https://github.com/storytold/craft-launcher) | craft-launcher | *None* (.ron file format, unconfigurable via Nix) | *None* |
-| [**PhotoCraft**](https://github.com/storytold/photocraft) | photocraft | `~/.config/photocraft/preferences.json` | settings   = { ... } |
-| [**VectorCraft**](https://github.com/storytold/vectorcraft) | vectorcraft | `~/.config/vectorcraft/ui.json` | uiSettings = { ... } |
-| [**FilmCraft**](https://github.com/storytold/filmcraft) | filmcraft | `~/.local/share/filmcraft/preferences.json` | settings   = { ... } |
-| [**LightCraft**](https://github.com/storytold/lightcraft) | lightcraft | `~/.config/lightcraft/ui.json` | uiSettings = { ... } |
-| [**PdfCraft**](https://github.com/storytold/pdfcraft) | pdfcraft | *None* (.ron format) | *None* |
-| [**EffectCraft**](https://github.com/storytold/effectcraft) | effectcraft | `~/.config/effectcraft/prefs.json` | settings   = { ... } |
-| [**DesignCraft**](https://github.com/storytold/designcraft) | designcraft | `~/.config/designcraft/prefs.json` | settings   = { ... } |
-| [**FigCraft**](https://github.com/storytold/figcraft) | figcraft | `~/.config/FigCraft/state.json` | settings   = { ... } |
-| | | `~/.config/designcraft/ui.json` | uiSettings = { ... } |
-| [**WordCraft**](https://github.com/storytold/wordcraft) | wordcraft | `~/.config/wordcraft/ui.json` | uiSettings = { ... } |
-| [**SoundCraft**](https://github.com/storytold/soundcraft) | soundcraft | `~/.config/soundcraft/ui.json` | uiSettings = { ... } |
+| [**CADCraft**](https://github.com/storytold/cadcraft) | cadraft | *None* (.ron format) | *None* |
+| [**Craft Anything**](https://github.com/storytold/craft-anything) | craft-anything | *None* (.ron format) | *None* |
 | [**DeckCraft**](https://github.com/storytold/deckcraft) | deckcraft | `~/.config/deckcraft/prefs.json` | settings   = { ... } |
 | | | `~/.config/deckcraft/ui.json` | uiSettings = { ... } |
-| [**CADCraft**](https://github.com/storytold/cadcraft) | cadraft | *None* (.ron format) | *None* |
+| [**DesignCraft**](https://github.com/storytold/designcraft) | designcraft | `~/.config/designcraft/prefs.json` | settings   = { ... } |
+| [**EffectCraft**](https://github.com/storytold/effectcraft) | effectcraft | `~/.config/effectcraft/prefs.json` | settings   = { ... } |
+| [**FigCraft**](https://github.com/storytold/figcraft) | figcraft | `~/.config/FigCraft/state.json` | settings   = { ... } |
+| | | `~/.config/designcraft/ui.json` | uiSettings = { ... } |
+| [**FilmCraft**](https://github.com/storytold/filmcraft) | filmcraft | `~/.local/share/filmcraft/preferences.json` | settings   = { ... } |
 | [**GridCraft**](https://github.com/storytold/gridcraft) | gridcraft | `~/.config/gridcraft/prefs.json` | settings   = { ... } |
 | | | `~/.config/gridcraft/ui.json` | uiSettings = { ... } |
+| [**LightCraft**](https://github.com/storytold/lightcraft) | lightcraft | `~/.config/lightcraft/ui.json` | uiSettings = { ... } |
+| [**PdfCraft**](https://github.com/storytold/pdfcraft) | pdfcraft | *None* (.ron format) | *None* |
+| [**PhotoCraft**](https://github.com/storytold/photocraft) | photocraft | `~/.config/photocraft/preferences.json` | settings   = { ... } |
 | [**SolidCraft**](https://github.com/tangency-labs/solidcraft) | solidcraft | *None* (.ron format) | *None* |
+| [**SoundCraft**](https://github.com/storytold/soundcraft) | soundcraft | `~/.config/soundcraft/ui.json` | uiSettings = { ... } |
+| [**TextureCraft**](https://github.com/storytold/texturecraft) | texturecraft | *None* (.ron format) | *None* |
+| [**VectorCraft**](https://github.com/storytold/vectorcraft) | vectorcraft | `~/.config/vectorcraft/ui.json` | uiSettings = { ... } |
+| [**WordCraft**](https://github.com/storytold/wordcraft) | wordcraft | `~/.config/wordcraft/ui.json` | uiSettings = { ... } |
 
 <a name="configExample"></a>
 <details>
