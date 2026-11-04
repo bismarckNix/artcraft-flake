@@ -210,6 +210,21 @@
     ];
   };
 
+  materialcraft = {
+    displayName = "MaterialCraft";
+    genericName = "Procedural Material Designer";
+    comment = "Design procedural PBR materials with node graphs";
+    version = "0.1.0";
+    sources = {
+      x86_64-linux.hash = "sha256-WDy5ffSRrSgOcl/2eyoHqIMk8nOQ/BAaV4smgs6U41I=";
+      aarch64-linux.hash = "sha256-+q7AeHWG/zzOQkRxkIj8mB1a0ZfK0gSclIs1ihlvzeA=";
+    };
+    iconHash = "sha256-vY4FZhlwkacfE4HVdu7l/VhVtoMqBsbikUQNEqG3EQ0=";
+    noSettings = true;
+    categories = [ "Graphics" "3DGraphics" ];
+    mimeType = [ "application/x-materialcraft" ];
+  };
+
   pdfcraft = {
     displayName = "PdfCraft";
     genericName = "PDF Editor";
