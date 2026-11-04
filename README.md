@@ -223,6 +223,7 @@ inputs = {
 | [**GridCraft**](https://github.com/storytold/gridcraft) | gridcraft | `~/.config/gridcraft/prefs.json` | settings   = { ... } |
 | | | `~/.config/gridcraft/ui.json` | uiSettings = { ... } |
 | [**LightCraft**](https://github.com/storytold/lightcraft) | lightcraft | `~/.config/lightcraft/ui.json` | uiSettings = { ... } |
+| [**MaterialCraft**](https://github.com/storytold/materialcraft) | materialcraft | *None* (.ron format) | *None* |
 | [**PdfCraft**](https://github.com/storytold/pdfcraft) | pdfcraft | *None* (.ron format) | *None* |
 | [**PhotoCraft**](https://github.com/storytold/photocraft) | photocraft | `~/.config/photocraft/preferences.json` | settings   = { ... } |
 | [**SolidCraft**](https://github.com/tangency-labs/solidcraft) | solidcraft | *None* (.ron format) | *None* |
