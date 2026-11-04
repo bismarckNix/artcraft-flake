@@ -214,10 +214,10 @@
     displayName = "PdfCraft";
     genericName = "PDF Editor";
     comment = "Read, organize, combine, split and secure PDFs";
-    version = "0.18.0";
+    version = "0.18.1";
     sources = {
-      x86_64-linux.hash = "sha256-P9R34y8gaAzwwtmGQl94OhcXiIab6QvlVuWHi1sjGL8=";
-      aarch64-linux.hash = "sha256-Nd6gQqhKCBjeLnYRzyS5N9lrZGBMDNdojA4YQas0szg=";
+      x86_64-linux.hash = "sha256-TOYaj08TdFkedGjweke+VCWUweMdZg2aXVOd2+hQEMY=";
+      aarch64-linux.hash = "sha256-jzC+Q2K6URn2OI+UiwuIOGl3Voc2/8iWHPLO7gtBstQ=";
     };
     iconHash = "sha256-J3RcAhgw+CwDOw8V8tjZ+OCZE4dDKXiH/34snn7Qado=";
     noSettings = true;     # .ron configuration
@@ -328,10 +328,10 @@
     displayName = "WordCraft";
     genericName = "Word Processor";
     comment = "Write and design documents; open and save Word files";
-    version = "0.15.0";
+    version = "0.15.1";
     sources = {
-      x86_64-linux.hash = "sha256-96lV0sUbA2v+WgM/Sk7E/wwrEeyN/LslIIe5rTqi7K0=";
-      aarch64-linux.hash = "sha256-NQmOyrvUWR2G/6dM62GOgtl2/keo64F33NOUAIijbrM=";
+      x86_64-linux.hash = "sha256-6PRPu/BZ8S9c1PadeBJSlynYXTbdT+dKbDf2kyYy8vo=";
+      aarch64-linux.hash = "sha256-SJvsmsDEQbz8MMFKf1xxPZcVRei7WzCv0l2bgWR3mq4=";
     };
     iconHash = "sha256-mmjLf30R335QARJdO9f60vXMTc2x32YAbLz66IfmG0Y=";
     prefsFile = null;
