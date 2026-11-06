@@ -49,10 +49,10 @@
     displayName = "Craft Anything";
     genericName = "Software Explorer";
     comment = "Find out how any software works, then craft your own";
-    version = "0.3.0";
+    version = "0.4.0";
     sources = {
-      x86_64-linux.hash = "sha256-uSz0YGGN6fKXWUxlkjhGkPqZ/Enhk6RMIAhVGCLw5SI=";
-      aarch64-linux.hash = "sha256-SJXGpP00dEppXZAMMQg7wHGWIAH0NoX0Ca9W5sTP2yw=";
+      x86_64-linux.hash = "sha256-hQIwBSDAZVe/WaA/+2oSBZCeUh6W5OewKchGwEA981o=";
+      aarch64-linux.hash = "sha256-qEeSzqZYnOgd2KgW9jtE39NbJjf/zP20dyP3pL9gHUg=";
     };
     noSettings = true;
     iconHash = "sha256-jETFj6K7n0av3+oE/hXgmCDbMldIqPh8jD+Y3mZ+dGs=";
