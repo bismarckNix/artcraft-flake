@@ -79,7 +79,26 @@ for name in $(jq -r 'keys[]' <<<"$apps"); do
     problems+=("$name: no release found")
     continue
   fi
-  latest=${tag#v}
+
+  if [ -n "$customtag" ]; then
+    if [[ "$customtag" == *"$current" ]]; then
+      tagprefix=${customtag%"$current"}
+
+      if [[ "$tag" == "$tagprefix"* ]]; then
+        latest=${tag#"$tagprefix"}
+      else
+        echo "FAIL     $label release tag doesn't match custom tag prefix ($tagprefix)"
+        bad=$((bad + 1))
+        continue
+      fi
+    else
+      echo "FAIL     $label custom tag doesn't end with the current version; cannot extract version"
+      bad=$((bad + 1))
+      continue
+    fi
+  else
+    latest=${tag#v}
+  fi
 
   if [ "$current" = "$latest" ]; then
     echo "OK       $label $current"
@@ -99,9 +118,7 @@ for name in $(jq -r 'keys[]' <<<"$apps"); do
   problems+=("$name: $current -> $latest")
 
   [ -n "${WRITE:-}" ] || continue
-  if [ -n "$customtag" ]; then
-    echo "           has a custom tag ($customtag), edit apps.nix by hand"
-  elif patch_block "$name" '(\bversion\s*=\s*)("[^"]*")' "\"$latest\""; then
+  if patch_block "$name" '(\bversion\s*=\s*)("[^"]*")' "\"$latest\""; then
     echo "           written to apps.nix"
     updated+=("$name")
   else
