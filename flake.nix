@@ -56,11 +56,11 @@
       in
       appPackages
       // rec {
-        artcraft = pkgs.symlinkJoin {
-          name = "artcraft";
+        suite = pkgs.symlinkJoin {
+          name = "artcraft-suite";
           paths = builtins.attrValues appPackages;
         };
-        default = artcraft;
+        default = suite;
       }
     );
 
