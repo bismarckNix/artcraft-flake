@@ -87,11 +87,11 @@
     displayName = "Craft Launcher";
     genericName = "App Launcher";
     comment = "Install, update and launch the Craft App Suite";
-    version = "0.16.0";
+    version = "0.16.1";
     assetPrefix = "artcraft-launcher";
     sources = {
-      x86_64-linux.hash = "sha256-rRXvLEOvpiNlEYw9g8A++wW3jc5LCmTwVB9CD2cKgKQ=";
-      aarch64-linux.hash = "sha256-MCj9N9bTlLNXv33PWUQ3qZAH7n+yjB14E7ZkHLYTc4Y=";
+      x86_64-linux.hash = "sha256-7ofuA5+JvaRalg75KvRqy0MHfemBzVk/MEGvnwe/jEs=";
+      aarch64-linux.hash = "sha256-UwND8as+R4v2n5JGzlVY52o6u1yhyIBvixiNOFA11n4=";
       icon = {
         url = "https://raw.githubusercontent.com/storytold/craft-launcher/refs/heads/main/assets/app-icon/artcraft-launcher.svg";
         hash = "sha256-+Hr4G2+kEdqIIO7Sv9zFTA7pzUU7ToaMZPVsadsULQ4=";
