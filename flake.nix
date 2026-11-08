@@ -34,7 +34,9 @@
       let
         all = {
           imports = builtins.attrValues mods ++ [
-            (import ./modules/suite.nix { inherit names; })
+            (import ./modules/suite.nix {
+              names = map (name: if name == "artcraft" then "studio" else name) names;
+            })
           ];
         };
       in
@@ -67,12 +69,16 @@
     homeModules = withAll (
       perApp (
         name:
-        import ./modules/hm.nix {
-          inherit self home-manager name;
+        let optionName = if name == "artcraft" then "studio" else name;
+        in import ./modules/hm.nix {
+          inherit self home-manager name optionName;
         }
       )
     );
 
-    nixosModules = withAll (perApp (name: import ./modules/nixos.nix { inherit self name; }));
+    nixosModules = withAll (perApp (name:
+      let optionName = if name == "artcraft" then "studio" else name;
+      in import ./modules/nixos.nix { inherit self name optionName; }
+    ));
   };
 }

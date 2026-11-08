@@ -1,7 +1,8 @@
 # Global NixOS module.
 {
   self,
-  name
+  name,
+  optionName ? name,
 }:
 {
   config,
@@ -11,7 +12,7 @@
 }:
 let
   app = (import ../apps.nix).${name};
-  cfg = config.programs.artcraft.${name};
+  cfg = config.programs.artcraft.${optionName};
   icon = import ../lib/icon.nix { inherit lib pkgs name app; };
   prefix = app.assetPrefix or app.displayName;
 
@@ -44,10 +45,10 @@ in
 {
   imports = [
     ./launcher-only.nix
-    (import ./options.nix { inherit self name; })
+    (import ./options.nix { inherit self name optionName; })
   ];
 
-  options.programs.artcraft.${name}.desktopEntry = lib.mkOption {
+  options.programs.artcraft.${optionName}.desktopEntry = lib.mkOption {
     type = lib.types.bool;
     default = !config.programs.artcraft.launcherOnly || (app.launcher or false);
     defaultText = lib.literalExpression "!launcherOnly || isLauncher";

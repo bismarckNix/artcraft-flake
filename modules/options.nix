@@ -2,7 +2,8 @@
 #   programs.artcraft.<name>.{enable,package,extraArgs,environment,xwayland}
 {
   self,
-  name
+  name,
+  optionName ? name,
 }:
 {
   lib,
@@ -13,7 +14,7 @@ let
   app = (import ../apps.nix).${name};
 in
 {
-  options.programs.artcraft.${name} = {
+  options.programs.artcraft.${optionName} = {
     enable = lib.mkEnableOption app.displayName;
 
     package = lib.mkOption {

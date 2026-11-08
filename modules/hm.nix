@@ -2,6 +2,7 @@
 {
   self,
   name,
+  optionName ? name,
   home-manager ? null,
 }:
 {
@@ -12,7 +13,7 @@
 }:
 let
   app = (import ../apps.nix).${name};
-  cfg = config.programs.artcraft.${name};
+  cfg = config.programs.artcraft.${optionName};
   icon = import ../lib/icon.nix { inherit lib pkgs name app; };
   iconName = "ai.storyteller.${app.assetPrefix or name}";
   prefix = app.assetPrefix or app.displayName;
@@ -70,10 +71,10 @@ in
 {
   imports = [
     ./launcher-only.nix
-    (import ./options.nix { inherit self name; })
+    (import ./options.nix { inherit self name optionName; })
   ];
 
-  options.programs.artcraft.${name} =
+  options.programs.artcraft.${optionName} =
   {
     desktopEntry = lib.mkOption {
       type = lib.types.bool;
