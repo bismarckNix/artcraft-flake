@@ -40,6 +40,11 @@
         hash = "sha256-UF9EbjWO6CxzhE5gVOVKfqRzSRLaXzphCbrHRCy6pVE=";
       };
     };
+    extraPkgs = p: [
+      p.alsa-lib
+      p.zlib
+      p.libgpg-error
+    ];
     categories = [ "Graphics" ];
   };
 
