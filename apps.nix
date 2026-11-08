@@ -26,17 +26,36 @@
 #   mimeType       the XDG desktop entry mimeType (e.g. image/png, video/mp4, etc.)
 
 {
+  artcraft = rec {
+    displayName = "ArtCraft";
+    genericName = "AI image and video creation";
+    comment = "${genericName}";
+    version = "0.41.1";
+    tag = "artcraft-v${version}";
+    sources = {
+      x86_64-linux.hash = "sha256-uzJle26B6OR9pEyk52SxrxTXfYaQskiiY6Ss0SGLfS0=";
+      aarch64-linux.hash = "sha256-MaQHF1jOeYnGVI45doOar2AQvkFNChtcyakTU3u8iN4=";
+      icon = {
+        url = "https://raw.githubusercontent.com/storytold/artcraft/main/crates/desktop/artcraft/icons/128x128.png";
+        hash = "sha256-UF9EbjWO6CxzhE5gVOVKfqRzSRLaXzphCbrHRCy6pVE=";
+      };
+    };
+    categories = [ "Graphics" ];
+  };
+
   cadcraft = {
     displayName = "CADCraft";
     genericName = "Computer-Aided Design";
     comment = "Draft, dimension and plot 2D drawings; open DXF and DWG files";
     version = "0.18.0";
-    iconUrl = "https://raw.githubusercontent.com/storytold/cadcraft/main/assets/app-icon/cadcraft-256.png";
     sources = {
       x86_64-linux.hash = "sha256-zsTM/lsRya2mRIjm8qZz3nLTDjVMqxnmsTv85AJgGCc=";
       aarch64-linux.hash = "sha256-vnixqYUaYql6TGavPyRHZA7Jr67ERtBVHe+A3Eh4rHw=";
+      icon = {
+        url = "https://raw.githubusercontent.com/storytold/cadcraft/main/assets/app-icon/cadcraft-256.png";
+        hash = "sha256-99cPBgscUQDnZvQbthaOPqyOtwwhkUxYQM1NiRAFI0E=";
+      };
     };
-    iconHash = "sha256-99cPBgscUQDnZvQbthaOPqyOtwwhkUxYQM1NiRAFI0E=";
     noSettings = true;   # Config is in .ron format
     categories = [ "Graphics" "Engineering" "VectorGraphics" ];
     mimeType = [
@@ -53,9 +72,9 @@
     sources = {
       x86_64-linux.hash = "sha256-s2Io6KZBlm186m450sl+OCw4ukmowb1x5GGMxdUAL+Q=";
       aarch64-linux.hash = "sha256-rM90UMvd+ujlHBga1zrUsMUzNqamGI1Y3EA6A6aXRd8=";
+      icon.hash = "sha256-jETFj6K7n0av3+oE/hXgmCDbMldIqPh8jD+Y3mZ+dGs=";
     };
     noSettings = true;
-    iconHash = "sha256-jETFj6K7n0av3+oE/hXgmCDbMldIqPh8jD+Y3mZ+dGs=";
     categories = [ "Development" "Debugger" ];
   };
 
@@ -65,12 +84,14 @@
     comment = "Install, update and launch the Craft App Suite";
     version = "0.16.0";
     assetPrefix = "artcraft-launcher";
-    iconUrl = "https://raw.githubusercontent.com/storytold/craft-launcher/refs/heads/main/assets/app-icon/artcraft-launcher.svg";
     sources = {
       x86_64-linux.hash = "sha256-rRXvLEOvpiNlEYw9g8A++wW3jc5LCmTwVB9CD2cKgKQ=";
       aarch64-linux.hash = "sha256-MCj9N9bTlLNXv33PWUQ3qZAH7n+yjB14E7ZkHLYTc4Y=";
+      icon = {
+        url = "https://raw.githubusercontent.com/storytold/craft-launcher/refs/heads/main/assets/app-icon/artcraft-launcher.svg";
+        hash = "sha256-+Hr4G2+kEdqIIO7Sv9zFTA7pzUU7ToaMZPVsadsULQ4=";
+      };
     };
-    iconHash = "sha256-+Hr4G2+kEdqIIO7Sv9zFTA7pzUU7ToaMZPVsadsULQ4=";
     configPath = ".local/share";
     configName = "ai.storyteller.artcraft-launcher";
     noSettings = true;
@@ -88,12 +109,14 @@
     genericName = "Presentation";
     comment = "Create and present slide decks";
     version = "0.16.0";
-    iconUrl = "https://raw.githubusercontent.com/storytold/deckcraft/refs/heads/main/assets/app-icon/hicolor/scalable/apps/ai.storyteller.deckcraft.svg";
     sources = {
       x86_64-linux.hash = "sha256-EhHYtRc3fu0PwDfWTa7xt1t+4njgYgqw1+e+tuhhg/c=";
       aarch64-linux.hash = "sha256-Fn6GoG/AeAgj/172pQUuNtGAnNTj419nJtsSsrSmO0k=";
+      icon = {
+        url = "https://raw.githubusercontent.com/storytold/deckcraft/refs/heads/main/assets/app-icon/hicolor/scalable/apps/ai.storyteller.deckcraft.svg";
+        hash = "sha256-I+7cR+FM6m9MxnJLE67D5mjk4Bd/bO4fBy9Cg4Xg5t0=";
+      };
     };
-    iconHash = "sha256-I+7cR+FM6m9MxnJLE67D5mjk4Bd/bO4fBy9Cg4Xg5t0=";
     categories = [ "Office" "Presentation" ];
     mimeType = [
       "application/x-deckcraft"
@@ -111,8 +134,8 @@
     sources = {
       x86_64-linux.hash = "sha256-ATZAkg8ArypPygnBvNRNl71AT2jhvYZlN3M18sEsINM=";
       aarch64-linux.hash = "sha256-YaIbdNVuZikr+iLgRYDBUzTTmXJ9H2fIY11C2a7CC9A=";
+      icon.hash = "sha256-wlS3YBxzDMCwoC+0S7rWgeSdyJ8vhKztDH6pxNTmHLw=";
     };
-    iconHash = "sha256-wlS3YBxzDMCwoC+0S7rWgeSdyJ8vhKztDH6pxNTmHLw=";
     categories = [ "Graphics" "Publishing" ];
   };
 
@@ -124,8 +147,8 @@
     sources = {
       x86_64-linux.hash = "sha256-w71weLIQHvdjm/ziTTIXBZrl5j+BwkxCFsPEvoEqZ1I=";
       aarch64-linux.hash = "sha256-fhPMwgZureoiEsGzl4DnzOs8oWtIhY/2wGl5YM/1VJY=";
+      icon.hash = "sha256-zHI82IlPI0bs4oGqsZLeM8uSpELdZGa5V/wNvFOd8/A=";
     };
-    iconHash = "sha256-zHI82IlPI0bs4oGqsZLeM8uSpELdZGa5V/wNvFOd8/A=";
     uiFile = null;
     categories = [ "AudioVideo" "Video" "Graphics" "2DGraphics" ];
   };
@@ -138,8 +161,8 @@
     sources = {
       x86_64-linux.hash = "sha256-xlIDCldOcw/1ce95XDBa8m+qh0dXRfGj5VOuajlwZnU=";
       aarch64-linux.hash = "sha256-L4NiYXsUlklmfctLnrYDeYAedx9X3liPc3JBqKZz/7Q=";
+      icon.hash = "sha256-YQw68ZTWoI/dqj8VaTfftQqwbJ/rZYYst+uxFEZaMkM=";
     };
-    iconHash = "sha256-YQw68ZTWoI/dqj8VaTfftQqwbJ/rZYYst+uxFEZaMkM=";
     configName = "FigCraft";
     prefsFile = "state.json";
     uiFile = null;
@@ -158,8 +181,8 @@
     sources = {
       x86_64-linux.hash = "sha256-Py2F4xQUgY+a5WklS72ywk3F+b+z9HplhwYR7v9L5H0=";
       aarch64-linux.hash = "sha256-ezznaPUlZUaSs0Qz8ThgBRdYBiznjxyIgbV+c/JJsXE=";
+      icon.hash = "sha256-TvQVY5ZG4XNH+Z+0YiCmA9AkepjFVFu8gtLyUyX+a54=";
     };
-    iconHash = "sha256-TvQVY5ZG4XNH+Z+0YiCmA9AkepjFVFu8gtLyUyX+a54=";
     configPath = ".local/share";
     prefsFile = "preferences.json";
     uiFile = null;
@@ -178,8 +201,8 @@
     sources = {
       x86_64-linux.hash = "sha256-BFXIY1NYItlRoakf3ujdApNp4PL5P3rJnEkW73Cod2E=";
       aarch64-linux.hash = "sha256-6HdR0GdocCUorMTo79ufynRzYqasFyi5FzXItq711Uw=";
+      icon.hash = "sha256-pMVfL1KJOzGYYrYQwAavg9qfCXpBErWpgri6lfQ9KFA=";
     };
-    iconHash = "sha256-pMVfL1KJOzGYYrYQwAavg9qfCXpBErWpgri6lfQ9KFA=";
     categories = [ "Office" "Spreadsheet" ];
     mimeType = [
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
@@ -198,8 +221,8 @@
     sources = {
       x86_64-linux.hash = "sha256-I3j8us0QoxaMuAcnKBEEZ/1GPksJ8UoNEg+8JPA2s2c=";
       aarch64-linux.hash = "sha256-K3CnVJ6b9YxjM68Uk/cHL6uMhYwJEvhfybATaUZBNqI=";
+      icon.hash = "sha256-EnhY5ZQgcEbHvppl0cQgu80VIujAaP7NwxAI+SPcnG0=";
     };
-    iconHash = "sha256-EnhY5ZQgcEbHvppl0cQgu80VIujAaP7NwxAI+SPcnG0=";
     prefsFile = null;
     categories = [ "Graphics" "2DGraphics" "RasterGraphics" "Photography" ];
     mimeType = [
@@ -218,8 +241,8 @@
     sources = {
       x86_64-linux.hash = "sha256-0CIOqQ5JBWG6N9UNU3vxdiV69NFZw+rpddvfOq7MRKE=";
       aarch64-linux.hash = "sha256-nBbbLyWWzmEzg9+Uz45he3goJo1xEhmeQUiTOVfRoRc=";
+      icon.hash = "sha256-vY4FZhlwkacfE4HVdu7l/VhVtoMqBsbikUQNEqG3EQ0=";
     };
-    iconHash = "sha256-vY4FZhlwkacfE4HVdu7l/VhVtoMqBsbikUQNEqG3EQ0=";
     noSettings = true;
     categories = [ "Graphics" "3DGraphics" ];
     mimeType = [ "application/x-materialcraft" ];
@@ -233,8 +256,8 @@
     sources = {
       x86_64-linux.hash = "sha256-fW9YdaTWjPH9K+jbnzBTFCwlBzUMF/GEEjDvJsIsCzY=";
       aarch64-linux.hash = "sha256-nVHya1lwfFRCyD7DeW6zOHue6TuN/vs8NAT+9SEqqtw=";
+      icon.hash = "sha256-J3RcAhgw+CwDOw8V8tjZ+OCZE4dDKXiH/34snn7Qado=";
     };
-    iconHash = "sha256-J3RcAhgw+CwDOw8V8tjZ+OCZE4dDKXiH/34snn7Qado=";
     noSettings = true;     # .ron configuration
     categories = [ "Office" "Viewer" ];
     mimeType = [ "application/pdf" ];
@@ -248,8 +271,8 @@
     sources = {
       x86_64-linux.hash = "sha256-dyZTOtqliWQT0s4L6FjVIiVkUL/vJE+8VDO+1Pmfpgs=";
       aarch64-linux.hash = "sha256-UCdRQDHChivzriGgc+M+4lI6zaWXT1Gd+mSH1ok1Kis=";
+      icon.hash = "sha256-pIMzt7eUtwFY2pOiYthPuC9fu/dELbYPI1oKaRNqHOI=";
     };
-    iconHash = "sha256-pIMzt7eUtwFY2pOiYthPuC9fu/dELbYPI1oKaRNqHOI=";
     prefsFile = "preferences.json";
     uiFile = null;
     categories = [ "Graphics" "2DGraphics" "RasterGraphics" "Photography" ];
@@ -271,9 +294,11 @@
     sources = {
       x86_64-linux.hash = "sha256-HODWGv04IA8MFieTGgSF8DuD4KiLHHTHXhoVAek4g10=";
       aarch64-linux.hash = "sha256-fsI4eicQUWyoRiXLAGY1n9BpOEmQYUe8p8yLMQG3hVM=";
+      icon = {
+        url = "https://raw.githubusercontent.com/tangency-labs/solidcraft/refs/heads/main/assets/icons/app/linux/exports/hicolor/256x256/apps/io.tangencylabs.solidcraft.png";
+        hash = "sha256-caPkknIFcc9XL6pR2Gp/916dfeoJFhQrUd6DW/hXxa8=";
+      };
     };
-    iconUrl = "https://raw.githubusercontent.com/tangency-labs/solidcraft/refs/heads/main/assets/icons/app/linux/exports/hicolor/256x256/apps/io.tangencylabs.solidcraft.png";
-    iconHash = "sha256-caPkknIFcc9XL6pR2Gp/916dfeoJFhQrUd6DW/hXxa8=";
     noSettings = true;
     categories = [ "Graphics" "3DGraphics" "Engineering" ];
     mimeType = [
@@ -291,8 +316,8 @@
     sources = {
       x86_64-linux.hash = "sha256-yD3iYsU9eK2zb0OeBmGeDcrA696w7RaIQ/yxQek7Abo=";
       aarch64-linux.hash = "sha256-SaeSRuklfN7uTsVHO41X5rs1nDB2AW0lQScQV6FZnh4=";
+      icon.hash = "sha256-NNwZQivzPcVyOezsAYBL9uoIUTiTF75v6bINEhduPBI=";
     };
-    iconHash = "sha256-NNwZQivzPcVyOezsAYBL9uoIUTiTF75v6bINEhduPBI=";
     prefsFile = null;
     categories = [
       "AudioVideo" "Audio" "Midi"
@@ -313,8 +338,8 @@
     sources = {
       x86_64-linux.hash = "sha256-Csr1xUWwcMA+03ydaIcR1WaAzNixK1/MxFT2v9ZW6JM=";
       aarch64-linux.hash = "sha256-aqu1QIQrIPPpCXWiEwzP18XRSuxu0DqwLOifxyVnqFw=";
+      icon.hash = "sha256-GbloLuQs+vsG5oH+sgiDfrC50/oHcIzjppUSuUXBawA=";
     };
-    iconHash = "sha256-GbloLuQs+vsG5oH+sgiDfrC50/oHcIzjppUSuUXBawA=";
     noSettings = true;
     categories = [ "Graphics" "3DGraphics" ];
     mimeType = [
@@ -332,8 +357,8 @@
     sources = {
       x86_64-linux.hash = "sha256-CaaNIiMlMCGcEmQ7t+ntprH2d4y/ny8vxG/5biJZ97A=";
       aarch64-linux.hash = "sha256-MHdN+cA/x2tq1K378uJDM1HE83Ecr2lWYgmW0L360Lk=";
+      icon.hash = "sha256-fBaE9J6W/zSXDx0RqOYb7RQuHvKv69NPo8mSOcAG2VI=";
     };
-    iconHash = "sha256-fBaE9J6W/zSXDx0RqOYb7RQuHvKv69NPo8mSOcAG2VI=";
     prefsFile = null;
     categories = [ "Graphics" "2DGraphics" "VectorGraphics" ];
     mimeType = [ "image/svg+xml" "application/pdf" ];
@@ -347,8 +372,8 @@
     sources = {
       x86_64-linux.hash = "sha256-mArB1pGPHB4MJA2Fk3TyKxnlJNOvM3La7xNExaCXrhc=";
       aarch64-linux.hash = "sha256-vAPSjmqohBOsKOOjiO15DlQzIrsiE6vSI2RhweM993s=";
+      icon.hash = "sha256-mmjLf30R335QARJdO9f60vXMTc2x32YAbLz66IfmG0Y=";
     };
-    iconHash = "sha256-mmjLf30R335QARJdO9f60vXMTc2x32YAbLz66IfmG0Y=";
     prefsFile = null;
     categories = [ "Office" "WordProcessor" ];
     mimeType = [
