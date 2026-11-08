@@ -11,13 +11,13 @@
 let
   owner = app.owner or "storytold";
   iconUrl =
-    app.iconUrl or "https://raw.githubusercontent.com/${owner}/${name}/main/assets/app-icon/${name}.svg";
+    app.sources.icon.url or "https://raw.githubusercontent.com/${owner}/${name}/main/assets/app-icon/${name}.svg";
 in
 if iconUrl == null then
   null
 else
   pkgs.fetchurl {
     url = iconUrl;
-    hash = if (app.iconHash or null) == null then lib.fakeHash else app.iconHash;
+    hash = if (app.sources.icon.hash or null) == null then lib.fakeHash else app.sources.icon.hash;
     name = "${name}-icon.svg";
   }

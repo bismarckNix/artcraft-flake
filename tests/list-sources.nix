@@ -33,7 +33,7 @@ let
       ) (attrNames sources);
 
       iconUrl =
-        app.iconUrl or "https://raw.githubusercontent.com/storytold/${name}/main/assets/app-icon/${name}.svg";
+        app.sources.icon.url or "https://raw.githubusercontent.com/storytold/${name}/main/assets/app-icon/${name}.svg";
 
       iconEntries =
         if iconUrl == null then
@@ -45,7 +45,7 @@ let
               system = "-";
               kind = "icon";
               url = iconUrl;
-              hash = app.iconHash or null;
+              hash = app.sources.icon.hash or null;
             }
           ];
     in

@@ -61,7 +61,7 @@ apply_fix() {
     # Existing (wrong or malformed) hash: swap the literal string.
     patch_block "$name" "()($(quote "$declared"))" "$got" && { echo "          written to apps.nix"; return 0; }
   elif [ "$kind" = icon ]; then
-    patch_block "$name" '(\biconHash\s*=\s*)(null)' "\"$got\"" && { echo "          written to apps.nix"; return 0; }
+    patch_block "$name" '(\bicon.hash\s*=\s*)(null)' "\"$got\"" && { echo "          written to apps.nix"; return 0; }
   else
     # `hash = null` under sources.<system>, or top-level for x86_64-linux apps without sources.
     patch_block "$name" "(\\b$(quote "$system")\\.hash\\s*=\\s*)(null)" "\"$got\"" && { echo "          written to apps.nix"; return 0; }
