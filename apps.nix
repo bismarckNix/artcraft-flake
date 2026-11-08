@@ -27,7 +27,7 @@
 
 {
   artcraft = rec {
-    displayName = "ArtCraft";
+    displayName = "ArtCraft Studio";
     genericName = "AI image and video creation";
     comment = "${genericName}";
     version = "0.41.1";
@@ -45,6 +45,7 @@
       p.zlib
       p.libgpg-error
     ];
+    noSettings = true;
     categories = [ "Graphics" ];
   };
 
