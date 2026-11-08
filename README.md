@@ -211,6 +211,7 @@ inputs = {
 | **App** | **Name** | **Configurable Files** | **Configuration Option** |
 | - | - | - | - |
 | [**Craft Launcher**](https://github.com/storytold/craft-launcher) | craft-launcher | *None* (.ron file format, unconfigurable via Nix) | *None* |
+| [**ArtCraft Studio**](https://github.com/storytold/artcraft) | studio | *None* | *None* |
 | [**CADCraft**](https://github.com/storytold/cadcraft) | cadraft | *None* (.ron format) | *None* |
 | [**Craft Anything**](https://github.com/storytold/craft-anything) | craft-anything | *None* (.ron format) | *None* |
 | [**DeckCraft**](https://github.com/storytold/deckcraft) | deckcraft | `~/.config/deckcraft/prefs.json` | settings   = { ... } |
