@@ -15,6 +15,12 @@ let
       # Apps without `sources` only support x86_64-linux.
       sources = app.sources or { x86_64-linux = { hash = app.hash or null; }; };
 
+      # Only platform attributes represent downloadable packages.
+      # "icon" is a separate source, not a target system.
+      packageSystems = builtins.filter
+        (system: system != "icon")
+        (attrNames sources);
+
       packageEntries = map (
         system:
         let
@@ -30,7 +36,7 @@ let
           url = "${base}/${name}/releases/download/${tag}/${asset}";
           hash = s.hash or null;
         }
-      ) (attrNames sources);
+      ) packageSystems;
 
       iconUrl =
         app.sources.icon.url or "https://raw.githubusercontent.com/storytold/${name}/main/assets/app-icon/${name}.svg";
