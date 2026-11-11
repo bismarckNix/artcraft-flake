@@ -4,16 +4,19 @@
 #   displayName    XDG desktop entry name
 #   genericName    XDG desktop entry generic name (short description)
 #   comment        XDG desktop entry comment
-#   iconUrl        XDG desktop entry icon url, deafults to
+#
+#   version        release version (no leading "v")
+#   owner          the owner of the repository, defaults to storytold
+#   tag            release tag (default "v${version}")
+#   assetPrefix    AppImage file name
+#                  (default "${name}-${version}-linux-x86_64.AppImage")
+#
+#   sources:
+#   ${source}.hash fixed-output hash of the AppImage/icon; null = fake hash
+#   icon.url       XDG desktop entry icon url, deafults to
 #                  https://raw.githubusercontent.com/storytold/${name}/main/assets/app-icon/${name}.svg,
 #                  removes the app icon if set to null
 #
-#   version        release version (no leading "v")
-#   hash/iconHash  fixed-output hash of the AppImage/icon; null = fake hash
-#   tag            release tag (default "v${version}")
-#   owner          the owner of the repository, defaults to storytold
-#   assetPrefix    AppImage file name
-#                  (default "${name}-${version}-linux-x86_64.AppImage")
 #   extraPkgs      p: [ p.somelib ]  extra libs inside the FHS wrapper
 #   configName     config directory name, defaults to the ${name}
 #   configPath     config path relative to $XDG_CONFIG_HOME, default to ~/.config/${name}
@@ -26,6 +29,20 @@
 #   mimeType       the XDG desktop entry mimeType (e.g. image/png, video/mp4, etc.)
 
 {
+  anicraft = {
+    displayName = "AniCraft";
+    genericName = "Animation Studio";
+    comment = "Draw and animate 2D vector art on a timeline";
+    version = "0.1.0";
+    sources = {
+      x86_64-linux.hash = "sha256-pBnZxyC915lyyuvZ0gdwTR6ftqZge9jf1N2jaTTT4xY=";
+      aarch64-linux.hash = "sha256-TNXRWMzcnT+QzseTa5Dtsq0Xuk69EDZFErnLDzNM3FQ=";
+      icon.hash = "sha256-jMSU1Y5ZJ8hgAbcNkU49d8yLu5bfT7nGAGv/t7aqzSE=";
+    };
+    categories = [ "Graphics" "2DGraphics" "VectorGraphics" ];
+    mimeType = [ "application/x-anicraft" "application/x-fla" "application/x-xfl" ];
+  };
+
   artcraft = rec {
     displayName = "ArtCraft Studio";
     genericName = "AI image and video creation";
@@ -236,6 +253,27 @@
       "image/x-sony-arw" "image/x-canon-cr2" "image/x-canon-cr3"
       "image/x-nikon-nef" "image/x-fuji-raf" "image/x-olympus-orf"
       "image/x-panasonic-rw2" "image/x-panasonic-rw" "image/x-pentax-pef"
+    ];
+  };
+
+  mailcraft = {
+    displayName = "MailCraft";
+    genericName = "Mail Client";
+    comment = "Read and write mail, keep a calendar, contacts and tasks";
+    version = "0.11.1";
+    owner = "UCS-Care-Group";
+    sources = {
+      x86_64-linux.hash = "sha256-qAHgX6nidFJAXFuXqsQ1zbXBumci4sL5Ekc7Tg8tleo=";
+      aarch64-linux.hash = "sha256-MrnMFlFJUiQ7b8xZYsfdd3IsZvYrW57DeTxutoxd3zY=";
+      icon = {
+        url = "https://raw.githubusercontent.com/UCS-Care-Group/mailcraft/refs/heads/main/assets/app-icon/hicolor/scalable/apps/io.github.billsecond.mailcraft.svg";
+        hash = "sha256-sVP+1DXNXMXvpAhAiXe23rVJb0ryF/4ALD36efS5bFM=";
+      };
+    };
+    categories = [ "Office" "Email" "Calendar" "ContactManagement" ];
+    mimeType = [
+      "message/rfc822" "application/mbox" "text/calendar"
+      "text/vcard" "x-scheme-handler/mailto"
     ];
   };
 
