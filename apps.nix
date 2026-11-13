@@ -33,12 +33,13 @@
     displayName = "AniCraft";
     genericName = "Animation Studio";
     comment = "Draw and animate 2D vector art on a timeline";
-    version = "0.1.0";
+    version = "0.2.1";
     sources = {
-      x86_64-linux.hash = "sha256-pBnZxyC915lyyuvZ0gdwTR6ftqZge9jf1N2jaTTT4xY=";
-      aarch64-linux.hash = "sha256-TNXRWMzcnT+QzseTa5Dtsq0Xuk69EDZFErnLDzNM3FQ=";
+      x86_64-linux.hash = "sha256-NSRWOE0egvNz2DbcvNnxRzsWA8XJx7GF12MhhHAJGzE=";
+      aarch64-linux.hash = "sha256-IY7FSdMBojUkFjhY3GC7FYRWI3TnWvVeefVI8Uconf8=";
       icon.hash = "sha256-jMSU1Y5ZJ8hgAbcNkU49d8yLu5bfT7nGAGv/t7aqzSE=";
     };
+    noSettings = true;
     categories = [ "Graphics" "2DGraphics" "VectorGraphics" ];
     mimeType = [ "application/x-anicraft" "application/x-fla" "application/x-xfl" ];
   };
@@ -70,16 +71,16 @@
     displayName = "CADCraft";
     genericName = "Computer-Aided Design";
     comment = "Draft, dimension and plot 2D drawings; open DXF and DWG files";
-    version = "0.19.0";
+    version = "0.20.1";
     sources = {
-      x86_64-linux.hash = "sha256-AZ0KSroVUPr5FiTo0686344n/uGZdXm1T5hfaTOVuvk=";
-      aarch64-linux.hash = "sha256-jD2MN9ROn4FZifsfZk0G65pVgUujFtCs1sK+91464dY=";
+      x86_64-linux.hash = "sha256-56XSRFAP5FzKv6hcYywl7NofsDeZwxjZrVQfZbFQ548=";
+      aarch64-linux.hash = "sha256-nHJbnYpNKwm60GF1xRy7pPlbcYtscMPeNfqkoAfkqSE=";
       icon = {
         url = "https://raw.githubusercontent.com/storytold/cadcraft/main/assets/app-icon/cadcraft-256.png";
         hash = "sha256-99cPBgscUQDnZvQbthaOPqyOtwwhkUxYQM1NiRAFI0E=";
       };
     };
-    noSettings = true;   # Config is in .ron format
+    noSettings = true;
     categories = [ "Graphics" "Engineering" "VectorGraphics" ];
     mimeType = [
       "image/vnd.dxf" "image/vnd.dwg"
@@ -91,10 +92,10 @@
     displayName = "Craft Anything";
     genericName = "Software Explorer";
     comment = "Find out how any software works, then craft your own";
-    version = "0.6.0";
+    version = "0.6.1";
     sources = {
-      x86_64-linux.hash = "sha256-mswr764Dgd7p3OvSVbzcdZKxafTvR3nC4tQj8Xz2vzk=";
-      aarch64-linux.hash = "sha256-7dsmLVbxNoJDyXIqSmIu03WbUFgY+O8rz9qnWLEhGFQ=";
+      x86_64-linux.hash = "sha256-fq3eHXSrQsyDiGL+P4MePPPJ+mul4r8E4oJLvEcUYTQ=";
+      aarch64-linux.hash = "sha256-4amB8/8vInDLUM7s4PNhQttdjP5hHVPnFfFAprhwg/0=";
       icon.hash = "sha256-jETFj6K7n0av3+oE/hXgmCDbMldIqPh8jD+Y3mZ+dGs=";
     };
     noSettings = true;
@@ -105,11 +106,11 @@
     displayName = "Craft Launcher";
     genericName = "App Launcher";
     comment = "Install, update and launch the Craft App Suite";
-    version = "0.19.0";
+    version = "0.19.2";
     assetPrefix = "artcraft-launcher";
     sources = {
-      x86_64-linux.hash = "sha256-ZBl4WNFV9EeuMj+QUBURbYSPE3VnXXMesI1XCPhyLps=";
-      aarch64-linux.hash = "sha256-aosU4qr6u1KvD7xTe+Y+wYU8qIGe7WmEWIpnqOXIvIc=";
+      x86_64-linux.hash = "sha256-AhgImRbWC00oiCXRVC8Tyyyl+2kUGPQQIgH0OoTRvns=";
+      aarch64-linux.hash = "sha256-2inZCuTWiDk2/IDI+DlXH/EuFF09eYpKXmH7yhrTPsg=";
       icon = {
         url = "https://raw.githubusercontent.com/storytold/craft-launcher/refs/heads/main/assets/app-icon/artcraft-launcher.svg";
         hash = "sha256-+Hr4G2+kEdqIIO7Sv9zFTA7pzUU7ToaMZPVsadsULQ4=";
@@ -131,10 +132,10 @@
     displayName = "DeckCraft";
     genericName = "Presentation";
     comment = "Create and present slide decks";
-    version = "0.17.0";
+    version = "0.18.1";
     sources = {
-      x86_64-linux.hash = "sha256-oD0vCRpUHDKxT09n3olynShpjcKT8fmmIvVBnWQ9pZc=";
-      aarch64-linux.hash = "sha256-F4U8kEutIgh8910krBTu6Kl8so3JMhwlOLoXvLZlUVQ=";
+      x86_64-linux.hash = "sha256-aN+fBA0/bEzkqQSq3sYzlh+hmSSPChqjZvpkWXrgmGc=";
+      aarch64-linux.hash = "sha256-iUyx3HlGkY/+bwzc4y2eIVfRSfrqZzdjgWQIPV5WJhU=";
       icon = {
         url = "https://raw.githubusercontent.com/storytold/deckcraft/refs/heads/main/assets/app-icon/hicolor/scalable/apps/ai.storyteller.deckcraft.svg";
         hash = "sha256-I+7cR+FM6m9MxnJLE67D5mjk4Bd/bO4fBy9Cg4Xg5t0=";
@@ -153,10 +154,10 @@
     displayName = "DesignCraft";
     genericName = "Page Layout";
     comment = "Lay out magazines, books and print documents";
-    version = "0.19.0";
+    version = "0.20.1";
     sources = {
-      x86_64-linux.hash = "sha256-6CINfkF3kOFSjchNTbX7IpPdAyfmLuKfjKA/CSgB6aU=";
-      aarch64-linux.hash = "sha256-eacBjC6hPude9Ibrp6sm616M2ofun5O+15dJqYrppUs=";
+      x86_64-linux.hash = "sha256-+db9a7GkIYUCQ8DUvkQjVxOp7Fsm+L8dW6h6/Pj5FTQ=";
+      aarch64-linux.hash = "sha256-FOZBLMixVjNXHAsJhpuJ8j6irGGz5oGbOyYoTpK2hpM=";
       icon.hash = "sha256-wlS3YBxzDMCwoC+0S7rWgeSdyJ8vhKztDH6pxNTmHLw=";
     };
     categories = [ "Graphics" "Publishing" ];
@@ -166,10 +167,10 @@
     displayName = "EffectCraft";
     genericName = "Motion Graphics Editor";
     comment = "Motion graphics and visual effects compositor";
-    version = "0.23.1";
+    version = "0.24.1";
     sources = {
-      x86_64-linux.hash = "sha256-eQVIXX6RmZoMGey6RH0N/RHBO92xMr35zKZc2LYGcfs=";
-      aarch64-linux.hash = "sha256-sRmKb51ezSip9bz5DOPulUSPDqfqrAeS7rO8rZoF1tw=";
+      x86_64-linux.hash = "sha256-n4oWz3QUfJ4qw7ZfpvW+lqPhDq2S3fCNVE9dOZCtZNw=";
+      aarch64-linux.hash = "sha256-iYmPo0buXFmzgV8k2zGBeMojpLWTdpvdhA2oH3L00G8=";
       icon.hash = "sha256-zHI82IlPI0bs4oGqsZLeM8uSpELdZGa5V/wNvFOd8/A=";
     };
     uiFile = null;
@@ -180,10 +181,10 @@
     displayName = "FigCraft";
     genericName = "Interface Design Tool";
     comment = "Design and prototype user interfaces";
-    version = "0.17.0";
+    version = "0.18.1";
     sources = {
-      x86_64-linux.hash = "sha256-p0nZ+AdMvS3H0EoW1HJiABolKDkfoVO9bFxOT4TI5BQ=";
-      aarch64-linux.hash = "sha256-D028Zsdqwqqq2Oku9Fhvx5SF5UD99mOkuqBniI54cvc=";
+      x86_64-linux.hash = "sha256-lYaULdYxuWtMVSKYjp6AITkHuAIv+vvKYko/wRrnqek=";
+      aarch64-linux.hash = "sha256-j92ff58OOP3venydMEmEUWd/SBo44dGEsYpd+FeZ7fc=";
       icon.hash = "sha256-YQw68ZTWoI/dqj8VaTfftQqwbJ/rZYYst+uxFEZaMkM=";
     };
     configName = "FigCraft";
@@ -200,10 +201,10 @@
     displayName = "FilmCraft";
     genericName = "Video Editor";
     comment = "Edit video, color and sound";
-    version = "0.19.0";
+    version = "0.20.1";
     sources = {
-      x86_64-linux.hash = "sha256-LwnP9pY7VbwhYBWAYK+N4iaw7I/CI6GYsQFFpY4jj+g=";
-      aarch64-linux.hash = "sha256-h9AbySFmk+XOQUOpL3aPdLXhXbqBqGN7TJDPpGPt8cc=";
+      x86_64-linux.hash = "sha256-SiWuyy6UgbZec1NSi8qeSoxTiN1V8Uhv/mRQLgi9+gI=";
+      aarch64-linux.hash = "sha256-SHwXUCgShd5n9odS4RVDMrCJk8la7itCceQWTsPDM2U=";
       icon.hash = "sha256-TvQVY5ZG4XNH+Z+0YiCmA9AkepjFVFu8gtLyUyX+a54=";
     };
     configPath = ".local/share";
@@ -220,10 +221,10 @@
     displayName = "GridCraft";
     genericName = "Spreadsheet";
     comment = "Calculate, analyse and chart data in workbooks";
-    version = "0.18.0";
+    version = "0.19.1";
     sources = {
-      x86_64-linux.hash = "sha256-/eL5mCrHaQJlIctvcQ7Ja02RmxY0rWixWyub9iRnAgw=";
-      aarch64-linux.hash = "sha256-/nfck4OydamwS+LgqBgJnv7OoEWPNyzVcVM9bOiNfVU=";
+      x86_64-linux.hash = "sha256-WxzhCtbHotOJJJ39JZAQAUqF/OGqQsYn/EzaVxZx4iE=";
+      aarch64-linux.hash = "sha256-8v/Msp0LfDcFP8e9Br/79OKQfLLfLk9ZPPHf0FHgvV4=";
       icon.hash = "sha256-pMVfL1KJOzGYYrYQwAavg9qfCXpBErWpgri6lfQ9KFA=";
     };
     categories = [ "Office" "Spreadsheet" ];
@@ -240,10 +241,10 @@
     displayName = "LightCraft";
     genericName = "Photo Library and Raw Developer";
     comment = "Organise photos and develop raw files, non-destructively";
-    version = "0.20.0";
+    version = "0.21.1";
     sources = {
-      x86_64-linux.hash = "sha256-Zr4ekYXVb2AIbpp8AZBk3SONlVMcE8DhyDpSf863PhA=";
-      aarch64-linux.hash = "sha256-gQ6ZVlpv0L1EFM1Hj+5Ladpd4vdkvE+skPTa7v8IH5s=";
+      x86_64-linux.hash = "sha256-xCEtoid3oAANnrZshbeGXp6ZEfR6YCB9eFK3wGOtqKk=";
+      aarch64-linux.hash = "sha256-tEaBa6prxBUB6ecFxudXqFm8EDpjSK7BPoOMs3bcbiI=";
       icon.hash = "sha256-EnhY5ZQgcEbHvppl0cQgu80VIujAaP7NwxAI+SPcnG0=";
     };
     prefsFile = null;
@@ -260,16 +261,17 @@
     displayName = "MailCraft";
     genericName = "Mail Client";
     comment = "Read and write mail, keep a calendar, contacts and tasks";
-    version = "0.11.1";
+    version = "0.12.0";
     owner = "UCS-Care-Group";
     sources = {
-      x86_64-linux.hash = "sha256-qAHgX6nidFJAXFuXqsQ1zbXBumci4sL5Ekc7Tg8tleo=";
-      aarch64-linux.hash = "sha256-MrnMFlFJUiQ7b8xZYsfdd3IsZvYrW57DeTxutoxd3zY=";
+      x86_64-linux.hash = "sha256-BWTvCD/xI37KaCNQNN8Ju8PubrtYaf/lCdLL0J5T7FE=";
+      aarch64-linux.hash = "sha256-GduI/hp9tD+HL29UDJhR/GXKAqB5I4P8QwrvSAk+Zyo=";
       icon = {
         url = "https://raw.githubusercontent.com/UCS-Care-Group/mailcraft/refs/heads/main/assets/app-icon/hicolor/scalable/apps/io.github.billsecond.mailcraft.svg";
         hash = "sha256-sVP+1DXNXMXvpAhAiXe23rVJb0ryF/4ALD36efS5bFM=";
       };
     };
+    prefsFile = null;
     categories = [ "Office" "Email" "Calendar" "ContactManagement" ];
     mimeType = [
       "message/rfc822" "application/mbox" "text/calendar"
@@ -281,10 +283,10 @@
     displayName = "MaterialCraft";
     genericName = "Procedural Material Designer";
     comment = "Design procedural PBR materials with node graphs";
-    version = "0.3.0";
+    version = "0.4.1";
     sources = {
-      x86_64-linux.hash = "sha256-rKIn8H0AR7xi3tj83mPdzDwQUZYPWTwCkZTW6d1Kaz0=";
-      aarch64-linux.hash = "sha256-riQksKvEdlZkJF1FAm04sXjsuHnQDtN+CPdUv5azVgM=";
+      x86_64-linux.hash = "sha256-1R++QDSoIgR0UHIi9k2AHiZknIEzs+e0WPPpdYwItqE=";
+      aarch64-linux.hash = "sha256-qBdguCuhGGZaWQE/tJVJxLmFFHgzdSDA7m7++EKS+ZQ=";
       icon.hash = "sha256-vY4FZhlwkacfE4HVdu7l/VhVtoMqBsbikUQNEqG3EQ0=";
     };
     noSettings = true;
@@ -296,10 +298,10 @@
     displayName = "PdfCraft";
     genericName = "PDF Editor";
     comment = "Read, organize, combine, split and secure PDFs";
-    version = "0.20.0";
+    version = "0.21.1";
     sources = {
-      x86_64-linux.hash = "sha256-An5iKZuCNTYANz5sp0xEEhPvVAbnDSf38a734Fp4h40=";
-      aarch64-linux.hash = "sha256-u9gKgL5fvufWAvO2TZJj2Kb/66apn0DtiCBP9rwWU8M=";
+      x86_64-linux.hash = "sha256-cwJ2zamt2z1I8mxgJobRj8W8Dr42CmCi9SLXDP1CjSE=";
+      aarch64-linux.hash = "sha256-40oTbx+aP+q9taTqj4+6G7PlrFTzliSQ5+BB/c9Y318=";
       icon.hash = "sha256-J3RcAhgw+CwDOw8V8tjZ+OCZE4dDKXiH/34snn7Qado=";
     };
     noSettings = true;     # .ron configuration
@@ -311,10 +313,10 @@
     displayName = "PhotoCraft";
     genericName = "Image Editor";
     comment = "Edit photos and layered PSD documents";
-    version = "0.22.0";
+    version = "0.23.1";
     sources = {
-      x86_64-linux.hash = "sha256-zuk05sOMD/f4zX7gNpQSi+Bb4Tf8QwEYDi9xbn0qH58=";
-      aarch64-linux.hash = "sha256-iXKIUVnuV1UH4C18PXhLoqZZij7SBGnXJYbIuaadZmM=";
+      x86_64-linux.hash = "sha256-BXR7PlJ+HgoMHeOZcDYc84yPyn6NPjYB7yCC+w5t0X8=";
+      aarch64-linux.hash = "sha256-5D1N675mzw6idiYJfydWhIF2pVQKPeWSUshd08dpgkY=";
       icon.hash = "sha256-pIMzt7eUtwFY2pOiYthPuC9fu/dELbYPI1oKaRNqHOI=";
     };
     prefsFile = "preferences.json";
@@ -333,11 +335,11 @@
     displayName = "SolidCraft";
     genericName = "3D CAD";
     comment = "Parametric 3D CAD: sketch, constrain, extrude, and change a parameter to rebuild";
-    version = "0.30.1";
+    version = "0.41.0";
     owner = "tangency-labs";
     sources = {
-      x86_64-linux.hash = "sha256-HODWGv04IA8MFieTGgSF8DuD4KiLHHTHXhoVAek4g10=";
-      aarch64-linux.hash = "sha256-fsI4eicQUWyoRiXLAGY1n9BpOEmQYUe8p8yLMQG3hVM=";
+      x86_64-linux.hash = "sha256-xFs5DeRDiHTZ033xcqEq+KVWJB6+POGdgL5cIB31xs4=";
+      aarch64-linux.hash = "sha256-Pd9+ycEvsUU1JT0yAqH6sE0svYVHZSzvXwBCMi9XDrU=";
       icon = {
         url = "https://raw.githubusercontent.com/tangency-labs/solidcraft/refs/heads/main/assets/icons/app/linux/exports/hicolor/256x256/apps/io.tangencylabs.solidcraft.png";
         hash = "sha256-caPkknIFcc9XL6pR2Gp/916dfeoJFhQrUd6DW/hXxa8=";
@@ -355,11 +357,11 @@
     displayName = "SoundCraft";
     genericName = "Digital Audio Workstation";
     comment = "Record, edit and mix audio and MIDI";
-    version = "0.19.0";
+    version = "0.20.1";
     iconUrl = "https://raw.githubusercontent.com/storytold/soundcraft/refs/heads/main/assets/app-icon/icon.svg";
     sources = {
-      x86_64-linux.hash = "sha256-qt7XTk8TLAM6zBIjx3anTlmnUdyQiEG0wxVy44k5GY8=";
-      aarch64-linux.hash = "sha256-wLXXy9FOYY5omD1SheLR96wMSsN8PCu8YpMAMeDbgyA=";
+      x86_64-linux.hash = "sha256-TbtAKkE+wqUxA7n6d9Y1bm/usIbZSXXJXmNcdLQ02vg=";
+      aarch64-linux.hash = "sha256-fa0KtRV7aeQ8DFQmZf1jxVcKbCihNexw8afw77zb5QM=";
       icon = {
         url = "https://raw.githubusercontent.com/storytold/soundcraft/refs/heads/main/assets/app-icon/icon.svg";
         hash = "sha256-NNwZQivzPcVyOezsAYBL9uoIUTiTF75v6bINEhduPBI=";
@@ -381,10 +383,10 @@
     displayName = "TextureCraft";
     genericName = "3D texture painter";
     comment = "Paint PBR textures directly on 3D meshes";
-    version = "0.5.0";
+    version = "0.6.1";
     sources = {
-      x86_64-linux.hash = "sha256-so8Kf2ldQfWAn6UbhYjXG5k388X1hi7GEJB9CW7lzQA=";
-      aarch64-linux.hash = "sha256-RDibiOXCFagiq/apz0NXO/TFVDqglg4FMq8Twhcasy4=";
+      x86_64-linux.hash = "sha256-kEdgAW/TdL8J/RtKPIQBy8fmvDy8DUQn43S5v4ExbKY=";
+      aarch64-linux.hash = "sha256-MDzMTMR9uMT3KhwVeNnC99VziiskM+fUbkelgn+VHX8=";
       icon.hash = "sha256-GbloLuQs+vsG5oH+sgiDfrC50/oHcIzjppUSuUXBawA=";
     };
     noSettings = true;
@@ -400,10 +402,10 @@
     displayName = "VectorCraft";
     genericName = "Vector Graphics Editor";
     comment = "Draw and edit vector illustrations, SVG and PDF";
-    version = "0.23.0";
+    version = "0.24.1";
     sources = {
-      x86_64-linux.hash = "sha256-ihMPRI+o3/CiedzvylYin1cCyzQRIyY0NtWHxFviqOQ=";
-      aarch64-linux.hash = "sha256-KuZWoYf0raoojG6/pv1/pm4A24pR5Xl/F18vL4FwHMc=";
+      x86_64-linux.hash = "sha256-vc5+gumB+fTtC/JfpvJeb+T6sn6JZB5vlIiZ4BsTpRQ=";
+      aarch64-linux.hash = "sha256-SbccWfjZmiiO6p6db1Ar3HLEjcizr9VNAEExAtuiWeE=";
       icon.hash = "sha256-fBaE9J6W/zSXDx0RqOYb7RQuHvKv69NPo8mSOcAG2VI=";
     };
     prefsFile = null;
@@ -415,10 +417,10 @@
     displayName = "WordCraft";
     genericName = "Word Processor";
     comment = "Write and design documents; open and save Word files";
-    version = "0.17.0";
+    version = "0.18.1";
     sources = {
-      x86_64-linux.hash = "sha256-YGs64zDHZ8+hkoA9uo63udKcZs3ynQyr3gg/F/Bq0Ws=";
-      aarch64-linux.hash = "sha256-OwROhthBgKBaSItCJJMRqdHtg1GQwTxK8Rzq9Yec7fw=";
+      x86_64-linux.hash = "sha256-u8XBWwbUQDz9WllHW9+SZKScK88fktEjMRtQqdzjyIg=";
+      aarch64-linux.hash = "sha256-EemhHA3JJMKiYSB9jPRe4jKTC/BpJTOi6YQjf2geBzw=";
       icon.hash = "sha256-mmjLf30R335QARJdO9f60vXMTc2x32YAbLz66IfmG0Y=";
     };
     prefsFile = null;
