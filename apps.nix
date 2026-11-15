@@ -261,11 +261,11 @@
     displayName = "MailCraft";
     genericName = "Mail Client";
     comment = "Read and write mail, keep a calendar, contacts and tasks";
-    version = "0.12.0";
+    version = "0.13.0";
     owner = "UCS-Care-Group";
     sources = {
-      x86_64-linux.hash = "sha256-BWTvCD/xI37KaCNQNN8Ju8PubrtYaf/lCdLL0J5T7FE=";
-      aarch64-linux.hash = "sha256-GduI/hp9tD+HL29UDJhR/GXKAqB5I4P8QwrvSAk+Zyo=";
+      x86_64-linux.hash = "sha256-U3EA+kbWS3GHtq31FSSbBq2zH/f8cnilMlaB5eavY+g=";
+      aarch64-linux.hash = "sha256-UBI484edFDQwwicraYbTNwdiUl3bEDUQnEE+B60u7cM=";
       icon = {
         url = "https://raw.githubusercontent.com/UCS-Care-Group/mailcraft/refs/heads/main/assets/app-icon/hicolor/scalable/apps/io.github.billsecond.mailcraft.svg";
         hash = "sha256-sVP+1DXNXMXvpAhAiXe23rVJb0ryF/4ALD36efS5bFM=";
@@ -335,11 +335,11 @@
     displayName = "SolidCraft";
     genericName = "3D CAD";
     comment = "Parametric 3D CAD: sketch, constrain, extrude, and change a parameter to rebuild";
-    version = "0.41.0";
+    version = "0.42.0";
     owner = "tangency-labs";
     sources = {
-      x86_64-linux.hash = "sha256-xFs5DeRDiHTZ033xcqEq+KVWJB6+POGdgL5cIB31xs4=";
-      aarch64-linux.hash = "sha256-Pd9+ycEvsUU1JT0yAqH6sE0svYVHZSzvXwBCMi9XDrU=";
+      x86_64-linux.hash = "sha256-ntG4GILeo7BVxQCi0cukXf6MgSfGqqwUd7yXUoRVHy0=";
+      aarch64-linux.hash = "sha256-/QFsHW+fvFaFcmEKQ8AOnQ6qMhaBdaYrdQm5wwZpurY=";
       icon = {
         url = "https://raw.githubusercontent.com/tangency-labs/solidcraft/refs/heads/main/assets/icons/app/linux/exports/hicolor/256x256/apps/io.tangencylabs.solidcraft.png";
         hash = "sha256-caPkknIFcc9XL6pR2Gp/916dfeoJFhQrUd6DW/hXxa8=";
