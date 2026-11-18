@@ -335,11 +335,11 @@
     displayName = "SolidCraft";
     genericName = "3D CAD";
     comment = "Parametric 3D CAD: sketch, constrain, extrude, and change a parameter to rebuild";
-    version = "0.43.0";
+    version = "0.44.1";
     owner = "tangency-labs";
     sources = {
-      x86_64-linux.hash = "sha256-s30BzIheoRbIqdkkOqCMsh5hbztQ4dZlbmp76S/0mJY=";
-      aarch64-linux.hash = "sha256-rjzHso7F+CvAC8gm5tN7sSWnqx/gDWLFUY3hyMJtv24=";
+      x86_64-linux.hash = "sha256-bkcr1/VXo8BWTkVIxGCxuE2QYjfGivMn5X2UaxPlHPQ=";
+      aarch64-linux.hash = "sha256-MsFnJ17w9kU0QVhEkq9fmN1q0ljVQ9Wn7PXPtfc/HOY=";
       icon = {
         url = "https://raw.githubusercontent.com/tangency-labs/solidcraft/refs/heads/main/assets/icons/app/linux/exports/hicolor/256x256/apps/io.tangencylabs.solidcraft.png";
         hash = "sha256-caPkknIFcc9XL6pR2Gp/916dfeoJFhQrUd6DW/hXxa8=";
